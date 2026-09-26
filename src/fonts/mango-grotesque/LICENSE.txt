@@ -1,0 +1,24 @@
+Mango Grotesque — licence
+=========================
+
+Designer: Rajesh Rajput
+Source:   https://befonts.com/mango-grotesque-font-family.html
+
+Licence: Commercial Use Allowed
+
+Embedded licence text as supplied with the family:
+
+  "Freeware for personal and commercial projects. The typeface files may not be
+  modified without written permission from Rajesh Rajput."
+
+Consequences for this repository
+--------------------------------
+- The .woff files in this folder are the files exactly as supplied. They must
+  never be subsetted, re-encoded, converted to WOFF2, renamed internally or
+  edited in any way. Only the *file names* have been changed.
+- Because they cannot be subsetted, Mango Grotesque is reserved for display
+  sizes (t-display-l and larger) and counters only. Everything smaller uses
+  Archivo.
+- Mango Grotesque lacks the Hausa hooked letters (Ɓ ɓ Ɗ ɗ Ƙ ƙ Ƴ ƴ), the naira
+  sign (₦) and arrow/star glyphs. Those fall back to Archivo; arrows and stars
+  are drawn as SVG components instead of characters.
