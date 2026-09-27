@@ -16,6 +16,11 @@ interface RevealTextProps {
   variant?: RevealVariant;
   /** Extra delay in seconds, on top of the variant's own timing. */
   delay?: number;
+  /**
+   * Hide this fragment from screen readers. Use it when an ancestor already
+   * carries the whole sentence — a multi-line h1, for instance.
+   */
+  srHidden?: boolean;
   className?: string;
   /** Plain text only — it is split, and kept whole in aria-label. */
   children: string;
@@ -32,6 +37,7 @@ export function RevealText({
   as: Tag = 'div',
   variant = 'lines',
   delay = 0,
+  srHidden = false,
   className,
   children,
 }: RevealTextProps) {
@@ -128,7 +134,8 @@ export function RevealText({
     <Tag
       // A single ref type covers every tag this renders.
       ref={ref as React.Ref<never>}
-      aria-label={children}
+      aria-hidden={srHidden ? 'true' : undefined}
+      aria-label={srHidden ? undefined : children}
       className={cn(isHero || variant === 'lines' ? 'line-mask-pad' : undefined, className)}
     >
       {children}

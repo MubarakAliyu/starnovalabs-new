@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useMotion } from '@/components/motion/MotionProvider';
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap';
@@ -38,7 +38,9 @@ export function Marquee({
   const { motion } = useMotion();
   const [paused, setPaused] = useState(false);
   const pausedRef = useRef(paused);
-  pausedRef.current = paused;
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
 
   useGSAP(
     () => {

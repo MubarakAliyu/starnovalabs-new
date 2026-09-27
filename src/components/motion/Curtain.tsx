@@ -22,7 +22,9 @@ export function Curtain() {
   const { registerCurtain } = useTransition();
   const { motion } = useMotion();
   const motionRef = useRef(motion);
-  motionRef.current = motion;
+  useEffect(() => {
+    motionRef.current = motion;
+  }, [motion]);
 
   const cover = useCallback(
     () =>
