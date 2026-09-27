@@ -14,7 +14,7 @@ export function SiteFooter() {
   return (
     <Chapter as="footer" theme="ink" tight flush className="pt-24 pb-8">
       <Container>
-        <div className="flex flex-col gap-10 border-b border-line-dark pb-16 lg:flex-row lg:items-end lg:justify-between">
+        <div className="border-line-dark flex flex-col gap-10 border-b pb-16 lg:flex-row lg:items-end lg:justify-between">
           <RevealText as="h2" variant="lines" className="t-display-xl max-w-[14ch]">
             {"BUILD WHAT'S NEXT"}
           </RevealText>
@@ -26,13 +26,13 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
           {footerNav.map((column) => (
             <nav key={column.title} aria-label={column.title}>
-              <h3 className="t-label mb-5 text-paper/50">{column.title}</h3>
+              <h3 className="t-label text-paper/50 mb-5">{column.title}</h3>
               <ul className="flex flex-col gap-3">
                 {column.items.map((item) => (
                   <li key={item.href}>
                     <TransitionLink
                       href={item.href}
-                      className="t-small link-underline inline-flex min-h-11 items-center text-paper/80 hover:text-white"
+                      className="t-small link-underline text-paper/80 inline-flex min-h-11 items-center hover:text-white"
                     >
                       {item.label}
                     </TransitionLink>
@@ -43,7 +43,7 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-line-dark py-10">
+        <div className="border-line-dark flex flex-col gap-3 border-t py-10">
           <h3 className="t-label text-paper/50">Contact</h3>
           <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-8">
             <a href={`mailto:${site.email}`} className="t-body link-underline w-fit">
@@ -58,7 +58,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col-reverse gap-6 border-t border-line-dark pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-line-dark flex flex-col-reverse gap-6 border-t pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="t-label text-paper/50">
             © {year} {site.legalName}
           </p>

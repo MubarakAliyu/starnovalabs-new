@@ -19,12 +19,7 @@ interface ParallaxProps {
  * Scrubbed vertical offset (Master §5). Type drifts at .1, an overlapping
  * image at -.15, a sticker at .3.
  */
-export function Parallax({
-  speed = 0.1,
-  disabledBelow = 768,
-  className,
-  children,
-}: ParallaxProps) {
+export function Parallax({ speed = 0.1, disabledBelow = 768, className, children }: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { motion } = useMotion();
 

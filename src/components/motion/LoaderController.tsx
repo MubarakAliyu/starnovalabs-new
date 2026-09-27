@@ -124,28 +124,26 @@ export function LoaderController() {
       });
 
       const intro = gsap.timeline();
-      intro
-        .to(rows, { autoAlpha: 0.12, duration: 0.3, ease: 'none' }, 0)
-        .fromTo(
-          blades,
-          {
-            x: (i: number) => (STAR_BLADE_ORIGINS[i % 4].x / 100) * window.innerWidth,
-            y: (i: number) => (STAR_BLADE_ORIGINS[i % 4].y / 100) * window.innerHeight,
-            rotate: (i: number) => STAR_BLADE_ORIGINS[i % 4].rotate,
-            autoAlpha: 0,
-            transformOrigin: '50% 50%',
-          },
-          {
-            x: 0,
-            y: 0,
-            rotate: 0,
-            autoAlpha: 1,
-            duration: 0.7,
-            ease: EASE.out,
-            stagger: 0.07,
-          },
-          0.1,
-        );
+      intro.to(rows, { autoAlpha: 0.12, duration: 0.3, ease: 'none' }, 0).fromTo(
+        blades,
+        {
+          x: (i: number) => (STAR_BLADE_ORIGINS[i % 4].x / 100) * window.innerWidth,
+          y: (i: number) => (STAR_BLADE_ORIGINS[i % 4].y / 100) * window.innerHeight,
+          rotate: (i: number) => STAR_BLADE_ORIGINS[i % 4].rotate,
+          autoAlpha: 0,
+          transformOrigin: '50% 50%',
+        },
+        {
+          x: 0,
+          y: 0,
+          rotate: 0,
+          autoAlpha: 1,
+          duration: 0.7,
+          ease: EASE.out,
+          stagger: 0.07,
+        },
+        0.1,
+      );
 
       // The roll-call rows drift in alternate directions, 60s a loop.
       const marquees = tracks.map((track, index) => {

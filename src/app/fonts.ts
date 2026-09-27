@@ -10,8 +10,16 @@ import localFont from 'next/font/local';
  */
 export const display = localFont({
   src: [
-    { path: '../fonts/mango-grotesque/MangoGrotesque-Regular.woff', weight: '400', style: 'normal' },
-    { path: '../fonts/mango-grotesque/MangoGrotesque-SemiBold.woff', weight: '600', style: 'normal' },
+    {
+      path: '../fonts/mango-grotesque/MangoGrotesque-Regular.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/mango-grotesque/MangoGrotesque-SemiBold.woff',
+      weight: '600',
+      style: 'normal',
+    },
   ],
   variable: '--font-display',
   display: 'swap',
@@ -44,4 +52,9 @@ export const mono = JetBrains_Mono({
   preload: false,
 });
 
-export const fontVariables = [display.variable, heading.variable, text.variable, mono.variable].join(' ');
+export const fontVariables = [
+  display.variable,
+  heading.variable,
+  text.variable,
+  mono.variable,
+].join(' ');

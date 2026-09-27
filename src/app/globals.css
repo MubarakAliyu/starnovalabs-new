@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ──────────────────────────────────────────────────────────────────────────
    DESIGN TOKENS  (Master §4)
@@ -98,12 +98,12 @@
   }
 
   /* On art-directed dark chapters the ring switches to the lit blue. */
-  [data-theme="navy"] :focus-visible,
-  [data-theme="ink"] :focus-visible {
+  [data-theme='navy'] :focus-visible,
+  [data-theme='ink'] :focus-visible {
     outline-color: var(--color-blue-lit);
   }
 
-  [data-theme="blue"] :focus-visible {
+  [data-theme='blue'] :focus-visible {
     outline-color: var(--color-white);
   }
 
@@ -182,7 +182,9 @@
   .t-h2 {
     font-family: var(--font-heading);
     font-weight: 800;
-    font-variation-settings: "wdth" 75, "wght" 800;
+    font-variation-settings:
+      'wdth' 75,
+      'wght' 800;
     font-size: clamp(2rem, 4.5vw, 4rem);
     line-height: 0.95;
     letter-spacing: -0.02em;
@@ -191,7 +193,9 @@
   .t-h3 {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-variation-settings: "wdth" 85, "wght" 700;
+    font-variation-settings:
+      'wdth' 85,
+      'wght' 700;
     font-size: clamp(1.5rem, 2.4vw, 2.25rem);
     line-height: 1.05;
     letter-spacing: -0.01em;
@@ -247,7 +251,9 @@
   /* Hausa display text falls back to condensed Archivo (Mango lacks ɓ ɗ ƙ ƴ ₦). */
   .t-display-hausa {
     font-family: var(--font-heading);
-    font-variation-settings: "wdth" 75, "wght" 800;
+    font-variation-settings:
+      'wdth' 75,
+      'wght' 800;
   }
 
   /* ── Layout ───────────────────────────────────────────────────────────── */
@@ -352,23 +358,23 @@
   }
 }
 
-html[data-header-theme="paper-2"] {
+html[data-header-theme='paper-2'] {
   --header-bg: var(--color-paper-2);
 }
 
-html[data-header-theme="navy"] {
+html[data-header-theme='navy'] {
   --header-fg: var(--color-paper);
   --header-bg: var(--color-navy);
   --header-line: var(--color-line-dark);
 }
 
-html[data-header-theme="ink"] {
+html[data-header-theme='ink'] {
   --header-fg: var(--color-paper);
   --header-bg: var(--color-ink);
   --header-line: var(--color-line-dark);
 }
 
-html[data-header-theme="blue"] {
+html[data-header-theme='blue'] {
   --header-fg: var(--color-white);
   --header-bg: var(--color-blue);
   --header-line: var(--color-line-dark);
@@ -387,19 +393,19 @@ html[data-header-theme="blue"] {
   transition: opacity 0.3s ease;
 }
 
-[data-logo-variant="onDark"] {
+[data-logo-variant='onDark'] {
   opacity: 0;
 }
 
-html[data-header-theme="navy"] [data-logo-variant="onDark"],
-html[data-header-theme="ink"] [data-logo-variant="onDark"],
-html[data-header-theme="blue"] [data-logo-variant="onDark"] {
+html[data-header-theme='navy'] [data-logo-variant='onDark'],
+html[data-header-theme='ink'] [data-logo-variant='onDark'],
+html[data-header-theme='blue'] [data-logo-variant='onDark'] {
   opacity: 1;
 }
 
-html[data-header-theme="navy"] [data-logo-variant="onLight"],
-html[data-header-theme="ink"] [data-logo-variant="onLight"],
-html[data-header-theme="blue"] [data-logo-variant="onLight"] {
+html[data-header-theme='navy'] [data-logo-variant='onLight'],
+html[data-header-theme='ink'] [data-logo-variant='onLight'],
+html[data-header-theme='blue'] [data-logo-variant='onLight'] {
   opacity: 0;
 }
 
@@ -409,8 +415,8 @@ html[data-header-theme="blue"] [data-logo-variant="onLight"] {
    It is taken away immediately when the intro should not play, and it never
    traps anyone without JavaScript.
    ────────────────────────────────────────────────────────────────────────── */
-html[data-intro="done"] [data-loader],
-html[data-motion="reduced"] [data-loader] {
+html[data-intro='done'] [data-loader],
+html[data-motion='reduced'] [data-loader] {
   display: none;
 }
 
@@ -428,9 +434,9 @@ html[data-motion="reduced"] [data-loader] {
   }
 }
 
-html[data-motion="reduced"] *,
-html[data-motion="reduced"] *::before,
-html[data-motion="reduced"] *::after {
+html[data-motion='reduced'] *,
+html[data-motion='reduced'] *::before,
+html[data-motion='reduced'] *::after {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;

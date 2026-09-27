@@ -52,9 +52,12 @@ export function Loader() {
       id="snl-loader"
       aria-hidden="true"
       data-loader
-      className="pointer-events-none fixed inset-0 z-[100] bg-navy text-white"
+      className="bg-navy pointer-events-none fixed inset-0 z-[100] text-white"
     >
-      <div className="absolute inset-0 flex flex-col justify-center gap-[2vh] overflow-hidden opacity-0 select-none" data-loader-rows>
+      <div
+        className="absolute inset-0 flex flex-col justify-center gap-[2vh] overflow-hidden opacity-0 select-none"
+        data-loader-rows
+      >
         <RollCallRow />
         <RollCallRow reverse />
         <RollCallRow />
@@ -81,11 +84,11 @@ export function Loader() {
       </div>
 
       <div
-        className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-blue-lit"
+        className="bg-blue-lit absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0"
         data-loader-progress
       />
 
-      <div className="absolute inset-0 origin-bottom scale-y-0 bg-blue" data-loader-wipe />
+      <div className="bg-blue absolute inset-0 origin-bottom scale-y-0" data-loader-wipe />
 
       <LoaderController />
     </div>

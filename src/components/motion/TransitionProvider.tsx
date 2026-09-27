@@ -185,7 +185,10 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
       phaseRef.current = 'covering';
       router.prefetch(href);
 
+      let proceeded = false;
       const proceed = () => {
+        if (proceeded) return;
+        proceeded = true;
         phaseRef.current = 'covered';
         router.push(href);
         if (lenis) lenis.scrollTo(0, { immediate: true });
@@ -196,9 +199,12 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
         after(FORCE_REVEAL_MS, () => finishReveal());
       };
 
+      const budget = motion === 'reduced' ? REDUCED_FADE_MS : COVER_MS;
       const cover = curtainRef.current?.cover();
       if (cover) void cover.then(proceed);
-      else after(motion === 'reduced' ? REDUCED_FADE_MS : COVER_MS, proceed);
+      // The animation frame loop stops in a backgrounded tab, which would
+      // otherwise leave the click swallowed and the navigation never made.
+      after(budget + 400, proceed);
     },
     [after, finishReveal, lenis, motion, router],
   );

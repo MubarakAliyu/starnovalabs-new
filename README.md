@@ -1,36 +1,186 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# StarNova Labs — website
 
-## Getting Started
+The corporate site for StarNova Labs Ltd, a Nigerian technology company building
+education technology and proving it in real classrooms through Kids in Tech.
 
-First, run the development server:
+Tagline: **Architecting Human Agency**.
+
+The redesign brief lives in [`docs/`](docs/) — `STARNOVA_REDESIGN_OVERVIEW.md` is
+the analysis and `STARNOVA_EXECUTION_BATCHES.md` is the build plan. `docs/` is
+reference material: read it, don't edit it.
+
+## Stack
+
+| Concern        | Choice                                                        |
+| -------------- | ------------------------------------------------------------- |
+| Framework      | Next.js 16 (App Router), React 19, TypeScript strict           |
+| Styling        | Tailwind CSS v4, CSS-first — tokens in `src/app/globals.css`   |
+| Animation      | GSAP 3 + ScrollTrigger + SplitText via `@gsap/react`           |
+| Smooth scroll  | Lenis, driven by the GSAP ticker                               |
+| Fonts          | Mango Grotesque (local) · Archivo · Inter · JetBrains Mono     |
+| Icons          | `lucide-react`, sparingly, plus hand-drawn SVG components      |
+| Email          | Resend, via a route handler (Batch 2)                          |
+| Analytics      | `@vercel/analytics`, `@vercel/speed-insights`                  |
+| Package manager| npm · Node 20+                                                 |
+
+GSAP and Lenis are the **only** animation libraries. Do not add framer-motion,
+react-spring, anime.js, AOS, locomotive-scroll or three.js. Do not add UI kits.
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev        # dev server
+npm run build      # production build
+npm run start      # serve the production build
+npm run lint       # eslint .
+npm run typecheck  # tsc --noEmit
+npm run format     # prettier --write .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+All three of `build`, `typecheck` and `lint` must pass before anything merges.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/app/                routes, globals.css, fonts.ts, api/
+src/components/layout/  SiteHeader, MenuOverlay, SiteFooter, Chapter, Container, Grid, Section
+src/components/motion/  MotionProvider, SmoothScroll, Loader, Curtain, TransitionLink,
+                        RevealText, RevealImage, Parallax, Marquee, Magnetic, Counter
+src/components/ui/      Button, Sticker, SectionLabel, Field, Arrow, StarGlyph, Logo, BrandGraphic
+src/components/sections/ page-specific compositions
+src/content/            every piece of copy, every number, every person
+src/fonts/              Mango Grotesque, unmodified, plus its licence
+src/lib/                gsap.ts, motion.ts, star.ts, content.ts, utils.ts
+public/brand/           logo SVGs
+public/images/          real photography only
+```
 
-## Learn More
+Conventions: PascalCase components, one per file, named exports. Routes are
+kebab-case. Pages and sections are server components — only leaf components that
+animate or take input get `'use client'`, and a page file never does. Import
+through the `@/` alias. No inline hex in components; use the tokens.
 
-To learn more about Next.js, take a look at the following resources:
+## Content and status flags
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**All copy lives in `src/content`.** Components carry no hard-coded strings
+beyond aria labels and utility text. Keeping copy there is also what will make a
+Hausa translation a data change rather than a rewrite.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Anything that depends on a real-world fact carries a flag, and
+`isPublishable()` in [`src/lib/content.ts`](src/lib/content.ts) decides whether a
+production build may show it:
 
-## Deploy on Vercel
+| Flag                        | Applies to                        |
+| --------------------------- | --------------------------------- |
+| `status: 'confirmed' \| 'pending'` | statistics, dates, names   |
+| `consent: boolean`          | testimonials, images of people    |
+| `permission: boolean`       | partners, client case studies     |
+| `visible: boolean`          | products not yet announced        |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Production omits anything not cleared. Development shows it with a PENDING
+badge, so gaps stay visible while we work. Never invent a number, a client, a
+partner, a testimonial or a person. Never put a child's name, school, phone
+number or register anywhere in this repository.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Motion
+
+`MotionProvider` resolves a mode of `full` or `reduced` from the footer toggle
+(localStorage `snl-motion`), falling back to the OS `prefers-reduced-motion`
+setting, and publishes it on `<html data-motion>`. An inline script in the
+document head resolves it **before first paint**, so nothing flashes and nothing
+has to remount after hydration.
+
+Rules for anything animated:
+
+- Every animated component implements its reduced variant **in the same change**.
+- Every page must read completely with JavaScript disabled. Content belongs in
+  the server HTML; animation only enhances it.
+- Animate `transform`, `opacity` and `clip-path` only. Never animate `filter`,
+  `width`, `height`, `top` or `left` on scroll.
+- Every GSAP call lives inside a `useGSAP` scope so it cleans itself up.
+- Import GSAP from `@/lib/gsap` and nowhere else — that is the single place
+  plugins are registered, and it keeps GSAP out of server bundles.
+- The only `requestAnimationFrame` loop is GSAP's ticker.
+
+Timing tokens (easings, durations, staggers) live in
+[`src/lib/motion.ts`](src/lib/motion.ts). Take values from there, not from
+memory.
+
+## Typography
+
+Mango Grotesque is a free display face with real limits, and the licence forbids
+modifying the files:
+
+- Weights 400 and 600 only. `font-synthesis: none` is set globally.
+- The files are used exactly as supplied — no subsetting, no WOFF2 conversion.
+- It has no Hausa hooked letters (Ɓ ɓ Ɗ ɗ Ƙ ƙ Ƴ ƴ), no naira sign (₦) and no
+  arrows. Those fall back to Archivo; Hausa display headlines use Archivo
+  condensed (`.t-display-hausa`), and arrows and stars are SVG components,
+  never characters.
+- Reserve it for `t-display-l` and larger, plus counters. Everything smaller is
+  Archivo. This is also what keeps the site from reading like the reference site
+  that shares the face.
+
+Exactly one `<h1>` per page.
+
+## Brand
+
+- The logo is always one of the supplied SVGs in `public/brand`. Never
+  re-typeset it, never recolour it beyond the provided variants, never stretch
+  it. The `#1A8DC3` and `#DD3614` variants are not used.
+- Palette and type exactly as the tokens define them. No gradients, no
+  glassmorphism, no particles, no glow, no blur, no drop shadows on images.
+- Colour proportion per page: roughly 60% paper/white, 25% navy/ink, 12% blue,
+  3% gold. One full-bleed blue chapter per page.
+- Blue `#0074A9` is never text on navy — use `--color-blue-lit`. Gold is never
+  text on paper.
+- **Real photography only.** No stock photos, no stock illustrations, no
+  AI-generated people. Where no real image exists, use `BrandGraphic`. Children
+  appear only where the image entry records consent.
+- Voice: plain, declarative, specific. Numbers over adjectives. No emoji.
+
+## Accessibility and performance
+
+WCAG 2.2 AA. One `h1` per page, real landmarks, a skip link, visible focus at
+2px with 3px offset, full keyboard support, focus traps in overlays, Escape to
+close, form errors linked by `aria-describedby`, touch targets of at least
+44×44, and pausable motion.
+
+Budget on a mid-range Android over 4G: LCP ≤ 2.0s, CLS ≤ 0.05, INP ≤ 200ms,
+TBT ≤ 200ms, hero image ≤ 180 KB. Validate layouts at 360, 390, 768, 1024, 1280,
+1440 and 1920, with no horizontal scroll at any width.
+
+## The lab
+
+[`/lab`](src/app/lab/page.tsx) renders every primitive, the colour swatches with
+their contrast ratios, the type scale and the glyph test. It is `noindex` and
+calls `notFound()` in production builds, so it cannot leak into the live site.
+Check it in both motion modes after touching anything in `components/motion` or
+`components/ui`.
+
+## Environment
+
+Copy `.env.example` to `.env.local`. Never commit secrets, and never give a
+server-only key the `NEXT_PUBLIC_` prefix.
+
+| Variable               | Purpose                                     |
+| ---------------------- | ------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | canonical origin, used for `metadataBase`   |
+| `RESEND_API_KEY`       | contact form delivery (Batch 2), server only|
+| `CONTACT_TO_EMAIL`     | where contact submissions go (Batch 2)      |
+
+## Deployment
+
+Vercel, with this folder as the project root. The default Next.js build settings
+apply — `npm run build`, output handled by the framework preset. Set
+`NEXT_PUBLIC_SITE_URL` for every environment; add the Resend variables in Batch
+2. Enable Web Analytics and Speed Insights in the project so the two components
+in the root layout report.
+
+## Git
+
+Work on the branch named in the current batch (`feat/batch-0N-…`), never
+directly on `main`. Small, meaningful commits. Never rewrite history on `main`.
+
+`../starnovalabsweb` and `../../Starnovalabswebsitedesign` are read-only
+references. Never edit, build or deploy them.

@@ -97,7 +97,7 @@ export default function LabPage() {
       <Chapter theme="paper" className="pt-[calc(var(--header-h)+80px)] pb-0">
         <Container>
           <h1 className="t-display-l">Lab</h1>
-          <p className="t-body mt-6 text-body">
+          <p className="t-body text-body mt-6">
             Every primitive in Batch 1, in both motion modes. Toggle motion in the footer, or turn
             on the OS reduced-motion setting, and read this page again.
           </p>
@@ -111,11 +111,11 @@ export default function LabPage() {
               {SWATCHES.map((swatch) => (
                 <li key={swatch.name} className="flex flex-col gap-2">
                   <span
-                    className="block h-20 w-full ring-1 ring-line"
+                    className="ring-line block h-20 w-full ring-1"
                     style={{ backgroundColor: swatch.hex }}
                   />
                   <span className="t-label">{swatch.name}</span>
-                  <span className="t-small font-mono text-body">{swatch.hex}</span>
+                  <span className="t-small text-body font-mono">{swatch.hex}</span>
                   <span className="t-small text-body">{swatch.note}</span>
                 </li>
               ))}
@@ -126,7 +126,7 @@ export default function LabPage() {
             <div className="flex flex-col gap-8">
               {TYPE_SCALE.map((item) => (
                 <div key={item.className}>
-                  <p className="t-label mb-2 text-body">{item.label}</p>
+                  <p className="t-label text-body mb-2">{item.label}</p>
                   <p className={item.className}>Architecting human agency</p>
                 </div>
               ))}
@@ -134,14 +134,14 @@ export default function LabPage() {
           </LabSection>
 
           <LabSection index="03" title="Glyph test">
-            <p className="t-small mb-6 text-body">
+            <p className="t-small text-body mb-6">
               Mango Grotesque has no Hausa hooked letters, no naira sign and no arrows — those fall
               back to Archivo. No box should appear in any row.
             </p>
             <div className="flex flex-col gap-6">
               {FONTS.map((font) => (
                 <div key={font.name}>
-                  <p className="t-label mb-2 text-body">{font.name}</p>
+                  <p className="t-label text-body mb-2">{font.name}</p>
                   <p className={font.className}>{GLYPH_TEST}</p>
                 </div>
               ))}
@@ -219,7 +219,7 @@ export default function LabPage() {
               <RevealText as="h2" variant="lines" className="t-h2 max-w-[18ch]">
                 Lines reveal from behind a mask, one after another.
               </RevealText>
-              <RevealText as="p" variant="words" className="t-lead max-w-[46ch] text-body">
+              <RevealText as="p" variant="words" className="t-lead text-body max-w-[46ch]">
                 Words rise and fade in, for leads and pull quotes.
               </RevealText>
             </div>
@@ -237,7 +237,7 @@ export default function LabPage() {
                 <Counter value={4} />
               </span>
             </div>
-            <p className="t-small mt-4 text-body">
+            <p className="t-small text-body mt-4">
               Sample values only — real numbers arrive with their sources in Batch 2.
             </p>
           </LabSection>
@@ -305,7 +305,7 @@ export default function LabPage() {
           items={['Kids in Tech', 'KITOS', 'EduStack', 'SkillStack', 'Studio'].map((word) => (
             <span key={word} className="t-display-l flex items-center gap-10 pr-10 uppercase">
               {word}
-              <StarGlyph className="h-[0.3em] w-[0.3em] text-blue" />
+              <StarGlyph className="text-blue h-[0.3em] w-[0.3em]" />
             </span>
           ))}
         />
@@ -322,8 +322,8 @@ export default function LabPage() {
             />
             <p className="t-h3">Chapter theme {theme}</p>
             <p className="t-body mt-4 opacity-80">
-              The header inverts over this band, and the focus ring changes with it. Tab through
-              the link below to check.
+              The header inverts over this band, and the focus ring changes with it. Tab through the
+              link below to check.
             </p>
             <div className="mt-8">
               <Button

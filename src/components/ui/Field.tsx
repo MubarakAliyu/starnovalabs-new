@@ -49,7 +49,9 @@ export function Field({
     'aria-invalid': error ? (true as const) : undefined,
     'aria-describedby': error ? errorId : undefined,
     onFocus: () => setFocused(true),
-    onBlur: (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    onBlur: (
+      event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    ) => {
       setFocused(false);
       setFilled(event.target.value.trim().length > 0);
     },
@@ -67,7 +69,7 @@ export function Field({
         htmlFor={id}
         className={cn(
           'pointer-events-none absolute left-0 origin-left transition-all duration-200 ease-out',
-          raised ? 't-label top-0 text-body' : 'top-6 text-body',
+          raised ? 't-label text-body top-0' : 'text-body top-6',
         )}
       >
         {label}
@@ -94,7 +96,7 @@ export function Field({
       )}
 
       {error ? (
-        <p id={errorId} role="alert" className="t-small mt-2 text-error">
+        <p id={errorId} role="alert" className="t-small text-error mt-2">
           {error}
         </p>
       ) : null}

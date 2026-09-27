@@ -42,7 +42,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={fontVariables}>
+    // The bootstrap script rewrites data-motion before hydration, which is the
+    // whole point of it — so this one element's attributes are expected to
+    // differ from the server HTML.
+    <html lang="en" className={fontVariables} data-motion="full" suppressHydrationWarning>
       <head>
         {/* Resolves the motion mode before first paint, so nothing flashes. */}
         <script dangerouslySetInnerHTML={{ __html: motionBootstrapScript }} />

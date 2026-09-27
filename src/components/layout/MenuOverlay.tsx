@@ -95,7 +95,9 @@ export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayPr
       },
     });
     returnFocusRef.current?.focus({ preventScroll: true });
-  }, [motion, onClose, open, originFromButton, returnFocusRef]);
+    // onClose is deliberately not a dependency: it is not used here, and an
+    // unstable identity would replay the wipe on every parent render.
+  }, [motion, open, originFromButton, returnFocusRef]);
 
   // Escape closes; Tab cycles inside.
   useEffect(() => {
@@ -142,7 +144,7 @@ export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayPr
       aria-modal="true"
       aria-label="Site menu"
       data-theme="navy"
-      className="fixed inset-0 z-60 overflow-y-auto bg-navy text-paper opacity-0"
+      className="bg-navy text-paper fixed inset-0 z-60 overflow-y-auto opacity-0"
       data-lenis-prevent
     >
       <div className="container-page flex min-h-full flex-col justify-between gap-16 pt-28 pb-16 lg:pt-32">
@@ -172,7 +174,7 @@ export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayPr
                             <TransitionLink
                               href={child.href}
                               onClick={onClose}
-                              className="t-label link-underline flex min-h-11 items-center text-paper/70 hover:text-white"
+                              className="t-label link-underline text-paper/70 flex min-h-11 items-center hover:text-white"
                             >
                               {child.label}
                             </TransitionLink>

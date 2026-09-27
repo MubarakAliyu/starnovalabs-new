@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { MenuOverlay } from '@/components/layout/MenuOverlay';
 import { Magnetic } from '@/components/motion/Magnetic';
@@ -26,6 +26,7 @@ export function SiteHeader() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
   const { motion } = useMotion();
+  const closeMenu = useCallback(() => setOpen(false), []);
   const pathname = usePathname();
 
   useGSAP(
@@ -160,12 +161,7 @@ export function SiteHeader() {
         </div>
       </header>
 
-      <MenuOverlay
-        id={MENU_ID}
-        open={open}
-        onClose={() => setOpen(false)}
-        returnFocusRef={menuButtonRef}
-      />
+      <MenuOverlay id={MENU_ID} open={open} onClose={closeMenu} returnFocusRef={menuButtonRef} />
     </>
   );
 }

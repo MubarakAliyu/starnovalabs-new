@@ -160,7 +160,7 @@ export function Marquee({
           type="button"
           onClick={togglePaused}
           aria-pressed={paused}
-          className="t-label absolute right-0 bottom-0 min-h-11 cursor-pointer px-3 py-2 text-body underline-offset-4 hover:underline"
+          className="t-label text-body absolute right-0 bottom-0 min-h-11 cursor-pointer px-3 py-2 underline-offset-4 hover:underline"
         >
           {paused ? 'Play motion' : 'Pause motion'}
         </button>

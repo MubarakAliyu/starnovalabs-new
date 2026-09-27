@@ -92,16 +92,13 @@ export function Button({
         <span
           data-flood
           aria-hidden="true"
-          className="pointer-events-none absolute h-[220%] w-[220%] scale-0 rounded-full bg-blue"
+          className="bg-blue pointer-events-none absolute h-[220%] w-[220%] scale-0 rounded-full"
           style={{ aspectRatio: '1' }}
         />
       ) : null}
 
       {/* The label rolls: the copy underneath slides up to replace it. */}
-      <span
-        data-magnetic-label
-        className="relative z-10 flex items-center gap-3 overflow-hidden"
-      >
+      <span data-magnetic-label className="relative z-10 flex items-center gap-3 overflow-hidden">
         <span className="relative block overflow-hidden">
           <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
             {children}
@@ -113,9 +110,7 @@ export function Button({
             {children}
           </span>
         </span>
-        {arrow ? (
-          <Arrow className="group-hover:-rotate-45 group-focus-visible:-rotate-45" />
-        ) : null}
+        {arrow ? <Arrow className="group-hover:-rotate-45 group-focus-visible:-rotate-45" /> : null}
       </span>
     </>
   );
@@ -162,12 +157,7 @@ export function Button({
     );
   } else {
     element = (
-      <button
-        ref={ref as React.Ref<HTMLButtonElement>}
-        type={type}
-        disabled={disabled}
-        {...shared}
-      >
+      <button ref={ref as React.Ref<HTMLButtonElement>} type={type} disabled={disabled} {...shared}>
         {inner}
       </button>
     );

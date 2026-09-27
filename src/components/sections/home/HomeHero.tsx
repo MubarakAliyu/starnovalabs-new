@@ -20,22 +20,28 @@ export function HomeHero() {
         <Container>
           {/* The sentence is announced once, from the h1's own label. */}
           <h1 className="t-display-xxl" aria-label={home.hero.lines.join(' ')}>
-            {home.hero.lines.map((line, index) => (
-              <RevealText
-                key={line}
-                as="span"
-                variant="hero"
-                delay={index * 0.02}
-                srHidden
-                className="block"
-              >
-                {line}
-              </RevealText>
-            ))}
-            <Logomark
-              color="blue"
-              className="ml-[0.12em] h-[0.8em] w-[0.8em] align-baseline"
-            />
+            {home.hero.lines.map((line, index) => {
+              const last = index === home.hero.lines.length - 1;
+              return (
+                <span key={line} className="flex items-end gap-[0.08em]">
+                  {/* w-max keeps the line tight once SplitText wraps it in
+                      block-level line divs, so the mark stays on this line. */}
+                  <RevealText
+                    as="span"
+                    variant="hero"
+                    delay={index * 0.02}
+                    srHidden
+                    className="w-max"
+                  >
+                    {line}
+                  </RevealText>
+                  {/* The mark closes the sentence, set as a glyph. */}
+                  {last ? (
+                    <Logomark color="blue" className="mb-[0.06em] h-[0.8em] w-[0.8em]" />
+                  ) : null}
+                </span>
+              );
+            })}
           </h1>
 
           <div className="grid-page mt-16">
@@ -75,7 +81,7 @@ export function HomeHero() {
           items={home.marquee.map((word) => (
             <span key={word} className="t-display-l flex items-center gap-10 pr-10 uppercase">
               {word}
-              <StarGlyph className="h-[0.3em] w-[0.3em] text-blue" />
+              <StarGlyph className="text-blue h-[0.3em] w-[0.3em]" />
             </span>
           ))}
         />

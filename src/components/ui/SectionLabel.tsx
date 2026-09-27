@@ -12,7 +12,12 @@ interface SectionLabelProps {
 export function SectionLabel({ index, label, theme = 'light', className }: SectionLabelProps) {
   return (
     <div className={cn('flex items-center gap-4', className)}>
-      <span className={cn('t-label whitespace-nowrap', theme === 'dark' ? 'text-white/70' : 'text-body')}>
+      <span
+        className={cn(
+          't-label whitespace-nowrap',
+          theme === 'dark' ? 'text-white/70' : 'text-body',
+        )}
+      >
         {index ? `${index} — ` : null}
         {label}
       </span>

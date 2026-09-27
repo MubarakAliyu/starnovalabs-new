@@ -39,7 +39,11 @@ export function Curtain() {
 
         if (motionRef.current === 'reduced') {
           gsap.set(panel, { scaleY: 1, transformOrigin: 'bottom center' });
-          gsap.fromTo(root, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15, onComplete: resolve });
+          gsap.fromTo(
+            root,
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: 0.15, onComplete: resolve },
+          );
           gsap.set(star, { autoAlpha: 0 });
           return;
         }
@@ -122,7 +126,7 @@ export function Curtain() {
       aria-hidden="true"
       className="pointer-events-none invisible fixed inset-0 z-[90] opacity-0"
     >
-      <div ref={panelRef} className="absolute inset-0 origin-bottom scale-y-0 bg-blue" />
+      <div ref={panelRef} className="bg-blue absolute inset-0 origin-bottom scale-y-0" />
       <div className="absolute inset-0 grid place-items-center">
         <svg
           ref={starRef}
@@ -137,7 +141,7 @@ export function Curtain() {
         </svg>
       </div>
       {waiting ? (
-        <div className="absolute bottom-6 left-6 t-label text-white/70">
+        <div className="t-label absolute bottom-6 left-6 text-white/70">
           <span data-curtain-counter>000</span>
         </div>
       ) : null}

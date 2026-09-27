@@ -18,7 +18,7 @@ export function MotionToggle({ className }: { className?: string }) {
       aria-checked={full}
       onClick={toggleMotion}
       className={cn(
-        't-label flex min-h-11 cursor-pointer items-center gap-3 text-paper/70 hover:text-white',
+        't-label text-paper/70 flex min-h-11 cursor-pointer items-center gap-3 hover:text-white',
         className,
       )}
     >
@@ -33,7 +33,7 @@ export function MotionToggle({ className }: { className?: string }) {
         <span
           className={cn(
             'absolute top-1/2 block h-3 w-3 -translate-y-1/2 rounded-full transition-all duration-200',
-            full ? 'left-[calc(100%-0.875rem)] bg-blue-lit' : 'left-1 bg-paper/60',
+            full ? 'bg-blue-lit left-[calc(100%-0.875rem)]' : 'bg-paper/60 left-1',
           )}
         />
       </span>
