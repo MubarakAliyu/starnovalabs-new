@@ -1,26 +1,443 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ──────────────────────────────────────────────────────────────────────────
+   DESIGN TOKENS  (Master §4)
+   Colours, spacing, radius and breakpoints are emitted as real custom
+   properties so they can be used with var() in hand-written CSS too.
+   ────────────────────────────────────────────────────────────────────────── */
+@theme {
+  /* Colour */
+  --color-ink: #0a0d12;
+  --color-navy: #0b1b2e;
+  --color-navy-2: #102a45;
+  --color-navy-3: #16385c;
+  --color-paper: #f5f9fc;
+  --color-paper-2: #eaf2f8;
+  --color-white: #ffffff;
+  --color-blue: #0074a9;
+  --color-blue-press: #005f8a;
+  --color-blue-lit: #2c9bd1;
+  --color-blue-soft: #e4f1f8;
+  --color-gold: #c7972f;
+  --color-gold-lit: #ddb253;
+  --color-body: #41566b;
+  --color-muted: #77909f;
+  --color-line: #dbe6ee;
+  --color-line-dark: rgb(255 255 255 / 0.14);
+  --color-error: #c8321e;
+
+  /* Spacing — 4px base. 4 8 12 16 24 32 48 64 96 128 192 256 = 1 2 3 4 6 8 12 16 24 32 48 64. */
+  --spacing: 0.25rem;
+
+  /* Layout rhythm */
+  --page-margin: clamp(16px, 4vw, 64px);
+  --page-gutter: clamp(16px, 2vw, 32px);
+  --page-max: 1440px;
+  --section-pad: clamp(96px, 14vw, 224px);
+  --section-pad-tight: clamp(64px, 8vw, 128px);
+  --header-h: 72px;
+
+  /* Radius — 0 for sections and images, 4px for controls. */
+  --radius-none: 0px;
+  --radius-control: 4px;
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
+/* Font stacks are inlined so they resolve against the next/font variables set
+   on <html>, which already carry their metric-adjusted fallbacks. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-heading: var(--font-heading);
+  --font-text: var(--font-text);
+  --font-mono: var(--font-mono);
+  /* Reserved PolySans slot — points at Inter until a web licence is bought. */
+  --font-brand: var(--font-text);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ──────────────────────────────────────────────────────────────────────────
+   BASE
+   ────────────────────────────────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Lenis owns smoothness; native smooth scrolling would fight it. */
+    scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-text);
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: var(--color-blue-soft);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+  }
+
+  /* On art-directed dark chapters the ring switches to the lit blue. */
+  [data-theme='navy'] :focus-visible,
+  [data-theme='ink'] :focus-visible {
+    outline-color: var(--color-blue-lit);
+  }
+
+  [data-theme='blue'] :focus-visible {
+    outline-color: var(--color-white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  figure,
+  blockquote {
+    margin: 0;
+  }
+
+  img,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Anchor targets clear the fixed header. */
+  :target {
+    scroll-margin-top: calc(var(--header-h) + 24px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ──────────────────────────────────────────────────────────────────────────
+   TYPE SCALE  (Master §4)
+   Mango Grotesque is reserved for display-l and larger, plus counters.
+   ────────────────────────────────────────────────────────────────────────── */
+@layer utilities {
+  .t-display-xxl {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(4.25rem, 20vw, 22rem);
+    line-height: 0.82;
+    letter-spacing: -0.01em;
+    font-synthesis: none;
+  }
+
+  .t-display-xl {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(4rem, 13vw, 13rem);
+    line-height: 0.84;
+    letter-spacing: -0.01em;
+    font-synthesis: none;
+  }
+
+  .t-display-l {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 0.88;
+    letter-spacing: 0;
+    font-synthesis: none;
+  }
+
+  /* Secondary display lines use Mango 400. */
+  .t-display-light {
+    font-weight: 400;
+  }
+
+  .t-h2 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-variation-settings:
+      'wdth' 75,
+      'wght' 800;
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .t-h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-variation-settings:
+      'wdth' 85,
+      'wght' 700;
+    font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .t-lead {
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+
+  .t-body {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: clamp(1rem, calc(0.95rem + 0.2vw), 1.0625rem);
+    line-height: 1.6;
+    max-width: 64ch;
+  }
+
+  .t-small {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .t-label {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+  }
+
+  .t-counter {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(3.5rem, 9vw, 9rem);
+    line-height: 1;
+    font-synthesis: none;
+  }
+
+  /* Mango has no tabular figures — each digit gets its own fixed box. */
+  .t-counter [data-digit] {
+    display: inline-block;
+    width: 0.55em;
+    text-align: center;
+  }
+
+  /* Hausa display text falls back to condensed Archivo (Mango lacks ɓ ɗ ƙ ƴ ₦). */
+  .t-display-hausa {
+    font-family: var(--font-heading);
+    font-variation-settings:
+      'wdth' 75,
+      'wght' 800;
+  }
+
+  /* ── Layout ───────────────────────────────────────────────────────────── */
+  .container-page {
+    width: 100%;
+    max-width: calc(var(--page-max) + var(--page-margin) * 2);
+    margin-inline: auto;
+    padding-inline: var(--page-margin);
+  }
+
+  .grid-page {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--page-gutter);
+  }
+
+  @media (width >= 640px) {
+    .grid-page {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+  }
+
+  @media (width >= 1024px) {
+    .grid-page {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
+  .full-bleed {
+    width: 100vw;
+    max-width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+
+  .section-pad {
+    padding-block: var(--section-pad);
+  }
+
+  .section-pad-tight {
+    padding-block: var(--section-pad-tight);
+  }
+
+  /* Mango's tight metrics clip capitals and accents inside line masks. */
+  .line-mask-pad {
+    padding-block: 0.08em;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   BRAND PRIMITIVES
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Stickers sit at their own angle and lean further on hover. */
+[data-sticker] {
+  rotate: var(--sticker-rotate, 0deg);
+  transition:
+    rotate 0.3s cubic-bezier(0.34, 1.8, 0.64, 1),
+    scale 0.3s cubic-bezier(0.34, 1.8, 0.64, 1);
+}
+
+@media (hover: hover) {
+  [data-sticker]:hover {
+    rotate: calc(var(--sticker-rotate, 0deg) + 6deg);
+    scale: 1.06;
+  }
+}
+
+/* A text link's underline retracts to the right, then grows from the left. */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: background-size 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) {
+  .link-underline:hover {
+    background-position: 100% 100%;
+    background-size: 0 1px;
+  }
+}
+
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   HEADER THEME
+   Each Chapter reports itself as it passes under the header; these variables
+   are what actually change, so scrolling never triggers a React render.
+   ────────────────────────────────────────────────────────────────────────── */
+:root {
+  --header-fg: var(--color-ink);
+  --header-bg: var(--color-paper);
+  --header-line: var(--color-line);
+}
+
+@media (width >= 1024px) {
+  :root {
+    --header-h: 88px;
+  }
+}
+
+html[data-header-theme='paper-2'] {
+  --header-bg: var(--color-paper-2);
+}
+
+html[data-header-theme='navy'] {
+  --header-fg: var(--color-paper);
+  --header-bg: var(--color-navy);
+  --header-line: var(--color-line-dark);
+}
+
+html[data-header-theme='ink'] {
+  --header-fg: var(--color-paper);
+  --header-bg: var(--color-ink);
+  --header-line: var(--color-line-dark);
+}
+
+html[data-header-theme='blue'] {
+  --header-fg: var(--color-white);
+  --header-bg: var(--color-blue);
+  --header-line: var(--color-line-dark);
+}
+
+[data-site-header] {
+  color: var(--header-fg);
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Only one wordmark is visible at a time; the swap rides the same 300ms. */
+[data-logo-variant] {
+  transition: opacity 0.3s ease;
+}
+
+[data-logo-variant='onDark'] {
+  opacity: 0;
+}
+
+html[data-header-theme='navy'] [data-logo-variant='onDark'],
+html[data-header-theme='ink'] [data-logo-variant='onDark'],
+html[data-header-theme='blue'] [data-logo-variant='onDark'] {
+  opacity: 1;
+}
+
+html[data-header-theme='navy'] [data-logo-variant='onLight'],
+html[data-header-theme='ink'] [data-logo-variant='onLight'],
+html[data-header-theme='blue'] [data-logo-variant='onLight'] {
+  opacity: 0;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   LOADER
+   The overlay ships in the server HTML so the page never flashes before it.
+   It is taken away immediately when the intro should not play, and it never
+   traps anyone without JavaScript.
+   ────────────────────────────────────────────────────────────────────────── */
+html[data-intro='done'] [data-loader],
+html[data-motion='reduced'] [data-loader] {
+  display: none;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION — CSS safety net on top of the JS motion mode.
+   ────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html[data-motion='reduced'] *,
+html[data-motion='reduced'] *::before,
+html[data-motion='reduced'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
 }

@@ -1,0 +1,9 @@
+# Binary assets — never line-ending converted.
+# The Mango Grotesque licence forbids modifying the font files.
+*.woff  binary
+*.woff2 binary
+*.png   binary
+*.jpg   binary
+*.webp  binary
+*.avif  binary
+*.ico   binary
