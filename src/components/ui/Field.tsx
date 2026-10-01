@@ -73,12 +73,8 @@ export function Field({
         )}
       >
         {label}
-        {required ? (
-          <span aria-hidden="true" className="text-error">
-            {' '}
-            *
-          </span>
-        ) : null}
+        {/* Spelled out, so the requirement is never carried by colour alone. */}
+        {required ? <span className="text-body"> (required)</span> : null}
       </label>
 
       {kind === 'textarea' ? (
