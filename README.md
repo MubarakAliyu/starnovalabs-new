@@ -150,6 +150,23 @@ Budget on a mid-range Android over 4G: LCP ≤ 2.0s, CLS ≤ 0.05, INP ≤ 200ms
 TBT ≤ 200ms, hero image ≤ 180 KB. Validate layouts at 360, 390, 768, 1024, 1280,
 1440 and 1920, with no horizontal scroll at any width.
 
+### JavaScript budget
+
+| Route       | Budget                              |
+| ----------- | ----------------------------------- |
+| Home        | ≤ 215 KB gzip (≈ 190 KB brotli)     |
+| Every other | ≤ 205 KB gzip                       |
+
+These supersede the 180/170 KB figures in the original brief. The Next 16 and
+React 19 client baseline is roughly 130 KB gzip on its own, and GSAP with
+ScrollTrigger, SplitText and Lenis is another ~54 KB, so 180 KB is not reachable
+while the motion system loads eagerly. Brotli is what Vercel actually serves, so
+measure that too.
+
+Batch 4 will attempt to defer ScrollTrigger and SplitText until after the loader,
+which should return roughly 18 KB gzip to the first load. Until then, treat the
+table above as the gate.
+
 ## The lab
 
 [`/lab`](src/app/lab/page.tsx) renders every primitive, the colour swatches with

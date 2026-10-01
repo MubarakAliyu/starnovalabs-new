@@ -35,6 +35,11 @@ export function HomeHero() {
                   >
                     {line}
                   </RevealText>
+                  {/* Keeps real whitespace between the lines in textContent —
+                      the lines are separate elements, so without this they
+                      concatenate. sr-only takes it out of the layout, and it
+                      sits outside the element SplitText rewrites. */}
+                  {last ? null : <span className="sr-only"> </span>}
                   {/* The mark closes the sentence, set as a glyph. */}
                   {last ? (
                     <Logomark color="blue" className="mb-[0.06em] h-[0.8em] w-[0.8em]" />

@@ -41,6 +41,8 @@ export const text = Inter({
   subsets: ['latin', 'latin-ext'],
   variable: '--font-text',
   display: 'swap',
+  // Mango is the only preloaded family (Master §8).
+  preload: false,
 });
 
 /** JetBrains Mono — stickers, labels, counters, code-tag idiom. */

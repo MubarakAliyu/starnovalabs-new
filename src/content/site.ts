@@ -15,7 +15,7 @@ export const site = {
     'StarNova Labs is a Nigerian technology company building education technology — proven in real classrooms through Kids in Tech.',
   email: 'info@starnovalabs.com',
   phones: ['+234 906 098 5201', '+234 706 783 4186'],
-  location: { value: 'Sokoto, Nigeria', status: 'pending' as Status },
+  location: { value: 'Sokoto, Nigeria', status: 'confirmed' as Status },
   hours: { value: 'Mon–Fri, 9:00–17:00 WAT', status: 'pending' as Status },
   founded: 2025,
   /** Empty until real profile URLs are supplied. */
