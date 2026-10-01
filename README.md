@@ -167,6 +167,16 @@ Batch 4 will attempt to defer ScrollTrigger and SplitText until after the loader
 which should return roughly 18 KB gzip to the first load. Until then, treat the
 table above as the gate.
 
+Measure with `npm run measure:js` after a build. It sums the gzip and brotli
+size of every `<script src>` in each prerendered route's HTML — the files the
+browser actually executes on a cold visit.
+
+**As of Batch 2 the gate is not met:** Home is 253.8 KB gzip / 221.9 KB brotli
+and the other routes are 250.2 KB / 218.6 KB. Batch 1 measured 251.1 and 249.7
+by the same method, so all ten Home sections cost about 2.7 KB between them —
+the overage is the shared framework and motion baseline, not page code. Deferring
+the GSAP plugins is the only lever that moves it meaningfully.
+
 ## The lab
 
 [`/lab`](src/app/lab/page.tsx) renders every primitive, the colour swatches with
@@ -186,13 +196,50 @@ server-only key the `NEXT_PUBLIC_` prefix.
 | `RESEND_API_KEY`       | contact form delivery (Batch 2), server only|
 | `CONTACT_TO_EMAIL`     | where contact submissions go (Batch 2)      |
 
+## The contact endpoint
+
+`POST /api/contact` takes JSON or a form post and sends through Resend.
+
+It validates with [`src/lib/contact-validation.ts`](src/lib/contact-validation.ts),
+the same module the form runs in the browser, so the two can never disagree.
+Spam is accepted and silently dropped rather than refused — a filled honeypot or
+a submission inside three seconds gets an ordinary success response, so a bot
+learns nothing from it. A best-effort in-memory limiter allows five posts per IP
+per ten minutes; it lives in one instance's memory, so swap in a durable limiter
+(Vercel KV, Upstash) when traffic justifies it.
+
+Message bodies are never logged. Only a send id and the topic are.
+
+Without `RESEND_API_KEY` the endpoint answers `503 {error:'email_unavailable'}`
+and the form shows a mailto fallback, so a missing key degrades rather than
+loses the message. Without JavaScript the form posts directly and the handler
+answers `303` back to `/contact?sent=1` or `/contact?error=…`, which the page
+renders server-side. That is why `/contact` is the one dynamic route.
+
+### Setting up Resend
+
+1. Create an account at resend.com and add the domain `starnovalabs.com` under
+   **Domains**.
+2. Add the DNS records Resend shows you — an MX and a TXT for SPF on the
+   sending subdomain, plus a TXT for DKIM — at whoever hosts the DNS for
+   `starnovalabs.com`. Wait for Resend to show **Verified**.
+3. Under **API Keys**, create a key with **Sending access** only, scoped to that
+   domain. Copy it once; Resend will not show it again.
+4. Put it in Vercel under **Settings → Environment Variables** as
+   `RESEND_API_KEY`, for Production, Preview and Development. Mark it sensitive.
+   Never give it the `NEXT_PUBLIC_` prefix.
+5. Set `CONTACT_TO_EMAIL` (where enquiries land) and `CONTACT_FROM_EMAIL` (must
+   be on the verified domain) alongside it.
+6. Redeploy. Environment variables are read at build and run time, so an
+   existing deployment will not pick them up on its own.
+
 ## Deployment
 
 Vercel, with this folder as the project root. The default Next.js build settings
 apply — `npm run build`, output handled by the framework preset. Set
-`NEXT_PUBLIC_SITE_URL` for every environment; add the Resend variables in Batch
-2. Enable Web Analytics and Speed Insights in the project so the two components
-in the root layout report.
+`NEXT_PUBLIC_SITE_URL` for every environment, and the three Resend variables
+above. Enable Web Analytics and Speed Insights in the project so the two
+components in the root layout report.
 
 ## Git
 

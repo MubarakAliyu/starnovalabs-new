@@ -4,3 +4,6 @@ package-lock.json
 public/brand
 src/fonts
 docs
+
+# Bundle measurement writes nothing, but keep prettier off the generated table.
+scripts/measure-bundles.cjs
