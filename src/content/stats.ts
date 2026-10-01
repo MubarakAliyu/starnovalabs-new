@@ -11,5 +11,45 @@ export interface Stat {
   status: Status;
 }
 
-/** Filled in Batch 2 from the pitch deck and company profile. */
-export const stats: Stat[] = [];
+/**
+ * Traction figures. Everything sourced from the pitch deck is still pending
+ * reconciliation, so only the confirmed track count reaches production.
+ */
+export const stats: Stat[] = [
+  {
+    id: 'paying-students',
+    value: 111,
+    label: 'Paying students',
+    source: 'Pitch deck v2',
+    status: 'pending',
+  },
+  {
+    id: 'cohorts',
+    value: 4,
+    label: 'Bootcamp cohorts',
+    source: 'Company Profile 2026 (pitch says 3 — reconcile)',
+    status: 'pending',
+  },
+  {
+    id: 'returning',
+    value: 17,
+    label: 'Returning students',
+    source: 'Pitch deck v2',
+    status: 'pending',
+  },
+  {
+    id: 'projects',
+    value: 35,
+    suffix: '+',
+    label: 'Student projects built',
+    source: 'Pitch deck v2',
+    status: 'pending',
+  },
+  {
+    id: 'tracks',
+    value: 3,
+    label: 'Learning tracks',
+    source: 'Company Profile 2026',
+    status: 'confirmed',
+  },
+];

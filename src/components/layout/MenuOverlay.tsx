@@ -8,6 +8,7 @@ import { TransitionLink } from '@/components/motion/TransitionLink';
 import { StarGlyph } from '@/components/ui/StarGlyph';
 import { menuNav } from '@/content/nav';
 import { site, telHref } from '@/content/site';
+import { isPublishable } from '@/lib/content';
 import { gsap } from '@/lib/gsap';
 import { EASE } from '@/lib/motion';
 
@@ -201,13 +202,15 @@ export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayPr
               ))}
             </div>
 
-            <div className="flex flex-col gap-2">
-              <span className="t-label text-paper/50">Where</span>
-              <p className="t-body flex items-center gap-2">
-                <StarGlyph className="text-gold-lit" />
-                {site.location.value}
-              </p>
-            </div>
+            {isPublishable(site.location) ? (
+              <div className="flex flex-col gap-2">
+                <span className="t-label text-paper/50">Where</span>
+                <p className="t-body flex items-center gap-2">
+                  <StarGlyph className="text-gold-lit" />
+                  {site.location.value}
+                </p>
+              </div>
+            ) : null}
 
             {site.socials.length > 0 ? (
               <div className="flex flex-col gap-2">

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { Lockup } from '@/components/ui/Logo';
 import { footerNav } from '@/content/nav';
 import { site, telHref } from '@/content/site';
+import { isPublishable } from '@/lib/content';
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -54,7 +55,9 @@ export function SiteFooter() {
                 {phone}
               </a>
             ))}
-            <span className="t-body text-paper/60">{site.location.value}</span>
+            {isPublishable(site.location) ? (
+              <span className="t-body text-paper/60">{site.location.value}</span>
+            ) : null}
           </div>
         </div>
 
