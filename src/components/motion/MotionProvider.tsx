@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-import { MOTION_STORAGE_KEY, type MotionMode } from '@/lib/motion';
+import { INTRO_STORAGE_KEY, MOTION_STORAGE_KEY, type MotionMode } from '@/lib/motion';
 
 interface MotionContextValue {
   motion: MotionMode;
@@ -101,7 +101,16 @@ export function useMotion() {
 }
 
 /**
- * Runs before hydration so the first paint already carries the right mode —
- * this is what stops the loader flashing for visitors who asked for less motion.
+ * Runs in <head> before the first paint. It resolves the motion mode and
+ * decides, there and then, whether the intro should play — so a returning
+ * visitor never sees a flash of the loader, and a first-time visitor never
+ * sees a flash of the page. ?intro=1 forces it either way, for testing.
  */
-export const motionBootstrapScript = `(function(){try{var s=localStorage.getItem('${MOTION_STORAGE_KEY}');var m=(s==='full'||s==='reduced')?s:(window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'full');document.documentElement.dataset.motion=m;}catch(e){document.documentElement.dataset.motion='full';}})();`;
+export const motionBootstrapScript = `(function(){var d=document.documentElement;var m='full';try{var s=localStorage.getItem('${MOTION_STORAGE_KEY}');m=(s==='full'||s==='reduced')?s:(window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'full');}catch(e){}d.dataset.motion=m;try{var force=/[?&]intro=1(&|$)/.test(location.search);if(force){sessionStorage.removeItem('${INTRO_STORAGE_KEY}');d.dataset.introForce='1';}else if(m==='reduced'||sessionStorage.getItem('${INTRO_STORAGE_KEY}')==='done'){d.dataset.intro='done';}}catch(e){if(m==='reduced'){d.dataset.intro='done';}}})();`;
+
+/**
+ * Critical CSS, inlined in <head> so the overlay is styled at the very first
+ * paint. Without it the loader is an unstyled div at the end of the document
+ * and the page shows through before the stylesheet lands.
+ */
+export const loaderCriticalCss = `html:not([data-intro="done"]) [data-loader]{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;display:block;background-color:#0B1B2E;color:#fff;pointer-events:none}html[data-intro="done"] [data-loader]{display:none}`;

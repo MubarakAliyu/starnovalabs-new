@@ -23,7 +23,7 @@ export function HomeInside() {
     <Chapter theme="paper">
       <Container>
         <SectionLabel index="04" label="Inside the classroom" className="mb-14" />
-        <RevealText as="h2" variant="lines" className="t-h2 mb-16 max-w-[16ch]">
+        <RevealText as="h2" variant="lines" className="t-display-m mb-16 max-w-[16ch]">
           Real rooms. Real projects.
         </RevealText>
       </Container>

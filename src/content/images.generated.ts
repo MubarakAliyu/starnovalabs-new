@@ -399,7 +399,7 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "file": "/images/team/founder-handbook.jpg",
     "width": 1355,
     "height": 1800,
-    "alt": "TEAM MEMBER — confirm name",
+    "alt": "Aliyu Mubarak, Founder & CEO",
     "people": "adults",
     "tag": "team",
     "kb": 252,
@@ -504,36 +504,6 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "tag": "team",
     "kb": 46,
     "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoQABEAPu1iqU2ppaOiMAgBMB2JaQAAXy6AGLq+OkP0H6KY0ADOPT+J6N5xnoxF8MNZHW98o3fa3rRmfTyW5i/I4cyT2A/2stpx7RD7P+T+TbsFg1KkdKZ0XUONUygDSBUJ7L9Z9tthvbB2aMs3P/ee/4WKAAAA"
-  },
-  {
-    "file": "/images/team/candidate-me.jpg",
-    "width": 1360,
-    "height": 1763,
-    "alt": "TEAM MEMBER — confirm name",
-    "people": "adults",
-    "tag": "team",
-    "kb": 472,
-    "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZADImYw61fgaBHwxYnVdvOAA/ppSb39L8PDpOzP7bp3h9GHiASPYX5TCVSmEmxNiZ2x94Hax+QnUBKOy/ZXNJ7YL24glzECWB/LKRuXbrLVcEoO5O6VGiYBcuYG+mr1cHpi8zL/4NzfdJ+WjmMgDbAA="
-  },
-  {
-    "file": "/images/team/candidate-my-photo.jpg",
-    "width": 1525,
-    "height": 1454,
-    "alt": "TEAM MEMBER — confirm name",
-    "people": "adults",
-    "tag": "team",
-    "kb": 188,
-    "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAwAgCdASoQAA8AA4BaJbACdAEC0b/EWSNmAAD+dNfNv4AHK3qI9AVvUmAS1oiXjtvzLxsMFIIbucwztZtJxZ95p9sPCgFhgmXaK6R2TzV3zybOqSOzQH69ax3bxKDnfYacQYAA"
-  },
-  {
-    "file": "/images/team/candidate-pic.jpg",
-    "width": 960,
-    "height": 1280,
-    "alt": "TEAM MEMBER — confirm name",
-    "people": "adults",
-    "tag": "team",
-    "kb": 59,
-    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZQAD5LIOAKcpc7ZwFGdpIAD+82v/qUk2tHclsFHPwQurNh+HdyvXiFQEpYkRPZFJ9gFEw0vZJUCz6s564HKSoEfoL/8RbpE+IsUGP3fSdeKcW++vr41vvsYg32leSIQtVQAA"
   },
   {
     "file": "/images/kitos/kitos-1.png",
@@ -734,5 +704,25 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "tag": "logo",
     "kb": 159,
     "blurDataURL": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4WAoAAAAQAAAADwAABgAAQUxQSHEAAAAATZ7U4+v/n7XfjHEDAAMBAPT55P/i6v/+/v/9dRYDAgJDndTz7/r4/vj88frziB0AAQC1//XWkZGq3NPj5/+LCgQAVfT/+u3i+Pb/6If1/+kBAAXZ7vb///7/1Onry9uOAAEAaGF1kWibjWZ8s1MIAgBWUDggXgAAANABAJ0BKhAABwADgFolsAJ0AOF9HWUAAP6sUb1t1qE5TMFqqF88I9OuoS/Dz7CFcLRyBd0z4TNXmJqBbjyNxPfK2dFd2cAiJXTmdwz2N0rjgcejlv72emKHKnfEgAA="
+  },
+  {
+    "file": "/images/edustack/edustack-home.png",
+    "width": 1440,
+    "height": 900,
+    "alt": "The EduStack demo landing page",
+    "people": "none",
+    "tag": "edustack",
+    "kb": 134,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAABwAQCdASoQAAoAA4BaJYwCdAFAAAD+76CHdJamg7Dq7TjW5ZO6evGfPGPNIg6ZYAA="
+  },
+  {
+    "file": "/images/edustack/edustack-mobile.png",
+    "width": 390,
+    "height": 844,
+    "alt": "The EduStack demo on a phone",
+    "people": "none",
+    "tag": "edustack",
+    "kb": 99,
+    "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwBACdASoQACMAPt1apE2opSOiNUgBEBuJZwDMHC+/2P/Jofwrj21nGAAA/tmqq0fptOTvIZXCf1bxoQtoFi+NuHc9eo6/Y0Hei99WlOL+xjk5k0eVDLjkuA/C3r5Tr7i6+3Djc4AAAA=="
   }
 ];

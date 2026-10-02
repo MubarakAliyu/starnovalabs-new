@@ -56,7 +56,7 @@ export function HomeProof() {
 
         <div className="grid-page">
           <div className="col-span-4 sm:col-span-8 lg:col-span-6">
-            <RevealText as="h2" variant="lines" className="t-h2">
+            <RevealText as="h2" variant="lines" className="t-display-m">
               {proof.heading}
             </RevealText>
           </div>

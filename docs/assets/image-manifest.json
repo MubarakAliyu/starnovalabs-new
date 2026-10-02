@@ -394,7 +394,7 @@
     "file": "/images/team/founder-handbook.jpg",
     "width": 1355,
     "height": 1800,
-    "alt": "TEAM MEMBER — confirm name",
+    "alt": "Aliyu Mubarak, Founder & CEO",
     "people": "adults",
     "tag": "team",
     "kb": 252
@@ -498,36 +498,6 @@
     "people": "adults",
     "tag": "team",
     "kb": 46
-  },
-  {
-    "src": "Kids In Tech/Coding Projects/my-profile/me.jpg",
-    "file": "/images/team/candidate-me.jpg",
-    "width": 1360,
-    "height": 1763,
-    "alt": "TEAM MEMBER — confirm name",
-    "people": "adults",
-    "tag": "team",
-    "kb": 472
-  },
-  {
-    "src": "Kids In Tech/Coding Projects/my-profile/my-photo.jpg",
-    "file": "/images/team/candidate-my-photo.jpg",
-    "width": 1525,
-    "height": 1454,
-    "alt": "TEAM MEMBER — confirm name",
-    "people": "adults",
-    "tag": "team",
-    "kb": 188
-  },
-  {
-    "src": "pic.jpeg",
-    "file": "/images/team/candidate-pic.jpg",
-    "width": 960,
-    "height": 1280,
-    "alt": "TEAM MEMBER — confirm name",
-    "people": "adults",
-    "tag": "team",
-    "kb": 59
   },
   {
     "src": "Kids In Tech/LMS/screenshots/1.png",
@@ -718,5 +688,25 @@
     "people": "none",
     "tag": "logo",
     "kb": 159
+  },
+  {
+    "src": "headless capture",
+    "file": "/images/edustack/edustack-home.png",
+    "width": 1440,
+    "height": 900,
+    "alt": "The EduStack demo landing page",
+    "people": "none",
+    "tag": "edustack",
+    "kb": 134
+  },
+  {
+    "src": "headless capture",
+    "file": "/images/edustack/edustack-mobile.png",
+    "width": 390,
+    "height": 844,
+    "alt": "The EduStack demo on a phone",
+    "people": "none",
+    "tag": "edustack",
+    "kb": 99
   }
 ]

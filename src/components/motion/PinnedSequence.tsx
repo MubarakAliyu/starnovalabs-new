@@ -7,12 +7,16 @@ import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap';
 import { cn } from '@/lib/utils';
 
 /**
- * Pins a section and steps three panels through it (Master §5): pin +=200%,
- * panels rise from yPercent 20 with a fade, scrub .8 and snap to thirds.
+ * Pins a section and steps panels through it, one at a time.
+ *
+ * Each step gets a viewport of scroll. The outgoing panel leaves in the first
+ * half of a step and the incoming one arrives in the second, so the two never
+ * occupy the slot together — the earlier version faded panels in without ever
+ * fading them out, which stacked all three on top of each other.
  *
  * Below 1024px, and whenever motion is reduced, nothing is pinned and the
  * panels simply stack. The markup is identical either way, so the panels stay
- * in DOM order and remain readable regardless of scroll position.
+ * in DOM order and remain readable regardless of scroll.
  */
 export function PinnedSequence({
   children,
@@ -34,47 +38,66 @@ export function PinnedSequence({
 
       media.add('(min-width: 1024px)', () => {
         const panels = gsap.utils.toArray<HTMLElement>('[data-panel]', root);
+        const steps = gsap.utils.toArray<HTMLElement>('[data-step]', root);
         if (panels.length === 0) return;
+
+        const last = panels.length - 1;
+
+        const setActiveStep = (index: number) => {
+          steps.forEach((step, i) => {
+            step.dataset.active = String(i === index);
+          });
+        };
+
+        gsap.set(panels, { opacity: 0, yPercent: 12 });
+        gsap.set(panels[0]!, { opacity: 1, yPercent: 0 });
+        setActiveStep(0);
 
         const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: root,
             start: 'top top',
-            end: '+=200%',
+            // A viewport of scroll per step, and pinSpacing keeps whatever
+            // follows from riding up over the pin.
+            end: `+=${last * 100 + 100}%`,
             pin: true,
+            pinSpacing: true,
             scrub: 0.8,
-            snap: { snapTo: 1 / (panels.length - 1), duration: 0.3, ease: 'power1.inOut' },
+            snap: { snapTo: 1 / last, duration: 0.3, ease: 'power1.inOut' },
+            onUpdate: (self) => {
+              setActiveStep(Math.round(self.progress * last));
+            },
           },
         });
 
         panels.forEach((panel, index) => {
-          if (index === 0) {
-            gsap.set(panel, { yPercent: 0, opacity: 1 });
-            return;
-          }
-          // Plain opacity, never autoAlpha: a panel waiting its turn must stay
-          // in the accessibility tree.
-          timeline.fromTo(
-            panel,
-            { yPercent: 20, opacity: 0 },
-            { yPercent: 0, opacity: 1, ease: 'none' },
-            index - 1,
-          );
+          if (index === 0) return;
+          const at = index - 1;
+          // Out, then in — never both at once.
+          timeline
+            .to(panels[index - 1]!, { opacity: 0, yPercent: -12, ease: 'none' }, at)
+            .fromTo(
+              panel,
+              { opacity: 0, yPercent: 12 },
+              { opacity: 1, yPercent: 0, ease: 'none' },
+              at + 0.5,
+            );
         });
 
-        // Optional progress bar, filled by the same scrub.
         const progress = root.querySelector<HTMLElement>('[data-sequence-progress]');
         if (progress) {
           timeline.fromTo(
             progress,
             { width: '0%' },
-            { width: '100%', ease: 'none', duration: panels.length - 1 },
+            { width: '100%', ease: 'none', duration: last },
             0,
           );
         }
 
-        // Pinned heights depend on the display face, so re-measure once it lands.
+        // Pinned heights depend on the display face and the media, so
+        // re-measure once both have landed.
         void document.fonts?.ready.then(() => ScrollTrigger.refresh());
+        window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
       });
 
       return () => media.revert();

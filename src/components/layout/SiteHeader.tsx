@@ -104,20 +104,12 @@ export function SiteHeader() {
                       <TransitionLink
                         href={item.href}
                         aria-current={active ? 'page' : undefined}
-                        className="t-label group relative flex min-h-11 items-center gap-2"
+                        className="flex min-h-11 items-center gap-2 no-underline"
                       >
                         {active ? <StarGlyph className="text-gold" /> : null}
-                        <span className="relative block overflow-hidden">
-                          <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
-                            {item.label}
-                          </span>
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0 block translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0"
-                          >
-                            {item.label}
-                          </span>
-                        </span>
+                        {/* An underline that grows, rather than a rolling
+                            duplicate — the roll clipped the cap heights. */}
+                        <span className="nav-link">{item.label}</span>
                       </TransitionLink>
                     </li>
                   );
@@ -126,7 +118,7 @@ export function SiteHeader() {
             </nav>
 
             <div className="hidden lg:block">
-              <Button href="/contact" variant="solid-ink" size="md">
+              <Button href="/contact" variant="primary" size="md">
                 Let&apos;s talk
               </Button>
             </div>
@@ -138,7 +130,7 @@ export function SiteHeader() {
                 onClick={() => setOpen((value) => !value)}
                 aria-expanded={open}
                 aria-controls={MENU_ID}
-                className="t-label flex min-h-11 cursor-pointer items-center gap-3 px-2"
+                className="nav-link flex min-h-11 cursor-pointer items-center gap-3 px-2"
               >
                 <span data-magnetic-label>Menu</span>
                 <span aria-hidden="true" className="relative block h-3 w-6">

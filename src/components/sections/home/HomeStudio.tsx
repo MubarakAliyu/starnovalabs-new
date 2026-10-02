@@ -11,7 +11,7 @@ export function HomeStudio() {
   return (
     <Chapter theme="paper-2" tight>
       <Container>
-        <RevealText as="h2" variant="lines" className="t-h2 max-w-[16ch]">
+        <RevealText as="h2" variant="lines" className="t-display-m max-w-[16ch]">
           {home.studio.heading}
         </RevealText>
 

@@ -84,15 +84,6 @@ export const products: Product[] = [
     status: 'confirmed',
     visible: true,
   },
-  {
-    slug: 'noah',
-    name: 'NOAH',
-    summary: 'Scope to be confirmed.',
-    stage: 'planned',
-    href: '/products/noah',
-    status: 'pending',
-    visible: false,
-  },
 ];
 
 export const productSlugs = ['kitos', 'edustack', 'skillstack'] as const;

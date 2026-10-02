@@ -46,7 +46,7 @@ export function AboutMission() {
                 {block.title}
                 <PendingBadge item={missionVision} />
               </h2>
-              <RevealText as="p" variant="lines" className="t-h2">
+              <RevealText as="p" variant="lines" className="t-display-m">
                 {block.body}
               </RevealText>
             </div>

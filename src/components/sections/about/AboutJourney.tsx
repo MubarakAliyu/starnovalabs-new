@@ -18,7 +18,7 @@ export function AboutJourney() {
     <Chapter theme="paper">
       <Container>
         <SectionLabel index="05" label={about.journeySection.label} className="mb-14" />
-        <RevealText as="h2" variant="lines" className="t-h2 mb-20 max-w-[16ch]">
+        <RevealText as="h2" variant="lines" className="t-display-m mb-20 max-w-[16ch]">
           {about.journeySection.heading}
         </RevealText>
 

@@ -66,3 +66,6 @@ scaffold-tmp
 # cannot leak through the repository either. git add -f it if that changes.
 /public/*.pdf
 /docs/reference/*.pdf
+
+# Local verification screenshots.
+/.shots/

@@ -10,19 +10,31 @@ import { gsap } from '@/lib/gsap';
 import { EASE } from '@/lib/motion';
 import { cn, isExternalHref } from '@/lib/utils';
 
-type ButtonVariant = 'solid-ink' | 'solid-blue' | 'outline' | 'text-arrow';
+/**
+ * The old names stay valid — pages across the site use them — and map onto the
+ * four roles the design actually has.
+ */
+type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'accent'
+  | 'link'
+  | 'solid-ink'
+  | 'outline'
+  | 'solid-blue'
+  | 'text-arrow';
+
 type ButtonSize = 'md' | 'lg';
 
-const SIZES: Record<ButtonSize, string> = {
-  md: 'h-12 px-6 text-[0.9375rem]',
-  lg: 'h-15 px-8 text-base',
-};
-
-const VARIANTS: Record<ButtonVariant, string> = {
-  'solid-ink': 'bg-ink text-white',
-  'solid-blue': 'bg-blue text-white',
-  outline: 'bg-transparent text-ink ring-1 ring-current',
-  'text-arrow': 'bg-transparent px-0 text-ink',
+const ROLE: Record<ButtonVariant, 'primary' | 'secondary' | 'accent' | 'link'> = {
+  primary: 'primary',
+  'solid-ink': 'primary',
+  secondary: 'secondary',
+  outline: 'secondary',
+  accent: 'accent',
+  'solid-blue': 'accent',
+  link: 'link',
+  'text-arrow': 'link',
 };
 
 interface ButtonProps {
@@ -31,6 +43,8 @@ interface ButtonProps {
   size?: ButtonSize;
   /** Adds the house arrow, which turns to the star's diagonal on hover. */
   arrow?: boolean;
+  /** Overrides the colours when the surrounding theme cannot be inferred. */
+  tone?: 'light' | 'dark';
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
@@ -40,15 +54,16 @@ interface ButtonProps {
 }
 
 /**
- * The house control (Master §5). Solid variants flood blue from wherever the
- * pointer entered, the label rolls, and the arrow turns 45°. Magnetic on fine
- * pointers only; everything degrades to a plain colour change without motion.
+ * The house control. Set in Mango, and coloured from the nearest [data-theme]
+ * ancestor in CSS rather than from a prop, so no button can end up invisible
+ * on a section it was not written for.
  */
 export function Button({
   href,
-  variant = 'solid-ink',
+  variant = 'primary',
   size = 'md',
-  arrow = variant === 'text-arrow',
+  arrow,
+  tone,
   type = 'button',
   disabled,
   onClick,
@@ -58,79 +73,60 @@ export function Button({
 }: ButtonProps) {
   const ref = useRef<HTMLElement>(null);
   const { motion } = useMotion();
-  const floods = variant === 'solid-ink' || variant === 'outline';
+  const role = ROLE[variant];
+  const showArrow = arrow ?? role === 'link';
+  const floods = role === 'primary' || role === 'secondary';
 
-  const onEnter = (event: MouseEvent<HTMLElement>) => {
+  const flood = (event: MouseEvent<HTMLElement>, to: number) => {
     if (motion === 'reduced' || !floods) return;
-    const node = ref.current?.querySelector<HTMLElement>('[data-flood]');
     const host = ref.current;
-    if (!node || !host) return;
+    const node = host?.querySelector<HTMLElement>('[data-flood]');
+    if (!host || !node) return;
     const bounds = host.getBoundingClientRect();
     gsap.set(node, {
       left: event.clientX - bounds.left,
       top: event.clientY - bounds.top,
       xPercent: -50,
       yPercent: -50,
-      scale: 0,
     });
-    gsap.to(node, { scale: 1, duration: 0.45, ease: EASE.snappy, overwrite: true });
-  };
-
-  const onLeave = (event: MouseEvent<HTMLElement>) => {
-    if (motion === 'reduced' || !floods) return;
-    const node = ref.current?.querySelector<HTMLElement>('[data-flood]');
-    const host = ref.current;
-    if (!node || !host) return;
-    const bounds = host.getBoundingClientRect();
-    gsap.set(node, { left: event.clientX - bounds.left, top: event.clientY - bounds.top });
-    gsap.to(node, { scale: 0, duration: 0.35, ease: EASE.snappy, overwrite: true });
+    gsap.to(node, {
+      scale: to,
+      duration: to === 1 ? 0.45 : 0.35,
+      ease: EASE.snappy,
+      overwrite: true,
+    });
   };
 
   const inner = (
     <>
-      {floods ? (
-        <span
-          data-flood
-          aria-hidden="true"
-          className="bg-blue pointer-events-none absolute h-[220%] w-[220%] scale-0 rounded-full"
-          style={{ aspectRatio: '1' }}
-        />
-      ) : null}
-
-      {/* The label rolls: the copy underneath slides up to replace it. */}
-      <span data-magnetic-label className="relative z-10 flex items-center gap-3 overflow-hidden">
-        <span className="relative block overflow-hidden">
-          <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
-            {children}
-          </span>
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 block translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0"
-          >
-            {children}
-          </span>
-        </span>
-        {arrow ? <Arrow className="group-hover:-rotate-45 group-focus-visible:-rotate-45" /> : null}
+      {floods ? <span data-flood aria-hidden="true" className="btn__flood" /> : null}
+      <span data-magnetic-label className="btn__label">
+        {children}
+        {showArrow ? (
+          <Arrow
+            className={cn(
+              size === 'lg' ? 'text-[22px]' : 'text-[18px]',
+              'group-hover:-rotate-45 group-focus-visible:-rotate-45',
+            )}
+          />
+        ) : null}
       </span>
     </>
   );
 
   const classes = cn(
-    'group relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-[4px]',
-    't-label leading-none no-underline transition-colors duration-200',
-    'active:scale-[0.97] active:transition-transform',
-    SIZES[size],
-    VARIANTS[variant],
-    variant === 'solid-blue' && 'hover:bg-blue-press',
-    variant === 'text-arrow' && 'h-auto min-h-11 underline-offset-4',
+    'btn group',
+    `btn--${role}`,
+    role !== 'link' && `btn--${size}`,
     disabled && 'pointer-events-none opacity-50',
     className,
   );
 
   const shared = {
     className: classes,
-    onMouseEnter: onEnter,
-    onMouseLeave: onLeave,
+    'data-tone': tone,
+    onMouseEnter: (event: MouseEvent<HTMLElement>) => flood(event, 1),
+    onMouseLeave: (event: MouseEvent<HTMLElement>) => flood(event, 0),
     onClick,
     ...rest,
   };
@@ -157,7 +153,12 @@ export function Button({
     );
   } else {
     element = (
-      <button ref={ref as React.Ref<HTMLButtonElement>} type={type} disabled={disabled} {...shared}>
+      <button
+        ref={ref as React.Ref<HTMLButtonElement>}
+        type={type}
+        disabled={disabled}
+        {...shared}
+      >
         {inner}
       </button>
     );

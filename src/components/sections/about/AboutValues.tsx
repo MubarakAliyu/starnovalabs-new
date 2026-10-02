@@ -11,7 +11,7 @@ export function AboutValues() {
     <Chapter theme="paper">
       <Container>
         <SectionLabel index="03" label={about.valuesSection.label} className="mb-14" />
-        <RevealText as="h2" variant="lines" className="t-h2 mb-20 max-w-[16ch]">
+        <RevealText as="h2" variant="lines" className="t-display-m mb-20 max-w-[16ch]">
           {about.valuesSection.heading}
         </RevealText>
 

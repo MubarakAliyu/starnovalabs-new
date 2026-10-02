@@ -24,7 +24,7 @@ interface ProductRowProps {
    * Resolved by the server parent. Looking it up here would pull the whole
    * generated image module — every blur placeholder — into the client bundle.
    */
-  preview?: { image: ImageAsset; frame?: 'browser' };
+  preview?: { image: ImageAsset; frame?: 'browser'; kind?: 'photo' | 'logo' };
 }
 
 /**
@@ -112,13 +112,26 @@ export function ProductRow({ product, index, preview }: ProductRowProps) {
         className="pointer-events-none invisible fixed top-0 left-0 z-40 hidden h-[220px] w-[320px] scale-[0.6] opacity-0 md:block"
       >
         {preview ? (
-          <Photo
-            image={preview.image}
-            sizes="320px"
-            frame={preview.frame}
-            reveal={false}
-            className="h-full"
-          />
+          preview.kind === 'logo' ? (
+            // A mark needs room to breathe, not a crop.
+            <div className="flex h-full w-full items-center justify-center bg-paper p-8">
+              <Photo
+                image={preview.image}
+                sizes="320px"
+                reveal={false}
+                fit="contain"
+                className="h-full w-full bg-transparent"
+              />
+            </div>
+          ) : (
+            <Photo
+              image={preview.image}
+              sizes="320px"
+              frame={preview.frame}
+              reveal={false}
+              className="h-full"
+            />
+          )
         ) : (
           <BrandGraphic
             variant={FALLBACK_VARIANTS[index % FALLBACK_VARIANTS.length]}
