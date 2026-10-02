@@ -4,8 +4,10 @@ import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
 import { Button } from '@/components/ui/Button';
+import { Photo } from '@/components/ui/Photo';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { StarGlyph } from '@/components/ui/StarGlyph';
+import { img } from '@/content/images';
 import { partnerPage } from '@/content/partner';
 
 export const metadata: Metadata = {
@@ -32,8 +34,10 @@ export default function PartnerPage() {
         </Container>
       </Chapter>
 
-      {partnerPage.sections.map((section) => {
+      {partnerPage.sections.map((section, index) => {
         const dark = section.theme === 'navy' || section.theme === 'blue';
+        // Alternate which side the image sits on.
+        const imageFirst = index % 2 === 1;
         return (
           <Chapter key={section.id} id={section.id} theme={section.theme}>
             <Container>
@@ -81,6 +85,22 @@ export default function PartnerPage() {
                       {section.cta.label}
                     </Button>
                   </div>
+                </div>
+
+                <div
+                  className={
+                    imageFirst
+                      ? 'col-span-4 mt-14 sm:col-span-8 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:mt-0'
+                      : 'col-span-4 mt-14 sm:col-span-8 lg:col-span-6 lg:col-start-1 lg:mt-16'
+                  }
+                >
+                  <Photo
+                    image={img(section.image)}
+                    sizes="(min-width: 1024px) 42vw, 100vw"
+                    frame={section.imageFrame}
+                    parallax={index % 2 === 0 ? 0.1 : -0.1}
+                    className="aspect-4/3"
+                  />
                 </div>
               </div>
             </Container>

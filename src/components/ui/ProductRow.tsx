@@ -9,16 +9,10 @@ import { BrandGraphic } from '@/components/ui/BrandGraphic';
 import { Photo } from '@/components/ui/Photo';
 import { PendingBadge } from '@/components/ui/PendingBadge';
 import { Sticker } from '@/components/ui/Sticker';
-import { img } from '@/content/images';
+import type { ImageAsset } from '@/content/images';
 import { STAGE_LABEL, type Product } from '@/content/products';
 import { gsap, useGSAP } from '@/lib/gsap';
 import { EASE } from '@/lib/motion';
-
-/** Real preview imagery where it exists; a brand graphic where it does not. */
-const PREVIEWS: Record<string, { file: string; frame?: 'browser' }> = {
-  'kids-in-tech': { file: '/images/groups/cohort-classroom.jpg' },
-  kitos: { file: '/images/kitos/kitos-2.png', frame: 'browser' },
-};
 
 const FALLBACK_THEMES = ['navy', 'blue', 'paper'] as const;
 const FALLBACK_VARIANTS = ['star-crop', 'tile', 'blade-field'] as const;
@@ -26,6 +20,11 @@ const FALLBACK_VARIANTS = ['star-crop', 'tile', 'blade-field'] as const;
 interface ProductRowProps {
   product: Product;
   index: number;
+  /**
+   * Resolved by the server parent. Looking it up here would pull the whole
+   * generated image module — every blur placeholder — into the client bundle.
+   */
+  preview?: { image: ImageAsset; frame?: 'browser' };
 }
 
 /**
@@ -33,7 +32,7 @@ interface ProductRowProps {
  * slides right and the arrow turns to the star's diagonal. On a fine pointer a
  * preview follows the cursor; touch gets none of that and loses nothing.
  */
-export function ProductRow({ product, index }: ProductRowProps) {
+export function ProductRow({ product, index, preview }: ProductRowProps) {
   const ref = useRef<HTMLLIElement>(null);
   const { motion } = useMotion();
 
@@ -112,11 +111,11 @@ export function ProductRow({ product, index }: ProductRowProps) {
         aria-hidden="true"
         className="pointer-events-none invisible fixed top-0 left-0 z-40 hidden h-[220px] w-[320px] scale-[0.6] opacity-0 md:block"
       >
-        {PREVIEWS[product.slug] ? (
+        {preview ? (
           <Photo
-            image={img(PREVIEWS[product.slug]!.file)}
+            image={preview.image}
             sizes="320px"
-            frame={PREVIEWS[product.slug]!.frame}
+            frame={preview.frame}
             reveal={false}
             className="h-full"
           />

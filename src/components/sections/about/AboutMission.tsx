@@ -5,6 +5,8 @@ import { StickerPop } from '@/components/motion/StickerPop';
 import { PendingBadge } from '@/components/ui/PendingBadge';
 import { Sticker } from '@/components/ui/Sticker';
 import { about } from '@/content/about';
+import { Photo } from '@/components/ui/Photo';
+import { img } from '@/content/images';
 import { site } from '@/content/site';
 
 const { missionVision } = about;
@@ -16,8 +18,20 @@ const { missionVision } = about;
  */
 export function AboutMission() {
   return (
-    <Chapter theme="navy" id="mission">
-      <Container>
+    <Chapter theme="navy" id="mission" className="relative overflow-hidden">
+      <div aria-hidden="true" className="absolute inset-0">
+        <Photo
+          image={img('/images/groups/cohort-families.jpg')}
+          sizes="100vw"
+          reveal={false}
+          className="h-full"
+          wrapperClassName="h-full"
+        />
+        {/* 0.86 keeps paper text past 7:1 over the lightest part of the frame. */}
+        <span className="absolute inset-0 bg-navy/[0.86]" />
+      </div>
+
+      <Container className="relative">
         <div className="grid-page gap-y-20">
           {[missionVision.vision, missionVision.mission].map((block, index) => (
             <div

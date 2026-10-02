@@ -12,13 +12,18 @@ export interface TeamMember {
   status: Status;
 }
 
+/**
+ * Photographs are mapped from the owner's confirmed list. Murtala Ishaq, Amina
+ * and Abdul Malik have none yet and keep their initials tile. The unused
+ * candidate-*.jpg files in the manifest are deliberately not referenced here.
+ */
 export const team: TeamMember[] = [
   {
     name: 'Aliyu Mubarak',
     role: 'Founder & CEO',
     bio: 'Company direction, strategy, product and curriculum design. Leads the weekly company review and owns the roadmap.',
     group: 'leadership',
-    photo: null,
+    photo: '/images/team/founder-handbook.jpg',
     status: 'confirmed',
   },
   {
@@ -34,7 +39,7 @@ export const team: TeamMember[] = [
     role: 'Co-Founder & CTO',
     bio: 'Technology direction, product development and technical education. Leads KITOS and the robotics programme.',
     group: 'leadership',
-    photo: null,
+    photo: '/images/team/mustapher.jpg',
     status: 'confirmed',
   },
   // TODO: confirm the spelling of this name before publishing.
@@ -42,7 +47,7 @@ export const team: TeamMember[] = [
     name: 'Faruk Yusuf',
     role: 'Educator, Web Development',
     group: 'programme',
-    photo: null,
+    photo: '/images/team/faruk.jpg',
     status: 'pending',
   },
   // TODO: full names needed for the programme team.
@@ -64,7 +69,7 @@ export const team: TeamMember[] = [
     name: 'Aisha',
     role: 'Media & Content',
     group: 'programme',
-    photo: null,
+    photo: '/images/team/aisha.jpg',
     status: 'pending',
   },
 ];

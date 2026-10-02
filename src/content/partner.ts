@@ -2,6 +2,10 @@ import type { ChapterTheme } from '@/components/layout/Chapter';
 
 export interface PartnerSection {
   id: string;
+  /** Public path of this section's image. */
+  image: string;
+  /** Browser chrome, for screenshots rather than photographs. */
+  imageFrame?: 'browser';
   index: string;
   label: string;
   heading: string;
@@ -20,6 +24,7 @@ export const partnerPage = {
   sections: [
     {
       id: 'schools',
+      image: '/images/classroom/full-class-wide.jpg',
       index: '01',
       label: 'Schools',
       heading: 'Bring Kids in Tech to your students.',
@@ -34,6 +39,7 @@ export const partnerPage = {
     },
     {
       id: 'sponsors',
+      image: '/images/projects/robotics-arduino.jpg',
       index: '02',
       label: 'Sponsors',
       heading: 'Sponsor a cohort or equipment.',
@@ -47,6 +53,7 @@ export const partnerPage = {
     },
     {
       id: 'investors',
+      image: '/images/groups/cohort-handbooks-close.jpg',
       index: '03',
       label: 'Investors',
       heading: 'Invest in the infrastructure.',
@@ -60,6 +67,8 @@ export const partnerPage = {
     },
     {
       id: 'product',
+      image: '/images/kitos/kitos-27.png',
+      imageFrame: 'browser' as const,
       index: '04',
       label: 'Product collaboration',
       heading: 'Build education technology with us.',

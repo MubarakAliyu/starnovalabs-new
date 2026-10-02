@@ -4,8 +4,15 @@ import { RevealText } from '@/components/motion/RevealText';
 import { ProductRow } from '@/components/ui/ProductRow';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { home } from '@/content/home';
+import { img } from '@/content/images';
 import { products } from '@/content/products';
 import { publishable } from '@/lib/content';
+
+/** Resolved here, on the server, and handed to the client row as data. */
+const PREVIEWS: Record<string, { file: string; frame?: 'browser' }> = {
+  'kids-in-tech': { file: '/images/groups/cohort-classroom.jpg' },
+  kitos: { file: '/images/kitos/kitos-2.png', frame: 'browser' },
+};
 
 export function HomePortfolio() {
   const visible = publishable(products);
@@ -22,7 +29,19 @@ export function HomePortfolio() {
       <Container>
         <ul className="flex flex-col">
           {visible.map((product, index) => (
-            <ProductRow key={product.slug} product={product} index={index} />
+            <ProductRow
+              key={product.slug}
+              product={product}
+              index={index}
+              preview={
+                PREVIEWS[product.slug]
+                  ? {
+                      image: img(PREVIEWS[product.slug]!.file),
+                      frame: PREVIEWS[product.slug]!.frame,
+                    }
+                  : undefined
+              }
+            />
           ))}
         </ul>
       </Container>
