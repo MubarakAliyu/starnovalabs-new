@@ -1,11 +1,12 @@
 import type { Status } from '@/lib/content';
 
-export type ProductStage = 'live' | 'in-testing' | 'in-scoping' | 'planned';
+export type ProductStage = 'live' | 'in-testing' | 'building' | 'in-scoping' | 'planned';
 
 /** The label shown on the stage sticker. */
 export const STAGE_LABEL: Record<ProductStage, string> = {
   live: 'Live',
   'in-testing': 'In final testing',
+  building: 'In development · demo live',
   'in-scoping': 'Pipeline',
   planned: 'Pipeline',
 };
@@ -20,6 +21,10 @@ export interface Product {
   href: string;
   /** External site, when the product has one of its own. */
   url?: string;
+  /** A public demo anyone can walk through. */
+  demoUrl?: string;
+  /** Secondary call to action, rendered only when its href is set. */
+  secondaryCta?: { label: string; href: string };
   status: Status;
   /** Pipeline work we are not announcing yet stays invisible. */
   visible: boolean;
@@ -50,8 +55,23 @@ export const products: Product[] = [
     slug: 'edustack',
     name: 'EduStack',
     summary: 'School management software for the institutions that host our programmes.',
-    stage: 'in-scoping',
+    stage: 'building',
     href: '/products/edustack',
+    demoUrl: 'https://edustack-rho.vercel.app/',
+    secondaryCta: { label: 'View the demo', href: 'https://edustack-rho.vercel.app/' },
+    status: 'confirmed',
+    visible: true,
+  },
+  {
+    slug: 'nurala-learning',
+    name: 'NurAla Learning',
+    summary:
+      'Quranic Arabic and Islamic learning platform with guided lessons, assessments and progress tracking.',
+    stage: 'live',
+    href: '/products/nurala-learning',
+    // TODO: no production URL found in ../../NurAla, NurAla Academy or
+    // NurAla Learning. The call to action stays hidden until one is supplied.
+    url: undefined,
     status: 'confirmed',
     visible: true,
   },

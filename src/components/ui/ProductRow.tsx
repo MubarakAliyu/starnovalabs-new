@@ -6,15 +6,22 @@ import { useMotion } from '@/components/motion/MotionProvider';
 import { TransitionLink } from '@/components/motion/TransitionLink';
 import { Arrow } from '@/components/ui/Arrow';
 import { BrandGraphic } from '@/components/ui/BrandGraphic';
+import { Photo } from '@/components/ui/Photo';
 import { PendingBadge } from '@/components/ui/PendingBadge';
 import { Sticker } from '@/components/ui/Sticker';
+import { img } from '@/content/images';
 import { STAGE_LABEL, type Product } from '@/content/products';
 import { gsap, useGSAP } from '@/lib/gsap';
 import { EASE } from '@/lib/motion';
 
-/** Rotates the stand-in preview so the list does not look repetitive. */
-const PREVIEW_THEMES = ['navy', 'blue', 'paper'] as const;
-const PREVIEW_VARIANTS = ['star-crop', 'tile', 'blade-field'] as const;
+/** Real preview imagery where it exists; a brand graphic where it does not. */
+const PREVIEWS: Record<string, { file: string; frame?: 'browser' }> = {
+  'kids-in-tech': { file: '/images/groups/cohort-classroom.jpg' },
+  kitos: { file: '/images/kitos/kitos-2.png', frame: 'browser' },
+};
+
+const FALLBACK_THEMES = ['navy', 'blue', 'paper'] as const;
+const FALLBACK_VARIANTS = ['star-crop', 'tile', 'blade-field'] as const;
 
 interface ProductRowProps {
   product: Product;
@@ -105,11 +112,21 @@ export function ProductRow({ product, index }: ProductRowProps) {
         aria-hidden="true"
         className="pointer-events-none invisible fixed top-0 left-0 z-40 hidden h-[220px] w-[320px] scale-[0.6] opacity-0 md:block"
       >
-        <BrandGraphic
-          variant={PREVIEW_VARIANTS[index % PREVIEW_VARIANTS.length]}
-          theme={PREVIEW_THEMES[index % PREVIEW_THEMES.length]}
-          className="h-full"
-        />
+        {PREVIEWS[product.slug] ? (
+          <Photo
+            image={img(PREVIEWS[product.slug]!.file)}
+            sizes="320px"
+            frame={PREVIEWS[product.slug]!.frame}
+            reveal={false}
+            className="h-full"
+          />
+        ) : (
+          <BrandGraphic
+            variant={FALLBACK_VARIANTS[index % FALLBACK_VARIANTS.length]}
+            theme={FALLBACK_THEMES[index % FALLBACK_THEMES.length]}
+            className="h-full"
+          />
+        )}
       </div>
     </li>
   );

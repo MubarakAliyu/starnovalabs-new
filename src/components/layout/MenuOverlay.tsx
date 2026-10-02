@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { useMotion } from '@/components/motion/MotionProvider';
 import { useScrollLock } from '@/components/motion/SmoothScroll';
 import { TransitionLink } from '@/components/motion/TransitionLink';
+import { Logo } from '@/components/ui/Logo';
 import { StarGlyph } from '@/components/ui/StarGlyph';
 import { menuNav } from '@/content/nav';
 import { site, telHref } from '@/content/site';
@@ -149,6 +150,9 @@ export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayPr
       data-lenis-prevent
     >
       <div className="container-page flex min-h-full flex-col justify-between gap-16 pt-28 pb-16 lg:pt-32">
+        {/* The overlay covers the header, so it carries the lockup itself. */}
+        <Logo variant="onDark" className="mb-4" />
+
         <div className="grid gap-16 md:grid-cols-[1.4fr_1fr] md:gap-12">
           <nav aria-label="Menu">
             <ul ref={linksRef} className="flex flex-col gap-2">

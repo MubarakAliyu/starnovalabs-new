@@ -3,11 +3,12 @@ import { Container } from '@/components/layout/Container';
 import { Parallax } from '@/components/motion/Parallax';
 import { RevealText } from '@/components/motion/RevealText';
 import { StickerPop } from '@/components/motion/StickerPop';
-import { BrandGraphic } from '@/components/ui/BrandGraphic';
 import { Button } from '@/components/ui/Button';
 import { Logomark } from '@/components/ui/Logo';
+import { Photo } from '@/components/ui/Photo';
 import { Sticker } from '@/components/ui/Sticker';
 import { home } from '@/content/home';
+import { img } from '@/content/images';
 
 /**
  * The Home hero. Three layers move at different speeds — the headline barely
@@ -93,7 +94,13 @@ export function HomeHero() {
           disabledBelow={1024}
           className="mt-14 lg:absolute lg:top-[18%] lg:right-0 lg:z-0 lg:mt-0 lg:w-[42%]"
         >
-          <BrandGraphic variant="star-crop" theme="navy" />
+          <Photo
+            image={img('/images/groups/cohort-handbooks-wide.jpg')}
+            sizes="(min-width: 1024px) 42vw, 100vw"
+            priority
+            caption="Kids in Tech cohort, 2026"
+            className="aspect-4/3 lg:aspect-4/5"
+          />
         </Parallax>
       </Container>
     </Chapter>

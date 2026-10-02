@@ -62,6 +62,17 @@ export function PinnedSequence({
           );
         });
 
+        // Optional progress bar, filled by the same scrub.
+        const progress = root.querySelector<HTMLElement>('[data-sequence-progress]');
+        if (progress) {
+          timeline.fromTo(
+            progress,
+            { width: '0%' },
+            { width: '100%', ease: 'none', duration: panels.length - 1 },
+            0,
+          );
+        }
+
         // Pinned heights depend on the display face, so re-measure once it lands.
         void document.fonts?.ready.then(() => ScrollTrigger.refresh());
       });
