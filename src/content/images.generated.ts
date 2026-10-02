@@ -654,5 +654,85 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "tag": "video",
     "kb": 0,
     "blurDataURL": null
+  },
+  {
+    "file": "/logos/partners/gdg-birnin-kebbi.png",
+    "width": 900,
+    "height": 366,
+    "alt": "GDG Birnin-Kebbi",
+    "people": "none",
+    "tag": "logo",
+    "kb": 36,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAACQAQCdASoQAAcAA4BaJaQAAuXJuEAA/vZKngECf0g7ix2VrdzfWjwAAAA="
+  },
+  {
+    "file": "/logos/partners/hib-greenbox.png",
+    "width": 900,
+    "height": 236,
+    "alt": "HiB Greenbox",
+    "people": "none",
+    "tag": "logo",
+    "kb": 54,
+    "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4WAoAAAAQAAAADwAAAwAAQUxQSEEAAAAA6M/A5j9tXCGEPAAEAQICAbx7iaRQMkciUisAAgAAAADYb1jFRjIuHishJCw6HiUZ5s+/5T1WaW+MhHhlinl0fABWUDggJAAAAJABAJ0BKhAABAADgFoljAAC50/g4AD+8MrlUiSHVpf4xAAAAA=="
+  },
+  {
+    "file": "/logos/partners/startup-kebbi-onLight.png",
+    "width": 337,
+    "height": 150,
+    "alt": "Startup Kebbi",
+    "people": "none",
+    "tag": "logo",
+    "kb": 15,
+    "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoQAAcAA4BaJZwAAp123IskAAD+9iHp2NlWkzG5N20Xr/RIGZVl5QHuLIFJfhwIAAA="
+  },
+  {
+    "file": "/logos/partners/startup-kebbi-onDark.png",
+    "width": 900,
+    "height": 401,
+    "alt": "Startup Kebbi",
+    "people": "none",
+    "tag": "logo",
+    "kb": 67,
+    "blurDataURL": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4WAoAAAAQAAAADwAABgAAQUxQSGMAAAABcGTbtuHcsqt6Fdu2rZZtJ62sDCDz1xgiYgKYgAf/6+UcDdD1TjU/6VUzR3vBBALMoTm+PpuDxzVSCCUNlDjvLfvXBEPBFWgk8pq43bwO7wIFklTKBokEQeInGycBEAQI4gMAVlA4IB4AAAAwAQCdASoQAAcAA4BaJaQAA3AA/vTn1lkwym48AAA="
+  },
+  {
+    "file": "/logos/partners/starok-design-school.png",
+    "width": 900,
+    "height": 156,
+    "alt": "Starok Design School",
+    "people": "none",
+    "tag": "logo",
+    "kb": 99,
+    "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4WAoAAAAQAAAADwAAAgAAQUxQSDEAAAAAnrlYKj1ISlVIRgAAAAAAAf+tZlQ9TVZRXkQoJCcpKhc4o2UPRl1OUGA8VElTU1JGAFZQOCAaAAAAMAEAnQEqEAADAAOAWiWkAANwAP70YHUAAAA="
+  },
+  {
+    "file": "/logos/products/nurala-onLight.png",
+    "width": 900,
+    "height": 402,
+    "alt": "NurAla Learning",
+    "people": "none",
+    "tag": "logo",
+    "kb": 211,
+    "blurDataURL": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4WAoAAAAQAAAADwAABgAAQUxQSHEAAAAAACmx4b87AAIABAsAAwQDAAvR//z/6RREX049NVhXSzxL//v9+f9hN3J3cmFkcXN+S//7/Pr/bAAUDxwWDxMWFA/L//v/3ychLig2NDAxMDEAK6jVtDwAAwEDAgEBAAICAAAGFgkAAQAAAAAAAAAAAABWUDggagAAADACAJ0BKhAABwADgFolsAJ0BivtrdpqdDsAAPwmakj+rmGoVz4keIEqfXgsCdRYkGRfVc9p9x8ezf1WfxF7phr3urGTYwOEKPir3rCvkhxZ+XPxTTZPgzMFVOfqEOxeVen8L+dImE3hEAA="
+  },
+  {
+    "file": "/logos/products/nurala-onDark.png",
+    "width": 900,
+    "height": 401,
+    "alt": "NurAla Learning",
+    "people": "none",
+    "tag": "logo",
+    "kb": 220,
+    "blurDataURL": "data:image/webp;base64,UklGRvAAAABXRUJQVlA4WAoAAAAQAAAADwAABgAAQUxQSGwAAAAFcBvbtqrc+wV3d4cSnApomR4cMneLXJ7djBoiIiFa0Wh2QLIYb4NAOto3pSLdTnDLPzkGp0zoHmVqX6zdnFfd4kbNm0NPj4185GBMN+W+Go4tXlOn4+clpkvzli5b+GKpKw0ICBHAbv++4Q9WUDggXgAAABACAJ0BKhAABwADgFolsAJ0BiwW9+N23EAA/PVxAjcmFRtj64uB8e4/j4Cr7UwB+MoLDYrKeyGsTXXC329uBWluk70negyKCB5DexX0HmZ7hZ2NW+k2Ayy6F1x8AAA="
+  },
+  {
+    "file": "/logos/products/kids-in-tech.png",
+    "width": 900,
+    "height": 418,
+    "alt": "Kids in Tech",
+    "people": "none",
+    "tag": "logo",
+    "kb": 159,
+    "blurDataURL": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4WAoAAAAQAAAADwAABgAAQUxQSHEAAAAATZ7U4+v/n7XfjHEDAAMBAPT55P/i6v/+/v/9dRYDAgJDndTz7/r4/vj88frziB0AAQC1//XWkZGq3NPj5/+LCgQAVfT/+u3i+Pb/6If1/+kBAAXZ7vb///7/1Onry9uOAAEAaGF1kWibjWZ8s1MIAgBWUDggXgAAANABAJ0BKhAABwADgFolsAJ0AOF9HWUAAP6sUb1t1qE5TMFqqF88I9OuoS/Dz7CFcLRyBd0z4TNXmJqBbjyNxPfK2dFd2cAiJXTmdwz2N0rjgcejlv72emKHKnfEgAA="
   }
 ];

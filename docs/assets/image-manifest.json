@@ -394,7 +394,7 @@
     "file": "/images/team/founder-handbook.jpg",
     "width": 1355,
     "height": 1800,
-    "alt": "TEAM MEMBER \u2014 confirm name",
+    "alt": "TEAM MEMBER — confirm name",
     "people": "adults",
     "tag": "team",
     "kb": 252
@@ -504,7 +504,7 @@
     "file": "/images/team/candidate-me.jpg",
     "width": 1360,
     "height": 1763,
-    "alt": "TEAM MEMBER \u2014 confirm name",
+    "alt": "TEAM MEMBER — confirm name",
     "people": "adults",
     "tag": "team",
     "kb": 472
@@ -514,7 +514,7 @@
     "file": "/images/team/candidate-my-photo.jpg",
     "width": 1525,
     "height": 1454,
-    "alt": "TEAM MEMBER \u2014 confirm name",
+    "alt": "TEAM MEMBER — confirm name",
     "people": "adults",
     "tag": "team",
     "kb": 188
@@ -524,7 +524,7 @@
     "file": "/images/team/candidate-pic.jpg",
     "width": 960,
     "height": 1280,
-    "alt": "TEAM MEMBER \u2014 confirm name",
+    "alt": "TEAM MEMBER — confirm name",
     "people": "adults",
     "tag": "team",
     "kb": 59
@@ -638,5 +638,85 @@
     "alt": "A student playing the Scratch game they built",
     "people": "children",
     "tag": "video"
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/gdg-birnin-kebbi.png",
+    "width": 900,
+    "height": 366,
+    "alt": "GDG Birnin-Kebbi",
+    "people": "none",
+    "tag": "logo",
+    "kb": 36
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/hib-greenbox.png",
+    "width": 900,
+    "height": 236,
+    "alt": "HiB Greenbox",
+    "people": "none",
+    "tag": "logo",
+    "kb": 54
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/startup-kebbi-onLight.png",
+    "width": 337,
+    "height": 150,
+    "alt": "Startup Kebbi",
+    "people": "none",
+    "tag": "logo",
+    "kb": 15
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/startup-kebbi-onDark.png",
+    "width": 900,
+    "height": 401,
+    "alt": "Startup Kebbi",
+    "people": "none",
+    "tag": "logo",
+    "kb": 67
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/starok-design-school.png",
+    "width": 900,
+    "height": 156,
+    "alt": "Starok Design School",
+    "people": "none",
+    "tag": "logo",
+    "kb": 99
+  },
+  {
+    "src": "logos",
+    "file": "/logos/products/nurala-onLight.png",
+    "width": 900,
+    "height": 402,
+    "alt": "NurAla Learning",
+    "people": "none",
+    "tag": "logo",
+    "kb": 211
+  },
+  {
+    "src": "logos",
+    "file": "/logos/products/nurala-onDark.png",
+    "width": 900,
+    "height": 401,
+    "alt": "NurAla Learning",
+    "people": "none",
+    "tag": "logo",
+    "kb": 220
+  },
+  {
+    "src": "logos",
+    "file": "/logos/products/kids-in-tech.png",
+    "width": 900,
+    "height": 418,
+    "alt": "Kids in Tech",
+    "people": "none",
+    "tag": "logo",
+    "kb": 159
   }
 ]
