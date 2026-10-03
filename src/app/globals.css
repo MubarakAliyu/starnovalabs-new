@@ -97,6 +97,17 @@
     outline-offset: 3px;
   }
 
+  /*
+   * Elements we focus in code — the main landmark and the heading we move to
+   * after a route change — are never tab stops, so a ring on them marks no
+   * real position. A reload counts as keyboard modality in Chrome, which drew
+   * one around the whole hero on every refresh. Real controls keep theirs.
+   */
+  [tabindex='-1']:focus,
+  [tabindex='-1']:focus-visible {
+    outline: none;
+  }
+
   /* On art-directed dark chapters the ring switches to the lit blue. */
   [data-theme='navy'] :focus-visible,
   [data-theme='ink'] :focus-visible {

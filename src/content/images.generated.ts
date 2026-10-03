@@ -266,16 +266,6 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwAgCdASoQAAwAA4BaJbACdAEPhorz6VX5AAD+3r22hlHRmIt8x7Ad+gLniqnO3jdT6XAA2/mTMALvmgm4kn9gINAyFNUK1VQ1foVvM76E+J/gAAA="
   },
   {
-    "file": "/images/coding/editor-closeup.jpg",
-    "width": 1350,
-    "height": 1800,
-    "alt": "A student's code in the editor",
-    "people": "children",
-    "tag": "coding",
-    "kb": 248,
-    "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZQC/OCGWT4UH1Q1eBNnAAPfK1PK+MM+7FhzMdVVt9AnBcruA8M9lDmc562lIIAzu3CJ1i5ddyrpCVt8OOAlpq8inIWA4cwncOYpYjdvoPzLQJPcFZa7BntLMMs3JYmKUgzcd8AqGAG5W1t9MAAAA"
-  },
-  {
     "file": "/images/coding/three-at-laptops.jpg",
     "width": 1800,
     "height": 1355,
@@ -344,16 +334,6 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "tag": "project-scratch",
     "kb": 280,
     "blurDataURL": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JbACdACal4AcuiTxJ0pndWn9SAAD81XhQrKAnb+SYKbVDD2U7o4BEKLeqHb/fZzYH398T0f68ZF5M2yyVk7t/9QOCX1764cq9jzjm4w4lRS9YRY/U7TLamlL9X2gGr9Baf/HuNKjZ5LYL0dWueOtGcVIlav43uTNAAA=="
-  },
-  {
-    "file": "/images/projects/student-presenting.jpg",
-    "width": 1800,
-    "height": 1355,
-    "alt": "A student presenting the website they built",
-    "people": "children",
-    "tag": "project-web",
-    "kb": 209,
-    "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAwAA4BaJQBdgB6JakNFjwAAyw359ffVmqayJ2Kb24xXNSPxuCqUrOf1Ort2p2vRR/Ghpmnm1tE4bgXjCp4AAAA="
   },
   {
     "file": "/images/projects/bootcamp-handbooks.jpg",

@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 
-import { useMotion } from '@/components/motion/MotionProvider';
 import { useTransition } from '@/components/motion/TransitionProvider';
 import { gsap, useGSAP } from '@/lib/gsap';
 import { EASE, INTRO_STORAGE_KEY, LOADER } from '@/lib/motion';
@@ -15,17 +14,13 @@ declare global {
   }
 }
 
-function introForced() {
-  return document.documentElement.dataset.introForce === '1';
-}
-
-function introAlreadyPlayed() {
-  if (introForced()) return false;
-  try {
-    return window.sessionStorage.getItem(INTRO_STORAGE_KEY) === 'done';
-  } catch {
-    return false;
-  }
+/**
+ * The head script has already decided. 'full' and 'short' mean play; anything
+ * else means the overlay has been hidden and there is nothing to run.
+ */
+function introVariant(): 'full' | 'short' | null {
+  const value = document.documentElement.dataset.introVariant;
+  return value === 'full' || value === 'short' ? value : null;
 }
 
 function markIntroPlayed() {
@@ -48,7 +43,6 @@ function fontsReady(): Promise<unknown> {
  * the only JavaScript the loader costs.
  */
 export function LoaderController() {
-  const { motion } = useMotion();
   const { signalReveal, claimFirstReveal } = useTransition();
   const ranRef = useRef(false);
 
@@ -65,8 +59,9 @@ export function LoaderController() {
         if (overlay) overlay.style.display = 'none';
       };
 
-      // Reduced motion, or a view we have already greeted this session.
-      if ((motion === 'reduced' && !introForced()) || introAlreadyPlayed() || !overlay) {
+      // The head script settled this before the first paint.
+      const variant = introVariant();
+      if (!variant || !overlay) {
         markIntroPlayed();
         finish();
         signalReveal();
@@ -88,6 +83,12 @@ export function LoaderController() {
       // Scroll stays locked for as long as the overlay is up.
       const previousOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+
+      const short = variant === 'short';
+      // A replay in the same session is an acknowledgement, not an overture.
+      const budget = short
+        ? { min: 900, target: 700, cap: 1200 }
+        : { min: LOADER.min, target: LOADER.target, cap: LOADER.cap };
 
       const startedAt = performance.now();
       const real = { fonts: 0, hero: 0 };
@@ -123,12 +124,13 @@ export function LoaderController() {
       // Creep forward while we wait, so the counter always feels alive.
       const creep = gsap.to(creepState, {
         value: 92,
-        duration: LOADER.target / 1000,
+        duration: budget.target / 1000,
         ease: 'power1.out',
         onUpdate: render,
       });
 
       const intro = gsap.timeline();
+      if (short) intro.timeScale(2.2);
       intro.to(rows, { autoAlpha: 0.12, duration: 0.3, ease: 'none' }, 0).fromTo(
         blades,
         {
@@ -173,12 +175,14 @@ export function LoaderController() {
         if (progress) gsap.set(progress, { scaleX: 1 });
 
         const out = gsap.timeline({
+          // The exit carries the hero cue, so it speeds up with everything else.
           onComplete: () => {
             marquees.forEach((tween) => tween.kill());
             document.body.style.overflow = previousOverflow;
             finish();
           },
         });
+        if (short) out.timeScale(1.8);
 
         out
           .to(star, { rotate: 45, duration: 0.4, ease: EASE.snappy }, 0)
@@ -196,9 +200,9 @@ export function LoaderController() {
       // Leave once everything is ready, never before the floor, never after the cap.
       void Promise.all([fontsReady(), heroReady?.catch(() => undefined)]).then(() => {
         const elapsed = performance.now() - startedAt;
-        gsap.delayedCall(Math.max(0, LOADER.min - elapsed) / 1000, exit);
+        gsap.delayedCall(Math.max(0, budget.min - elapsed) / 1000, exit);
       });
-      const cap = gsap.delayedCall(LOADER.cap / 1000, exit);
+      const cap = gsap.delayedCall(budget.cap / 1000, exit);
 
       return () => {
         cap.kill();
@@ -208,6 +212,7 @@ export function LoaderController() {
         document.body.style.overflow = previousOverflow;
       };
     },
+    // Runs once per document: a client-side navigation never replays it.
     { dependencies: [] },
   );
 
