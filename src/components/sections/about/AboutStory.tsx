@@ -28,7 +28,7 @@ export function AboutStory() {
               image={img('/images/team/founder-handbook.jpg')}
               sizes="(min-width: 1024px) 34vw, 100vw"
               parallax={0.08}
-              className="mt-12 aspect-4/5 max-w-sm"
+              className="mt-10 aspect-4/3"
             />
           </figure>
 
