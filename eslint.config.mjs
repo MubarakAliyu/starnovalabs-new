@@ -14,6 +14,10 @@ const eslintConfig = defineConfig([
     'next-env.d.ts',
     // Plain Node build scripts — not part of the app bundle.
     'scripts/**',
+    // QA artefacts: throwaway browser profiles and screenshots. Walking these
+    // exhausted ESLint's heap.
+    '.chrome-*/**',
+    'docs/qa/**',
   ]),
 ]);
 

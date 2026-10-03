@@ -8,7 +8,7 @@ import { img } from '@/content/images';
 interface CTAAction {
   label: string;
   href: string;
-  variant: 'solid-blue' | 'outline' | 'solid-ink';
+  variant: 'primary' | 'secondary' | 'accent' | 'solid-blue' | 'outline' | 'solid-ink';
 }
 
 interface CTASectionProps {

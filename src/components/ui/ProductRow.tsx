@@ -10,7 +10,17 @@ import { Photo } from '@/components/ui/Photo';
 import { PendingBadge } from '@/components/ui/PendingBadge';
 import { Sticker } from '@/components/ui/Sticker';
 import type { ImageAsset } from '@/content/images';
-import { STAGE_LABEL, type Product } from '@/content/products';
+// Type-only, so the whole product catalogue does not follow this client
+// component into the browser bundle.
+import type { Product, ProductStage } from '@/content/products';
+
+const STAGE_FILL: Record<ProductStage, 'gold' | 'blue' | 'white'> = {
+  live: 'gold',
+  testing: 'blue',
+  building: 'blue',
+  scoping: 'white',
+  pipeline: 'white',
+};
 import { gsap, useGSAP } from '@/lib/gsap';
 import { EASE } from '@/lib/motion';
 
@@ -94,12 +104,16 @@ export function ProductRow({ product, index, preview }: ProductRowProps) {
         </span>
 
         <span className="t-body max-w-[42ch] opacity-80 md:max-w-[34ch] md:text-right">
-          {product.summary}
+          {product.oneLiner}
         </span>
 
         <span className="flex items-center gap-5">
-          <Sticker fill="white" rotate={index % 2 === 0 ? -3 : 3} className="group-hover:bg-white">
-            {STAGE_LABEL[product.stage]}
+          <Sticker
+            fill={STAGE_FILL[product.stage]}
+            rotate={index % 2 === 0 ? -3 : 3}
+            className="group-hover:bg-white group-hover:text-ink"
+          >
+            {product.stageLabel}
           </Sticker>
           <Arrow className="text-xl group-hover:-rotate-45" />
         </span>

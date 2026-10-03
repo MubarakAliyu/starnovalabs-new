@@ -48,15 +48,20 @@ export default function PartnerPage() {
                 className="mb-14"
               />
 
-              <div className="grid-page">
-                <div className="col-span-4 sm:col-span-8 lg:col-span-6">
+              {/* One text column and one image column, swapping sides down
+                  the page. Everything in the text column stacks in order, so
+                  nothing can be displaced into a gap. */}
+              <div className="grid-page items-center">
+                <div
+                  className={`col-span-4 sm:col-span-8 lg:col-span-5 ${
+                    imageFirst ? 'lg:col-start-8' : 'lg:col-start-1'
+                  }`}
+                >
                   <RevealText as="h2" variant="lines" className="t-display-m">
                     {section.heading}
                   </RevealText>
-                </div>
 
-                <div className="col-span-4 mt-10 sm:col-span-8 lg:col-span-5 lg:col-start-8 lg:mt-0">
-                  <ul className="flex flex-col gap-5">
+                  <ul className="mt-10 flex flex-col gap-5">
                     {section.points.map((point) => (
                       <li key={point} className="flex items-start gap-4">
                         <StarGlyph
@@ -78,7 +83,7 @@ export default function PartnerPage() {
                   <div className="mt-12">
                     <Button
                       href={section.cta.href}
-                      variant={dark ? 'outline' : 'solid-ink'}
+                      variant={dark ? 'secondary' : 'primary'}
                       size="lg"
                       arrow
                     >
@@ -88,17 +93,15 @@ export default function PartnerPage() {
                 </div>
 
                 <div
-                  className={
-                    imageFirst
-                      ? 'col-span-4 mt-14 sm:col-span-8 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:mt-0'
-                      : 'col-span-4 mt-14 sm:col-span-8 lg:col-span-6 lg:col-start-1 lg:mt-16'
-                  }
+                  className={`col-span-4 mt-14 sm:col-span-8 lg:col-span-6 lg:mt-0 lg:row-start-1 ${
+                    imageFirst ? 'lg:col-start-1' : 'lg:col-start-7'
+                  }`}
                 >
                   <Photo
                     image={img(section.image)}
-                    sizes="(min-width: 1024px) 42vw, 100vw"
+                    sizes="(min-width: 1024px) 46vw, 100vw"
                     frame={section.imageFrame}
-                    parallax={index % 2 === 0 ? 0.1 : -0.1}
+                    parallax={index % 2 === 0 ? 0.08 : -0.08}
                     className="aspect-4/3"
                   />
                 </div>

@@ -69,7 +69,7 @@ export function HomeProof() {
 
         {visibleStats.length > 0 ? (
           <>
-            <ul className="mt-24 grid grid-cols-2 gap-x-8 gap-y-14 lg:grid-cols-4">
+            <ul className="mt-24 grid grid-cols-2 gap-x-8 gap-y-14 md:grid-cols-3 lg:grid-cols-5">
               {visibleStats.map((stat, index) => (
                 <li key={stat.id}>
                   <Stat stat={stat} underline={index === 0} theme="dark" />
