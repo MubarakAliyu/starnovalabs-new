@@ -11,7 +11,7 @@ const GALLERY = [
   '/images/community/chess-with-mentor.jpg',
   '/images/coding/girls-coding.jpg',
   '/images/groups/cohort-kebbi-outdoor.jpg',
-  '/images/projects/student-presenting.jpg',
+  '/images/projects/scratch-on-laptop.jpg',
   '/images/community/foosball.jpg',
   '/images/classroom/instructor-helping.jpg',
   '/images/projects/bootcamp-handbooks.jpg',
