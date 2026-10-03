@@ -10,7 +10,17 @@ import { Photo } from '@/components/ui/Photo';
 import { PendingBadge } from '@/components/ui/PendingBadge';
 import { Sticker } from '@/components/ui/Sticker';
 import type { ImageAsset } from '@/content/images';
-import { STAGE_FILL, type Product } from '@/content/products';
+// Type-only, so the whole product catalogue does not follow this client
+// component into the browser bundle.
+import type { Product, ProductStage } from '@/content/products';
+
+const STAGE_FILL: Record<ProductStage, 'gold' | 'blue' | 'white'> = {
+  live: 'gold',
+  testing: 'blue',
+  building: 'blue',
+  scoping: 'white',
+  pipeline: 'white',
+};
 import { gsap, useGSAP } from '@/lib/gsap';
 import { EASE } from '@/lib/motion';
 

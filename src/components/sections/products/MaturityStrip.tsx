@@ -4,9 +4,21 @@ import { useRef } from 'react';
 
 import { useMotion } from '@/components/motion/MotionProvider';
 import { TransitionLink } from '@/components/motion/TransitionLink';
-import { STAGE_COLUMN, STAGE_ORDER, type Product } from '@/content/products';
+// Type-only, so the whole product catalogue does not follow this client
+// component into the browser bundle. The labels are tiny and live here.
+import type { Product, ProductStage } from '@/content/products';
 import { gsap, useGSAP } from '@/lib/gsap';
 import { STAGGER } from '@/lib/motion';
+
+const STAGE_ORDER: ProductStage[] = ['live', 'testing', 'building', 'scoping', 'pipeline'];
+
+const STAGE_COLUMN: Record<ProductStage, string> = {
+  live: 'Live',
+  testing: 'Testing',
+  building: 'Building',
+  scoping: 'Scoping',
+  pipeline: 'Pipeline',
+};
 
 /**
  * Where each product stands, as columns from Live to Pipeline. Columns on a
