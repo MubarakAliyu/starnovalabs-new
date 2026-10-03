@@ -1,0 +1,682 @@
+[
+  {
+    "src": "Kids In Tech/Little Coders!/image 99.jpg",
+    "file": "/images/groups/cohort-handbooks-wide.jpg",
+    "width": 2400,
+    "height": 1807,
+    "alt": "A Kids in Tech cohort holding their coding bootcamp handbooks with their instructor",
+    "people": "children",
+    "tag": "hero",
+    "kb": 476
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 100.jpg",
+    "file": "/images/groups/cohort-handbooks-close.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "Kids in Tech students showing their handbooks at the end of a bootcamp",
+    "people": "children",
+    "tag": "group",
+    "kb": 286
+  },
+  {
+    "src": "IMG_0233.heic",
+    "file": "/images/groups/cohort-kebbi-outdoor.jpg",
+    "width": 1800,
+    "height": 1350,
+    "alt": "A Kids in Tech cohort gathered outside the training block",
+    "people": "children",
+    "tag": "group",
+    "kb": 394
+  },
+  {
+    "src": "image_1.jpeg",
+    "file": "/images/groups/cohort-celebration.jpg",
+    "width": 1280,
+    "height": 960,
+    "alt": "Students, parents and the StarNova team together after a Kids in Tech session",
+    "people": "children",
+    "tag": "group",
+    "kb": 165
+  },
+  {
+    "src": "image_kids.jpeg",
+    "file": "/images/groups/cohort-families.jpg",
+    "width": 1280,
+    "height": 960,
+    "alt": "Kids in Tech students and families at a graduation gathering",
+    "people": "children",
+    "tag": "group",
+    "kb": 175
+  },
+  {
+    "src": "image_2_parentd.jpeg",
+    "file": "/images/groups/parents-and-team.jpg",
+    "width": 1280,
+    "height": 960,
+    "alt": "Parents and the StarNova Labs team at a Kids in Tech gathering",
+    "people": "adults",
+    "tag": "community",
+    "kb": 166
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 40.heic",
+    "file": "/images/groups/cohort-classroom.jpg",
+    "width": 1800,
+    "height": 1350,
+    "alt": "A Kids in Tech cohort standing together in the classroom",
+    "people": "children",
+    "tag": "group",
+    "kb": 236
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 41.heic",
+    "file": "/images/groups/cohort-stairs.jpg",
+    "width": 1350,
+    "height": 1800,
+    "alt": "Students holding their handbooks on the stairs of the learning centre",
+    "people": "children",
+    "tag": "group",
+    "kb": 333
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 3.jpg",
+    "file": "/images/classroom/instructor-teaching.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "An instructor walking the class through a lesson on the projector",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 281
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 6.jpg",
+    "file": "/images/classroom/full-class-wide.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "A full Kids in Tech class at work on laptops",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 314
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 10.heic",
+    "file": "/images/classroom/class-in-session.jpg",
+    "width": 1800,
+    "height": 1350,
+    "alt": "A class in session in the Kids in Tech learning space",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 343
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 19.heic",
+    "file": "/images/classroom/room-wide-1.jpg",
+    "width": 1800,
+    "height": 1350,
+    "alt": "The Kids in Tech classroom full of students and laptops",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 328
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 45.jpg",
+    "file": "/images/classroom/room-wide-2.jpg",
+    "width": 1800,
+    "height": 1350,
+    "alt": "Students coding in the colourful Kids in Tech room",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 379
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 51.jpg",
+    "file": "/images/classroom/projector-lesson.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "A lesson projected at the front of the class",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 269
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 54.jpg",
+    "file": "/images/classroom/room-wide-3.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "Students working in pairs across the classroom",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 257
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 70.jpg",
+    "file": "/images/classroom/instructor-helping.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "An instructor helping a student at her laptop",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 357
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 83.jpg",
+    "file": "/images/classroom/coding-and-chess.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "Students coding and playing chess during a session break",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 357
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 93.jpg",
+    "file": "/images/classroom/demo-day.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "Students watching a classmate present their project",
+    "people": "children",
+    "tag": "classroom",
+    "kb": 291
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 47.jpg",
+    "file": "/images/classroom/instructors-together.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "Two instructors preparing the next exercise",
+    "people": "adults",
+    "tag": "team",
+    "kb": 244
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 44.jpg",
+    "file": "/images/classroom/instructor-bw.jpg",
+    "width": 1350,
+    "height": 1800,
+    "alt": "An instructor leading a session, black and white",
+    "people": "adults",
+    "tag": "team",
+    "kb": 303
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 1.jpg",
+    "file": "/images/coding/mentor-at-laptop.jpg",
+    "width": 1355,
+    "height": 1800,
+    "alt": "A mentor guiding a student through her code",
+    "people": "children",
+    "tag": "coding",
+    "kb": 262
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 5.jpg",
+    "file": "/images/coding/over-shoulder-1.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "Students following the lesson on their own laptops",
+    "people": "children",
+    "tag": "coding",
+    "kb": 211
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 9.jpg",
+    "file": "/images/coding/code-editor.jpg",
+    "width": 1355,
+    "height": 1800,
+    "alt": "A student writing code in the editor",
+    "people": "children",
+    "tag": "coding",
+    "kb": 253
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 13.heic",
+    "file": "/images/coding/pair-coding.jpg",
+    "width": 1800,
+    "height": 1350,
+    "alt": "Two students coding side by side",
+    "people": "children",
+    "tag": "coding",
+    "kb": 310
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 14.heic",
+    "file": "/images/coding/student-laptop.jpg",
+    "width": 1800,
+    "height": 1350,
+    "alt": "A student working through an exercise",
+    "people": "children",
+    "tag": "coding",
+    "kb": 288
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 16.heic",
+    "file": "/images/coding/laptop-closeup.jpg",
+    "width": 1800,
+    "height": 1350,
+    "alt": "A laptop open on a web development exercise",
+    "people": "none",
+    "tag": "coding",
+    "kb": 268
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 21.heic",
+    "file": "/images/coding/editor-closeup.jpg",
+    "width": 1350,
+    "height": 1800,
+    "alt": "A student's code in the editor",
+    "people": "children",
+    "tag": "coding",
+    "kb": 248
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 67.jpg",
+    "file": "/images/coding/three-at-laptops.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "Three students coding together",
+    "people": "children",
+    "tag": "coding",
+    "kb": 266
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 68.jpg",
+    "file": "/images/coding/girls-coding.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "Students coding together under the Success wall",
+    "people": "children",
+    "tag": "coding",
+    "kb": 301
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 69.jpg",
+    "file": "/images/coding/laptop-success-wall.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "A student's laptop in front of the Kids in Tech wall art",
+    "people": "children",
+    "tag": "coding",
+    "kb": 320
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 74.jpg",
+    "file": "/images/coding/hands-on-keyboard.jpg",
+    "width": 1355,
+    "height": 1800,
+    "alt": "Hands on the keyboard during a web development lesson",
+    "people": "children",
+    "tag": "coding",
+    "kb": 317
+  },
+  {
+    "src": "PXL_20260507_105528424.jpg",
+    "file": "/images/projects/scratch-game.jpg",
+    "width": 1355,
+    "height": 1800,
+    "alt": "A student building a game in Scratch",
+    "people": "children",
+    "tag": "project-scratch",
+    "kb": 286
+  },
+  {
+    "src": "PXL_20260507_110225868.jpg",
+    "file": "/images/projects/robotics-arduino.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "An Arduino robotics build wired to a laptop",
+    "people": "none",
+    "tag": "project-robotics",
+    "kb": 261
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 86.jpg",
+    "file": "/images/projects/scratch-on-laptop.jpg",
+    "width": 1355,
+    "height": 1800,
+    "alt": "A Scratch project open on a student's laptop",
+    "people": "none",
+    "tag": "project-scratch",
+    "kb": 280
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 92.jpg",
+    "file": "/images/projects/student-presenting.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "A student presenting the website they built",
+    "people": "children",
+    "tag": "project-web",
+    "kb": 209
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 66.jpg",
+    "file": "/images/projects/bootcamp-handbooks.jpg",
+    "width": 1800,
+    "height": 1355,
+    "alt": "The Kids in Tech Coding Bootcamp handbooks",
+    "people": "none",
+    "tag": "product",
+    "kb": 346
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 71.jpg",
+    "file": "/images/team/founder-handbook.jpg",
+    "width": 1355,
+    "height": 1800,
+    "alt": "Aliyu Mubarak, Founder & CEO",
+    "people": "adults",
+    "tag": "team",
+    "kb": 252
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 26.heic",
+    "file": "/images/community/foosball.jpg",
+    "width": 1350,
+    "height": 1800,
+    "alt": "Students playing table football during a break",
+    "people": "children",
+    "tag": "community",
+    "kb": 313
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 27.heic",
+    "file": "/images/community/chess-with-mentor.jpg",
+    "width": 1350,
+    "height": 1800,
+    "alt": "A mentor playing chess with a student",
+    "people": "children",
+    "tag": "community",
+    "kb": 467
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 30.heic",
+    "file": "/images/community/board-games.jpg",
+    "width": 1350,
+    "height": 1800,
+    "alt": "Students playing a board game together",
+    "people": "children",
+    "tag": "community",
+    "kb": 317
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 37.heic",
+    "file": "/images/community/break-time.jpg",
+    "width": 1350,
+    "height": 1800,
+    "alt": "Students relaxing during a break",
+    "people": "children",
+    "tag": "community",
+    "kb": 355
+  },
+  {
+    "src": "Kids In Tech/Little Coders!/image 82.jpg",
+    "file": "/images/community/chess-match.jpg",
+    "width": 1355,
+    "height": 1800,
+    "alt": "Students playing chess",
+    "people": "children",
+    "tag": "community",
+    "kb": 369
+  },
+  {
+    "src": "Kids In Tech/Bootcamp 2.0/images/DUAY9278.HEIC",
+    "file": "/images/community/jenga.jpg",
+    "width": 1350,
+    "height": 1800,
+    "alt": "Students playing Jenga at Bootcamp 2.0",
+    "people": "children",
+    "tag": "community",
+    "kb": 293
+  },
+  {
+    "src": "Kids In Tech/Bootcamp 2.0/images/GPDU6425.HEIC",
+    "file": "/images/community/chess-bootcamp2.jpg",
+    "width": 1350,
+    "height": 1800,
+    "alt": "Students playing chess at Bootcamp 2.0",
+    "people": "children",
+    "tag": "community",
+    "kb": 367
+  },
+  {
+    "src": "Kids In Tech/web/kids-in-tech/public/assets/images/Aisha.jpeg",
+    "file": "/images/team/aisha.jpg",
+    "width": 996,
+    "height": 1216,
+    "alt": "Aisha, Media & Content",
+    "people": "adults",
+    "tag": "team",
+    "kb": 68
+  },
+  {
+    "src": "Kids In Tech/web/kids-in-tech/public/assets/images/faruk.jpeg",
+    "file": "/images/team/faruk.jpg",
+    "width": 1280,
+    "height": 853,
+    "alt": "Faruk Yusuf, Web Development Educator",
+    "people": "adults",
+    "tag": "team",
+    "kb": 90
+  },
+  {
+    "src": "Kids In Tech/web/kids-in-tech/public/assets/images/musty.jpeg",
+    "file": "/images/team/mustapher.jpg",
+    "width": 577,
+    "height": 607,
+    "alt": "Mustapher M. Lawal, Co-Founder & CTO",
+    "people": "adults",
+    "tag": "team",
+    "kb": 46
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/1.png",
+    "file": "/images/kitos/kitos-1.png",
+    "width": 1431,
+    "height": 1180,
+    "alt": "KITOS sign-in screen",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/2.png",
+    "file": "/images/kitos/kitos-2.png",
+    "width": 1429,
+    "height": 1197,
+    "alt": "KITOS student dashboard",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/6.png",
+    "file": "/images/kitos/kitos-6.png",
+    "width": 1427,
+    "height": 1040,
+    "alt": "KITOS online classes",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/7.png",
+    "file": "/images/kitos/kitos-7.png",
+    "width": 1436,
+    "height": 1047,
+    "alt": "KITOS session recordings",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/22.png",
+    "file": "/images/kitos/kitos-22.png",
+    "width": 1431,
+    "height": 1053,
+    "alt": "KITOS lesson view",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/27.png",
+    "file": "/images/kitos/kitos-27.png",
+    "width": 1436,
+    "height": 1049,
+    "alt": "KITOS admin dashboard",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/31.png",
+    "file": "/images/kitos/kitos-31.png",
+    "width": 1434,
+    "height": 1048,
+    "alt": "KITOS live sessions overview",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/32.png",
+    "file": "/images/kitos/kitos-32.png",
+    "width": 1431,
+    "height": 1047,
+    "alt": "KITOS attendance reports",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/33.png",
+    "file": "/images/kitos/kitos-33.png",
+    "width": 1429,
+    "height": 1045,
+    "alt": "KITOS recordings management",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/LMS/screenshots/34.png",
+    "file": "/images/kitos/kitos-34.png",
+    "width": 1430,
+    "height": 1044,
+    "alt": "KITOS analytics and insights",
+    "people": "none",
+    "tag": "kitos"
+  },
+  {
+    "src": "Kids In Tech/Bootcamp 2.0/KIDS IN TECH(1080p).mp4 (0-4s, 48-52s, 60-64s)",
+    "file": "/video/kit-classroom-loop.mp4",
+    "poster": "/video/kit-classroom-poster.jpg",
+    "width": 720,
+    "height": 1280,
+    "alt": "Kids in Tech classes in session",
+    "people": "children",
+    "tag": "video"
+  },
+  {
+    "src": "PXL_20260507_105533164.mp4",
+    "file": "/video/scratch-game-loop.mp4",
+    "poster": "/video/scratch-game-poster.jpg",
+    "width": 720,
+    "height": 1280,
+    "alt": "A student playing the Scratch game they built",
+    "people": "children",
+    "tag": "video"
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/gdg-birnin-kebbi.png",
+    "width": 900,
+    "height": 366,
+    "alt": "GDG Birnin-Kebbi",
+    "people": "none",
+    "tag": "logo",
+    "kb": 36
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/hib-greenbox.png",
+    "width": 900,
+    "height": 236,
+    "alt": "HiB Greenbox",
+    "people": "none",
+    "tag": "logo",
+    "kb": 54
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/startup-kebbi-onLight.png",
+    "width": 337,
+    "height": 150,
+    "alt": "Startup Kebbi",
+    "people": "none",
+    "tag": "logo",
+    "kb": 15
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/startup-kebbi-onDark.png",
+    "width": 900,
+    "height": 401,
+    "alt": "Startup Kebbi",
+    "people": "none",
+    "tag": "logo",
+    "kb": 67
+  },
+  {
+    "src": "logos",
+    "file": "/logos/partners/starok-design-school.png",
+    "width": 900,
+    "height": 156,
+    "alt": "Starok Design School",
+    "people": "none",
+    "tag": "logo",
+    "kb": 99
+  },
+  {
+    "src": "logos",
+    "file": "/logos/products/nurala-onLight.png",
+    "width": 900,
+    "height": 402,
+    "alt": "NurAla Learning",
+    "people": "none",
+    "tag": "logo",
+    "kb": 211
+  },
+  {
+    "src": "logos",
+    "file": "/logos/products/nurala-onDark.png",
+    "width": 900,
+    "height": 401,
+    "alt": "NurAla Learning",
+    "people": "none",
+    "tag": "logo",
+    "kb": 220
+  },
+  {
+    "src": "logos",
+    "file": "/logos/products/kids-in-tech.png",
+    "width": 900,
+    "height": 418,
+    "alt": "Kids in Tech",
+    "people": "none",
+    "tag": "logo",
+    "kb": 159
+  },
+  {
+    "src": "headless capture",
+    "file": "/images/edustack/edustack-home.png",
+    "width": 1440,
+    "height": 900,
+    "alt": "The EduStack demo landing page",
+    "people": "none",
+    "tag": "edustack",
+    "kb": 134
+  },
+  {
+    "src": "headless capture",
+    "file": "/images/edustack/edustack-mobile.png",
+    "width": 390,
+    "height": 844,
+    "alt": "The EduStack demo on a phone",
+    "people": "none",
+    "tag": "edustack",
+    "kb": 99
+  }
+]

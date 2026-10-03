@@ -49,3 +49,28 @@ node_modules
 *.log
 .DS_Store
 scaffold-tmp
+
+# Raw asset drops — curated copies live in public/images and public/video,
+# listed in docs/assets/image-manifest.json. Keep the originals out of git:
+# they are large, unoptimised and carry EXIF the curated set has stripped.
+/public/Little Coders!/
+/public/new-logo/
+/public/images/*.heic
+/public/*.heic
+/public/*.jpeg
+/public/IMG-*.jpg
+/public/IMG_*.jpg
+
+# Confidential: the deck carries the raise, valuation and unit economics.
+# It lives at docs/reference/ so it is not served, and stays out of git so it
+# cannot leak through the repository either. git add -f it if that changes.
+/public/*.pdf
+/docs/reference/*.pdf
+
+# Local verification screenshots.
+/.shots/
+
+# QA screenshots are a working artefact, not part of the project.
+/docs/qa/*
+!/docs/qa/README.md
+/.chrome-qa/

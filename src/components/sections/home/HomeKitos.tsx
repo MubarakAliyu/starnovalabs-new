@@ -2,10 +2,11 @@ import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
 import { StickerPop } from '@/components/motion/StickerPop';
-import { BrandGraphic } from '@/components/ui/BrandGraphic';
 import { Button } from '@/components/ui/Button';
+import { Photo } from '@/components/ui/Photo';
 import { Sticker } from '@/components/ui/Sticker';
 import { home } from '@/content/home';
+import { img } from '@/content/images';
 
 const { kitos } = home;
 
@@ -53,9 +54,35 @@ export function HomeKitos() {
             </div>
           </div>
 
-          {/* Stands in until KITOS screenshots with mock data exist. */}
+          {/* Three real KITOS screens, stacked with depth: the back two drift
+              at different speeds so the group reads as one object. */}
           <div className="col-span-4 mt-16 sm:col-span-6 lg:col-span-4 lg:col-start-9 lg:mt-0">
-            <BrandGraphic variant="tile" theme="paper" />
+            <div className="relative">
+              <Photo
+                image={img('/images/kitos/kitos-31.png')}
+                sizes="(min-width: 1024px) 30vw, 60vw"
+                frame="browser"
+                parallax={0.3}
+                wrapperClassName="absolute -top-[4%] -right-[6%] hidden w-[86%] rotate-2 lg:block"
+                className="aspect-16/10"
+              />
+              <Photo
+                image={img('/images/kitos/kitos-27.png')}
+                sizes="(min-width: 1024px) 30vw, 60vw"
+                frame="browser"
+                parallax={0.2}
+                wrapperClassName="absolute top-[8%] -left-[6%] hidden w-[86%] -rotate-2 lg:block"
+                className="aspect-16/10"
+              />
+              <Photo
+                image={img('/images/kitos/kitos-2.png')}
+                sizes="(min-width: 1024px) 34vw, 100vw"
+                frame="browser"
+                parallax={0.1}
+                wrapperClassName="relative z-10"
+                className="aspect-16/10"
+              />
+            </div>
           </div>
         </div>
       </Container>

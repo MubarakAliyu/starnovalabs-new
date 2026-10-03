@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { CTASection } from '@/components/sections/CTASection';
 import { HomeConnects } from '@/components/sections/home/HomeConnects';
 import { HomeHero } from '@/components/sections/home/HomeHero';
+import { HomeInside } from '@/components/sections/home/HomeInside';
 import { HomeKitos } from '@/components/sections/home/HomeKitos';
 import { HomeManifesto } from '@/components/sections/home/HomeManifesto';
 import { HomeMarquee } from '@/components/sections/home/HomeMarquee';
@@ -30,7 +31,12 @@ export default function HomePage() {
       <HomePortfolio />
       <HomeStudio />
       <HomePartners />
-      <CTASection headline={home.closing.headline} actions={home.closing.actions} />
+      <HomeInside />
+      <CTASection
+        headline={home.closing.headline}
+        actions={home.closing.actions}
+        backgroundImage="/images/groups/parents-and-team.jpg"
+      />
     </>
   );
 }

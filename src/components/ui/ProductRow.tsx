@@ -6,19 +6,25 @@ import { useMotion } from '@/components/motion/MotionProvider';
 import { TransitionLink } from '@/components/motion/TransitionLink';
 import { Arrow } from '@/components/ui/Arrow';
 import { BrandGraphic } from '@/components/ui/BrandGraphic';
+import { Photo } from '@/components/ui/Photo';
 import { PendingBadge } from '@/components/ui/PendingBadge';
 import { Sticker } from '@/components/ui/Sticker';
+import type { ImageAsset } from '@/content/images';
 import { STAGE_LABEL, type Product } from '@/content/products';
 import { gsap, useGSAP } from '@/lib/gsap';
 import { EASE } from '@/lib/motion';
 
-/** Rotates the stand-in preview so the list does not look repetitive. */
-const PREVIEW_THEMES = ['navy', 'blue', 'paper'] as const;
-const PREVIEW_VARIANTS = ['star-crop', 'tile', 'blade-field'] as const;
+const FALLBACK_THEMES = ['navy', 'blue', 'paper'] as const;
+const FALLBACK_VARIANTS = ['star-crop', 'tile', 'blade-field'] as const;
 
 interface ProductRowProps {
   product: Product;
   index: number;
+  /**
+   * Resolved by the server parent. Looking it up here would pull the whole
+   * generated image module — every blur placeholder — into the client bundle.
+   */
+  preview?: { image: ImageAsset; frame?: 'browser'; kind?: 'photo' | 'logo' };
 }
 
 /**
@@ -26,7 +32,7 @@ interface ProductRowProps {
  * slides right and the arrow turns to the star's diagonal. On a fine pointer a
  * preview follows the cursor; touch gets none of that and loses nothing.
  */
-export function ProductRow({ product, index }: ProductRowProps) {
+export function ProductRow({ product, index, preview }: ProductRowProps) {
   const ref = useRef<HTMLLIElement>(null);
   const { motion } = useMotion();
 
@@ -105,11 +111,34 @@ export function ProductRow({ product, index }: ProductRowProps) {
         aria-hidden="true"
         className="pointer-events-none invisible fixed top-0 left-0 z-40 hidden h-[220px] w-[320px] scale-[0.6] opacity-0 md:block"
       >
-        <BrandGraphic
-          variant={PREVIEW_VARIANTS[index % PREVIEW_VARIANTS.length]}
-          theme={PREVIEW_THEMES[index % PREVIEW_THEMES.length]}
-          className="h-full"
-        />
+        {preview ? (
+          preview.kind === 'logo' ? (
+            // A mark needs room to breathe, not a crop.
+            <div className="flex h-full w-full items-center justify-center bg-paper p-8">
+              <Photo
+                image={preview.image}
+                sizes="320px"
+                reveal={false}
+                fit="contain"
+                className="h-full w-full bg-transparent"
+              />
+            </div>
+          ) : (
+            <Photo
+              image={preview.image}
+              sizes="320px"
+              frame={preview.frame}
+              reveal={false}
+              className="h-full"
+            />
+          )
+        ) : (
+          <BrandGraphic
+            variant={FALLBACK_VARIANTS[index % FALLBACK_VARIANTS.length]}
+            theme={FALLBACK_THEMES[index % FALLBACK_THEMES.length]}
+            className="h-full"
+          />
+        )}
       </div>
     </li>
   );

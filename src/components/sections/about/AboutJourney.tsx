@@ -2,10 +2,12 @@ import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { DrawLine } from '@/components/motion/DrawLine';
 import { RevealText } from '@/components/motion/RevealText';
+import { Photo } from '@/components/ui/Photo';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { StarGlyph } from '@/components/ui/StarGlyph';
 import { Sticker } from '@/components/ui/Sticker';
 import { about } from '@/content/about';
+import { img } from '@/content/images';
 import { journey } from '@/content/journey';
 import { publishable } from '@/lib/content';
 
@@ -16,7 +18,7 @@ export function AboutJourney() {
     <Chapter theme="paper">
       <Container>
         <SectionLabel index="05" label={about.journeySection.label} className="mb-14" />
-        <RevealText as="h2" variant="lines" className="t-h2 mb-20 max-w-[16ch]">
+        <RevealText as="h2" variant="lines" className="t-display-m mb-20 max-w-[16ch]">
           {about.journeySection.heading}
         </RevealText>
 
@@ -42,6 +44,14 @@ export function AboutJourney() {
                     {item.state === 'achieved' ? 'Achieved' : 'In progress'}
                   </Sticker>
                 </div>
+
+                {item.thumbnail ? (
+                  <Photo
+                    image={img(item.thumbnail)}
+                    sizes="200px"
+                    className="mt-4 aspect-4/3 w-full max-w-[200px]"
+                  />
+                ) : null}
               </li>
             ))}
           </ol>

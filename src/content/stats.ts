@@ -12,44 +12,50 @@ export interface Stat {
 }
 
 /**
- * Traction figures. Everything sourced from the pitch deck is still pending
- * reconciliation, so only the confirmed track count reaches production.
+ * Traction figures, taken from the owner's Pitch Deck v3 (2026) and confirmed.
+ * Revenue, valuation and round terms are deliberately absent and must never
+ * appear on the site.
  */
 export const stats: Stat[] = [
   {
     id: 'paying-students',
-    value: 111,
+    value: 158,
     label: 'Paying students',
-    source: 'Pitch deck v2',
-    status: 'pending',
+    source: 'Pitch deck v3 (2026)',
+    asOf: '2026',
+    status: 'confirmed',
   },
   {
     id: 'cohorts',
     value: 4,
     label: 'Bootcamp cohorts',
-    source: 'Company Profile 2026 (pitch says 3 — reconcile)',
-    status: 'pending',
+    source: 'Pitch deck v3 (2026)',
+    asOf: '2026',
+    status: 'confirmed',
   },
   {
     id: 'returning',
     value: 17,
     label: 'Returning students',
-    source: 'Pitch deck v2',
-    status: 'pending',
+    source: 'Pitch deck v3 (2026)',
+    asOf: '2026',
+    status: 'confirmed',
   },
   {
     id: 'projects',
-    value: 35,
+    value: 40,
     suffix: '+',
     label: 'Student projects built',
-    source: 'Pitch deck v2',
-    status: 'pending',
+    source: 'Pitch deck v3 (2026)',
+    asOf: '2026',
+    status: 'confirmed',
   },
   {
     id: 'tracks',
     value: 3,
     label: 'Learning tracks',
-    source: 'Company Profile 2026',
+    source: 'Pitch deck v3 (2026)',
+    asOf: '2026',
     status: 'confirmed',
   },
 ];

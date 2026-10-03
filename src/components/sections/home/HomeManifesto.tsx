@@ -3,8 +3,10 @@ import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
 import { ScrubbedStrip } from '@/components/motion/ScrubbedStrip';
 import { Arrow } from '@/components/ui/Arrow';
+import { Photo } from '@/components/ui/Photo';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { home } from '@/content/home';
+import { img } from '@/content/images';
 
 const { manifesto } = home;
 
@@ -42,10 +44,28 @@ export function HomeManifesto() {
             </RevealText>
           </div>
 
-          <div className="col-span-4 mt-12 sm:col-span-6 lg:col-span-5 lg:col-start-7 lg:mt-16">
+          {/* A tall frame on the left, a wide one dropped below it on the
+              right, so the pair reads as a spread rather than a row. */}
+          <div className="col-span-4 mt-12 sm:col-span-4 lg:col-span-5 lg:col-start-1 lg:mt-20">
+            <Photo
+              image={img('/images/coding/mentor-at-laptop.jpg')}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              parallax={0.1}
+              className="aspect-4/5"
+            />
+          </div>
+
+          <div className="col-span-4 mt-12 sm:col-span-4 lg:col-span-5 lg:col-start-7 lg:mt-16">
             <RevealText as="p" variant="words" className="t-body text-body">
               {manifesto.body}
             </RevealText>
+
+            <Photo
+              image={img('/images/classroom/full-class-wide.jpg')}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              parallax={-0.12}
+              className="mt-12 aspect-16/10 lg:mt-24"
+            />
           </div>
         </div>
       </Container>

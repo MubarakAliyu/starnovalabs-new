@@ -16,16 +16,9 @@ export const about = {
     ],
   },
 
-  /**
-   * Vision and mission are marked pending because the Company Profile carries
-   * alternative wording that has not been reconciled. These are the
-   * approved-by-default versions and they do render in production.
-   *
-   * TODO: reconcile against the Company Profile 2026 wording and confirm which
-   * version is canonical, then set status to 'confirmed'.
-   */
+  /** Vision and mission, confirmed by the owner as the canonical wording. */
   missionVision: {
-    status: 'pending' as Status,
+    status: 'confirmed' as Status,
     vision: {
       title: 'Vision',
       body: "To build Africa's leading school-powered STEM education ecosystem — moving millions of young people from technology consumers to technology creators.",

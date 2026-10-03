@@ -5,18 +5,13 @@ import { SectionLabel } from '@/components/ui/SectionLabel';
 import { about } from '@/content/about';
 import { values } from '@/content/values';
 
-/**
- * The values render in full regardless of their pending status, and carry no
- * PENDING badge. They describe how the team already works rather than making a
- * claim about the world, so the production filter would be the wrong tool. This
- * is the single deliberate exception, flagged in the Batch 2 summary.
- */
+/** The five values, now confirmed and rendered like any other content. */
 export function AboutValues() {
   return (
     <Chapter theme="paper">
       <Container>
         <SectionLabel index="03" label={about.valuesSection.label} className="mb-14" />
-        <RevealText as="h2" variant="lines" className="t-h2 mb-20 max-w-[16ch]">
+        <RevealText as="h2" variant="lines" className="t-display-m mb-20 max-w-[16ch]">
           {about.valuesSection.heading}
         </RevealText>
 

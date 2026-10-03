@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "measure:js": "node scripts/measure-bundles.cjs"
+    "measure:js": "node scripts/measure-bundles.cjs",
+    "build:images": "node scripts/build-images.cjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

@@ -15,7 +15,12 @@ declare global {
   }
 }
 
+function introForced() {
+  return document.documentElement.dataset.introForce === '1';
+}
+
 function introAlreadyPlayed() {
+  if (introForced()) return false;
   try {
     return window.sessionStorage.getItem(INTRO_STORAGE_KEY) === 'done';
   } catch {
@@ -61,7 +66,7 @@ export function LoaderController() {
       };
 
       // Reduced motion, or a view we have already greeted this session.
-      if (motion === 'reduced' || introAlreadyPlayed() || !overlay) {
+      if ((motion === 'reduced' && !introForced()) || introAlreadyPlayed() || !overlay) {
         markIntroPlayed();
         finish();
         signalReveal();

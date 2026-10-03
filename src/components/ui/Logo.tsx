@@ -11,19 +11,25 @@ interface LogoProps {
 }
 
 /**
- * The wordmark, always from the supplied SVG — never re-typeset, never
- * recoloured beyond the provided variants (Master §6). Minimum width 120px.
+ * The horizontal lockup — the blue star tile beside the two-line wordmark.
+ * Always the supplied SVG: never re-typeset, never recoloured beyond the two
+ * provided variants (Master §6). Set 34px tall on mobile and 40px on desktop,
+ * which keeps the mark above its 120px minimum width and preserves the clear
+ * space built into the artwork.
  */
 export function Logo({ variant = 'onLight', priority = false, className }: LogoProps) {
-  const src = variant === 'onDark' ? '/brand/StarNova.svg' : '/brand/StarNova-1.svg';
+  const src =
+    variant === 'onDark'
+      ? '/brand/lockup-horizontal-light.svg'
+      : '/brand/lockup-horizontal.svg';
   return (
     <Image
       src={src}
       alt="StarNova Labs"
-      width={390}
-      height={54}
+      width={519}
+      height={103}
       priority={priority}
-      className={cn('h-auto w-[120px] md:w-[148px]', className)}
+      className={cn('h-[34px] w-auto md:h-10', className)}
     />
   );
 }

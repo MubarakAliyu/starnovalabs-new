@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { useMotion } from '@/components/motion/MotionProvider';
 import { useScrollLock } from '@/components/motion/SmoothScroll';
 import { TransitionLink } from '@/components/motion/TransitionLink';
+import { Logo } from '@/components/ui/Logo';
 import { StarGlyph } from '@/components/ui/StarGlyph';
 import { menuNav } from '@/content/nav';
 import { site, telHref } from '@/content/site';
@@ -30,6 +31,7 @@ interface MenuOverlayProps {
 export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayProps) {
   const ref = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLUListElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
   const { motion } = useMotion();
   const previouslyOpen = useRef(false);
 
@@ -72,9 +74,8 @@ export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayPr
         );
       }
 
-      // Focus the first link so keyboard users start inside the dialog.
-      const first = panel.querySelector<HTMLElement>(FOCUSABLE);
-      first?.focus({ preventScroll: true });
+      // Focus lands on Close, which is the way out of the dialog.
+      closeRef.current?.focus({ preventScroll: true });
       previouslyOpen.current = true;
       return;
     }
@@ -148,9 +149,30 @@ export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayPr
       className="bg-navy text-paper fixed inset-0 z-60 overflow-y-auto opacity-0"
       data-lenis-prevent
     >
-      <div className="container-page flex min-h-full flex-col justify-between gap-16 pt-28 pb-16 lg:pt-32">
-        <div className="grid gap-16 md:grid-cols-[1.4fr_1fr] md:gap-12">
-          <nav aria-label="Menu">
+      {/*
+        The overlay covers the header, so it reproduces it: same container, same
+        height, lockup on the left and the close control exactly where the Menu
+        button was.
+      */}
+      <div className="container-page flex h-18 items-center justify-between gap-6 lg:h-22">
+        <Logo variant="onDark" />
+        <button
+          ref={closeRef}
+          type="button"
+          onClick={onClose}
+          className="nav-link flex min-h-11 cursor-pointer items-center gap-3 px-2"
+        >
+          Close
+          <span aria-hidden="true" className="relative block h-3 w-6">
+            <span className="absolute top-1/2 left-0 block h-px w-full rotate-45 bg-current" />
+            <span className="absolute top-1/2 left-0 block h-px w-full -rotate-45 bg-current" />
+          </span>
+        </button>
+      </div>
+
+      <div className="container-page flex min-h-[calc(100%-5.5rem)] flex-col justify-between gap-16 pt-12 pb-16">
+        <div className="grid gap-16 md:grid-cols-12 md:gap-12">
+          <nav aria-label="Menu" className="md:col-span-7">
             <ul ref={linksRef} className="flex flex-col gap-2">
               {menuNav.map((item, index) => (
                 <li key={item.href} className="overflow-hidden">
@@ -189,7 +211,7 @@ export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayPr
             </ul>
           </nav>
 
-          <div className="flex flex-col gap-8 self-end">
+          <div className="flex flex-col gap-8 md:col-span-4 md:col-start-9 md:self-end">
             <div className="flex flex-col gap-2">
               <span className="t-label text-paper/50">Contact</span>
               <a href={`mailto:${site.email}`} className="t-lead link-underline w-fit">

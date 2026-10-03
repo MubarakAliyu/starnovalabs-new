@@ -174,6 +174,17 @@
     font-synthesis: none;
   }
 
+  /* Section headings: Mango, between display-l and h2. */
+  .t-display-m {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(2.75rem, 5.5vw, 5.5rem);
+    line-height: 0.9;
+    letter-spacing: 0;
+    font-synthesis: none;
+  }
+
   /* Secondary display lines use Mango 400. */
   .t-display-light {
     font-weight: 400;
@@ -300,6 +311,206 @@
   .line-mask-pad {
     padding-block: 0.08em;
   }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   BUTTONS
+   Colours come from the nearest [data-theme] ancestor rather than a prop, so
+   a button can never be left invisible on a section it was not written for.
+   ────────────────────────────────────────────────────────────────────────── */
+.btn {
+  --btn-fg: var(--color-ink);
+  --btn-bg: var(--color-white);
+  --btn-flood: var(--color-blue);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  overflow: hidden;
+  border-radius: 4px;
+  min-width: 168px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-synthesis: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  /* Mango sits high in its box; this optically centres the label. */
+  padding-top: 0.12em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.btn--md {
+  height: 52px;
+  padding-inline: 24px;
+  font-size: 20px;
+}
+
+.btn--lg {
+  height: 64px;
+  padding-inline: 32px;
+  font-size: 24px;
+}
+
+.btn:active {
+  scale: 0.97;
+}
+
+/* Default (light) section colours. */
+.btn--primary {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-ink);
+  border: 2px solid currentColor;
+}
+
+.btn--accent {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.btn--accent:hover {
+  background-color: var(--color-blue-press);
+}
+
+/* On dark bands the solid button inverts, so it is never ink on ink. */
+[data-theme='navy'] .btn--primary,
+[data-theme='ink'] .btn--primary,
+[data-theme='blue'] .btn--primary {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+}
+
+[data-theme='navy'] .btn--secondary,
+[data-theme='ink'] .btn--secondary,
+[data-theme='blue'] .btn--secondary {
+  color: var(--color-white);
+}
+
+/* Blue is already the brand colour here, so the flood goes to ink instead. */
+[data-theme='blue'] .btn {
+  --btn-flood: var(--color-ink);
+}
+
+[data-theme='blue'] .btn--accent {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+}
+
+/* The secondary button fills with its own outline colour and flips the text. */
+.btn--secondary:hover,
+.btn--secondary:focus-visible {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+[data-theme='navy'] .btn--secondary:hover,
+[data-theme='ink'] .btn--secondary:hover,
+[data-theme='blue'] .btn--secondary:hover,
+[data-theme='navy'] .btn--secondary:focus-visible,
+[data-theme='ink'] .btn--secondary:focus-visible,
+[data-theme='blue'] .btn--secondary:focus-visible {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+}
+
+/* Explicit overrides, for the rare composition CSS cannot infer. */
+.btn[data-tone='light'].btn--primary {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+.btn[data-tone='dark'].btn--primary {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+}
+
+.btn[data-tone='dark'].btn--secondary {
+  color: var(--color-white);
+}
+
+.btn__flood {
+  position: absolute;
+  aspect-ratio: 1;
+  width: 220%;
+  border-radius: 9999px;
+  background-color: var(--btn-flood);
+  scale: 0;
+  pointer-events: none;
+}
+
+.btn__label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  /* Mango's accents clip against a tight mask without this. */
+  padding-block: 0.15em;
+}
+
+.btn--link {
+  min-width: 0;
+  height: auto;
+  padding-inline: 0;
+  background: none;
+  border: 0;
+  font-size: 22px;
+  min-height: 44px;
+}
+
+.btn--link .btn__label {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn--link:hover .btn__label,
+.btn--link:focus-visible .btn__label {
+  text-decoration-color: currentColor;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   NAVIGATION
+   ────────────────────────────────────────────────────────────────────────── */
+.nav-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-synthesis: none;
+  /* The old roll effect clipped the caps; a growing underline cannot. */
+  padding-block: 0.15em;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 2px;
+  transition: background-size 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) {
+  .nav-link:hover {
+    background-size: 100% 2px;
+  }
+}
+
+.nav-link:focus-visible {
+  background-size: 100% 2px;
 }
 
 /* ──────────────────────────────────────────────────────────────────────────

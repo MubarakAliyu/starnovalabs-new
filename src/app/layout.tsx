@@ -7,7 +7,11 @@ import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { Curtain } from '@/components/motion/Curtain';
 import { Loader } from '@/components/motion/Loader';
-import { MotionProvider, motionBootstrapScript } from '@/components/motion/MotionProvider';
+import {
+  MotionProvider,
+  loaderCriticalCss,
+  motionBootstrapScript,
+} from '@/components/motion/MotionProvider';
 import { SmoothScroll } from '@/components/motion/SmoothScroll';
 import { TransitionProvider } from '@/components/motion/TransitionProvider';
 import { fontVariables } from '@/app/fonts';
@@ -47,7 +51,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     // differ from the server HTML.
     <html lang="en" className={fontVariables} data-motion="full" suppressHydrationWarning>
       <head>
-        {/* Resolves the motion mode before first paint, so nothing flashes. */}
+        {/* Styles the overlay before the stylesheet arrives, so the first
+            paint of a fresh session is the loader and never the page. */}
+        <style dangerouslySetInnerHTML={{ __html: loaderCriticalCss }} />
+        {/* Resolves motion and the intro decision before the first paint. */}
         <script dangerouslySetInnerHTML={{ __html: motionBootstrapScript }} />
         <noscript>
           {/* Without JavaScript the loader would never leave. */}

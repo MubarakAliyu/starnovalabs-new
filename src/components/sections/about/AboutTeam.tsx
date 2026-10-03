@@ -16,7 +16,7 @@ export function AboutTeam() {
     <Chapter theme="paper-2">
       <Container>
         <SectionLabel index="04" label={about.leadershipSection.label} className="mb-14" />
-        <RevealText as="h2" variant="lines" className="t-h2 mb-20 max-w-[16ch]">
+        <RevealText as="h2" variant="lines" className="t-display-m mb-20 max-w-[16ch]">
           {about.leadershipSection.heading}
         </RevealText>
 

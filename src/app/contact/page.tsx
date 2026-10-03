@@ -5,9 +5,11 @@ import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
 import { ContactForm } from '@/components/sections/contact/ContactForm';
 import { ContactSuccess } from '@/components/sections/contact/ContactSuccess';
+import { Photo } from '@/components/ui/Photo';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { StarGlyph } from '@/components/ui/StarGlyph';
 import { contact, isContactTopic } from '@/content/contact';
+import { img } from '@/content/images';
 import { site, telHref } from '@/content/site';
 import { requestTimeMs } from '@/lib/clock';
 import { isPublishable } from '@/lib/content';
@@ -108,6 +110,13 @@ export default async function ContactPage({ searchParams }: PageProps<'/contact'
                 ))}
               </ul>
             ) : null}
+
+            <Photo
+              image={img('/images/classroom/demo-day.jpg')}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              caption="Our learning space"
+              className="mt-14 aspect-4/3"
+            />
           </div>
 
           <div className="col-span-4 mt-20 sm:col-span-8 lg:col-span-6 lg:col-start-7 lg:mt-0">
