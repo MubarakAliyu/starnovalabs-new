@@ -1,9 +1,15 @@
 import type { Metadata } from 'next';
 
+import { buildMetadata } from '@/lib/seo';
+
 import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
 import { StickerPop } from '@/components/motion/StickerPop';
+import {
+  BreadcrumbJsonLd,
+  EducationalOrganizationJsonLd,
+} from '@/components/seo/JsonLd';
 import { CTASection } from '@/components/sections/CTASection';
 import { CohortTrack } from '@/components/sections/kit/CohortTrack';
 import { PathwayDiagram } from '@/components/sections/kit/PathwayDiagram';
@@ -23,10 +29,12 @@ import { stats } from '@/content/stats';
 import { testimonials } from '@/content/testimonials';
 import { publishable } from '@/lib/content';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Kids in Tech',
-  description: kit.hero.lead,
-};
+  description:
+    'Project-based STEM bootcamps where children build games, websites and working robots, delivered with partner schools.',
+  path: '/kids-in-tech',
+});
 
 export default function KidsInTechPage() {
   const visibleStats = publishable(stats);
@@ -36,6 +44,19 @@ export default function KidsInTechPage() {
 
   return (
     <>
+      <EducationalOrganizationJsonLd
+        courses={kit.tracks.items.map((track) => ({
+          name: track.name,
+          description: track.body,
+        }))}
+      />
+      <BreadcrumbJsonLd
+        trail={[
+          { name: 'Home', path: '/' },
+          { name: 'Kids in Tech', path: '/kids-in-tech' },
+        ]}
+      />
+
       {/* 01 — Hero */}
       <Chapter theme="paper" className="pt-[calc(var(--header-h)+clamp(48px,8vw,120px))]">
         <Container>

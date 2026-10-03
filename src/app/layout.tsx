@@ -13,6 +13,7 @@ import {
   motionBootstrapScript,
 } from '@/components/motion/MotionProvider';
 import { SmoothScroll } from '@/components/motion/SmoothScroll';
+import { OrganizationJsonLd } from '@/components/seo/JsonLd';
 import { TransitionProvider } from '@/components/motion/TransitionProvider';
 import { fontVariables } from '@/app/fonts';
 import { site } from '@/content/site';
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             </TransitionProvider>
           </SmoothScroll>
         </MotionProvider>
+        <OrganizationJsonLd />
         <Analytics />
         <SpeedInsights />
       </body>

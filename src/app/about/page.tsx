@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { buildMetadata } from '@/lib/seo';
+
 import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
@@ -15,10 +17,12 @@ import { SectionLabel } from '@/components/ui/SectionLabel';
 import { about } from '@/content/about';
 import { img } from '@/content/images';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'About',
-  description: about.hero.lead,
-};
+  description:
+    'From a series of Kids in Tech bootcamps to a company with a documented curriculum, a delivered platform and a product pipeline.',
+  path: '/about',
+});
 
 /** Community and classroom frames for the closing band. */
 const LIFE_BAND = [

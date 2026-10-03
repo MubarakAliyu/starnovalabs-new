@@ -1,18 +1,19 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-import { PageStub } from '@/components/sections/PageStub';
+import { LegalPageLayout } from '@/components/sections/legal/LegalPageLayout';
+import { legalPageBySlug } from '@/content/legal';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Safeguarding',
-};
+const page = legalPageBySlug('safeguarding')!;
+
+export const metadata: Metadata = buildMetadata({
+  title: page.title,
+  description: page.description,
+  path: `/${page.slug}`,
+});
 
 export default function SafeguardingPage() {
-  return (
-    <PageStub
-      index="08"
-      label="Legal"
-      title="SAFEGUARDING"
-      lead="How we protect the children in our programmes, and what we ask of the adults around them."
-    />
-  );
+  if (!page) notFound();
+  return <LegalPageLayout page={page} />;
 }

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { buildMetadata } from '@/lib/seo';
+
 import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
@@ -13,10 +15,12 @@ import { studio } from '@/content/services';
 import { work } from '@/content/work';
 import { publishable } from '@/lib/content';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Studio',
-  description: studio.hero.lead,
-};
+  description:
+    "The team behind StarNova's products also designs and builds for clients: products, brands and learning platforms.",
+  path: '/studio',
+});
 
 export default function StudioPage() {
   const publishedWork = publishable(work);

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { buildMetadata } from '@/lib/seo';
+
 import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
@@ -13,10 +15,12 @@ import { Sticker } from '@/components/ui/Sticker';
 import { work, workIndex } from '@/content/work';
 import { publishable } from '@/lib/content';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Work',
-  description: workIndex.lead,
-};
+  description:
+    'Selected projects from the StarNova Labs studio. Case studies are published once the client has agreed to them.',
+  path: '/work',
+});
 
 export default function WorkPage() {
   const cases = publishable(work);
