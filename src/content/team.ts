@@ -14,8 +14,7 @@ export interface TeamMember {
 
 /**
  * Photographs are mapped from the owner's confirmed list. Murtala Ishaq, Amina
- * and Abdul Malik have none yet and keep their initials tile. The unused
- * candidate-*.jpg files in the manifest are deliberately not referenced here.
+ * Hassan and Abdulmalik M. Yahaya have none yet and keep their initials tile.
  */
 export const team: TeamMember[] = [
   {
@@ -42,35 +41,33 @@ export const team: TeamMember[] = [
     photo: '/images/team/mustapher.jpg',
     status: 'confirmed',
   },
-  // TODO: confirm the spelling of this name before publishing.
   {
     name: 'Faruk Yusuf',
     role: 'Educator, Web Development',
     group: 'programme',
     photo: '/images/team/faruk.jpg',
-    status: 'pending',
+    status: 'confirmed',
   },
-  // TODO: full names needed for the programme team.
   {
-    name: 'Amina',
+    name: 'Amina Hassan',
     role: 'Coordinator, Scratch programme',
     group: 'programme',
     photo: null,
-    status: 'pending',
+    status: 'confirmed',
   },
   {
-    name: 'Abdul Malik',
+    name: 'Abdulmalik M. Yahaya',
     role: 'Coordinator, Scratch programme',
     group: 'programme',
     photo: null,
-    status: 'pending',
+    status: 'confirmed',
   },
   {
-    name: 'Aisha',
+    name: 'Aisha Zakari',
     role: 'Media & Content',
     group: 'programme',
     photo: '/images/team/aisha.jpg',
-    status: 'pending',
+    status: 'confirmed',
   },
 ];
 
