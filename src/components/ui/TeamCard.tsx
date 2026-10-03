@@ -25,7 +25,14 @@ function PortraitTile({ name }: { name: string }) {
           <path key={d} d={d} fill="var(--color-blue-lit)" />
         ))}
       </svg>
-      <span className="t-display-l relative text-paper/90">{initialsOf(name)}</span>
+      {/*
+        Not t-display-l: that sets line-height 0.88, and Mango's caps are taller
+        than their line box, so the initials were cut off at the top. A normal
+        line-height and a size tied to the tile keep them whole at every width.
+      */}
+      <span className="relative font-display text-[clamp(2.5rem,7vw,5rem)] leading-[1.2] font-semibold text-paper/90">
+        {initialsOf(name)}
+      </span>
     </div>
   );
 }
