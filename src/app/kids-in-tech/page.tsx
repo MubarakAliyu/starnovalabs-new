@@ -13,10 +13,12 @@ import { Photo } from '@/components/ui/Photo';
 import { Quote } from '@/components/ui/Quote';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { Stat } from '@/components/ui/Stat';
+import { SocialLinks } from '@/components/ui/SocialLinks';
 import { Sticker } from '@/components/ui/Sticker';
 import { VideoLoop } from '@/components/ui/VideoLoop';
 import { img } from '@/content/images';
 import { kit } from '@/content/kit';
+import { socialsFor } from '@/content/site';
 import { stats } from '@/content/stats';
 import { testimonials } from '@/content/testimonials';
 import { publishable } from '@/lib/content';
@@ -263,6 +265,13 @@ export default function KidsInTechPage() {
                 <Button href={kit.audiences.parents.safeguarding.href} variant="link" arrow>
                   {kit.audiences.parents.safeguarding.label}
                 </Button>
+              </div>
+
+              <div className="mt-10 flex flex-col gap-3">
+                <span className="t-label text-muted">
+                  {kit.audiences.parents.followHeading}
+                </span>
+                <SocialLinks links={socialsFor('kids-in-tech')} withLabels className="-ml-2" />
               </div>
             </div>
           </div>

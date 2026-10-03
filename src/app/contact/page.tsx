@@ -7,6 +7,7 @@ import { ContactForm } from '@/components/sections/contact/ContactForm';
 import { ContactSuccess } from '@/components/sections/contact/ContactSuccess';
 import { Photo } from '@/components/ui/Photo';
 import { SectionLabel } from '@/components/ui/SectionLabel';
+import { SocialLinks } from '@/components/ui/SocialLinks';
 import { StarGlyph } from '@/components/ui/StarGlyph';
 import { contact, isContactTopic } from '@/content/contact';
 import { img } from '@/content/images';
@@ -95,20 +96,10 @@ export default async function ContactPage({ searchParams }: PageProps<'/contact'
             </dl>
 
             {site.socials.length > 0 ? (
-              <ul className="mt-10 flex flex-wrap gap-5">
-                {site.socials.map((social) => (
-                  <li key={social.url}>
-                    <a
-                      href={social.url}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      className="t-label link-underline inline-flex min-h-11 items-center"
-                    >
-                      {social.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-10 flex flex-col gap-3">
+                <span className="t-label text-muted">Elsewhere</span>
+                <SocialLinks links={site.socials} withLabels className="-ml-2" />
+              </div>
             ) : null}
 
             <Photo

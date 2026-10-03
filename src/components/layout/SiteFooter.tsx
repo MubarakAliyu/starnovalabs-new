@@ -5,6 +5,7 @@ import { RevealText } from '@/components/motion/RevealText';
 import { TransitionLink } from '@/components/motion/TransitionLink';
 import { Button } from '@/components/ui/Button';
 import { Lockup } from '@/components/ui/Logo';
+import { SocialLinks } from '@/components/ui/SocialLinks';
 import { footerNav } from '@/content/nav';
 import { site, telHref } from '@/content/site';
 import { isPublishable } from '@/lib/content';
@@ -59,6 +60,10 @@ export function SiteFooter() {
               <span className="t-body text-paper/60">{site.location.value}</span>
             ) : null}
           </div>
+
+          {site.socials.length > 0 ? (
+            <SocialLinks links={site.socials} className="-ml-2 mt-4" />
+          ) : null}
         </div>
 
         <div className="border-line-dark flex flex-col-reverse gap-6 border-t pt-8 sm:flex-row sm:items-center sm:justify-between">

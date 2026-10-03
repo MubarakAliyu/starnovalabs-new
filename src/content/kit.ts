@@ -143,6 +143,7 @@ export const kit = {
       body: 'Enrolment, schedules and fees live on kidsintech.school.',
       cta: { label: 'Enrol your child', href: 'https://www.kidsintech.school' },
       safeguarding: { label: 'How we keep children safe', href: '/safeguarding' },
+      followHeading: 'Follow Kids in Tech',
     },
   },
 

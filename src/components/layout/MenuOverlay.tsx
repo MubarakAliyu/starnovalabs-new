@@ -6,6 +6,7 @@ import { useMotion } from '@/components/motion/MotionProvider';
 import { useScrollLock } from '@/components/motion/SmoothScroll';
 import { TransitionLink } from '@/components/motion/TransitionLink';
 import { Logo } from '@/components/ui/Logo';
+import { SocialLinks } from '@/components/ui/SocialLinks';
 import { StarGlyph } from '@/components/ui/StarGlyph';
 import { menuNav } from '@/content/nav';
 import { site, telHref } from '@/content/site';
@@ -237,20 +238,7 @@ export function MenuOverlay({ id, open, onClose, returnFocusRef }: MenuOverlayPr
             {site.socials.length > 0 ? (
               <div className="flex flex-col gap-2">
                 <span className="t-label text-paper/50">Elsewhere</span>
-                <ul className="flex flex-wrap gap-4">
-                  {site.socials.map((social) => (
-                    <li key={social.url}>
-                      <a
-                        href={social.url}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        className="t-label link-underline flex min-h-11 items-center"
-                      >
-                        {social.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <SocialLinks links={site.socials} withLabels className="-ml-2" />
               </div>
             ) : null}
           </div>
