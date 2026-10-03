@@ -21,6 +21,7 @@ export const menuNav: NavItem[] = [
     children: [
       { label: 'KITOS', href: '/products/kitos' },
       { label: 'EduStack', href: '/products/edustack' },
+      { label: 'NurAla Learning', href: '/products/nurala-learning' },
       { label: 'SkillStack', href: '/products/skillstack' },
     ],
   },
@@ -51,6 +52,7 @@ export const footerNav: FooterColumn[] = [
       { label: 'Kids in Tech', href: '/kids-in-tech' },
       { label: 'KITOS', href: '/products/kitos' },
       { label: 'EduStack', href: '/products/edustack' },
+      { label: 'NurAla Learning', href: '/products/nurala-learning' },
       { label: 'SkillStack', href: '/products/skillstack' },
     ],
   },
