@@ -102,16 +102,18 @@ export function useMotion() {
 
 /**
  * Runs in <head> before the first paint. It resolves the motion mode and
- * decides, there and then, whether the intro should play — so a returning
- * visitor never sees a flash of the loader, and a first-time visitor never
- * sees a flash of the page. ?intro=1 forces it and ?intro=0 skips it, which is
- * what the QA capture script uses.
+ * decides, there and then, whether the intro plays and in which form — so a
+ * returning visitor never sees a flash of the loader, and a first-time visitor
+ * never sees a flash of the page.
+ *
+ * The home page replays the loader on every full load, because that is the
+ * moment it is for: full the first time in a session, short on later reloads.
+ * Every other entry page keeps the once-per-session rule, so arriving deep in
+ * the site is not gated on an animation. Client-side navigation never replays
+ * it — the controller runs once per document.
+ *
+ * ?intro=1 forces the full version, ?intro=0 skips it, reduced motion skips it.
  */
-export const motionBootstrapScript = `(function(){var d=document.documentElement;var m='full';try{var s=localStorage.getItem('${MOTION_STORAGE_KEY}');m=(s==='full'||s==='reduced')?s:(window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'full');}catch(e){}d.dataset.motion=m;try{var q=location.search;var force=/[?&]intro=1(&|$)/.test(q);var skip=/[?&]intro=0(&|$)/.test(q);if(skip){d.dataset.intro='done';sessionStorage.setItem('${INTRO_STORAGE_KEY}','done');}else if(force){sessionStorage.removeItem('${INTRO_STORAGE_KEY}');d.dataset.introForce='1';}else if(m==='reduced'||sessionStorage.getItem('${INTRO_STORAGE_KEY}')==='done'){d.dataset.intro='done';}}catch(e){if(m==='reduced'){d.dataset.intro='done';}}})();`;
+export const motionBootstrapScript = `(function(){var d=document.documentElement;var m='full';try{var s=localStorage.getItem('${MOTION_STORAGE_KEY}');m=(s==='full'||s==='reduced')?s:(window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'full');}catch(e){}d.dataset.motion=m;function skip(){d.dataset.intro='done';}try{var q=location.search;var force=/[?&]intro=1(&|$)/.test(q);var off=/[?&]intro=0(&|$)/.test(q);var home=location.pathname==='/';var seen=false;try{seen=sessionStorage.getItem('${INTRO_STORAGE_KEY}')==='done';}catch(e){}if(off){skip();try{sessionStorage.setItem('${INTRO_STORAGE_KEY}','done');}catch(e){}}else if(force){d.dataset.introVariant='full';}else if(m==='reduced'){skip();}else if(home){d.dataset.introVariant=seen?'short':'full';}else if(seen){skip();}else{d.dataset.introVariant='full';}}catch(e){if(m==='reduced'){skip();}}})();`;
 
-/**
- * Critical CSS, inlined in <head> so the overlay is styled at the very first
- * paint. Without it the loader is an unstyled div at the end of the document
- * and the page shows through before the stylesheet lands.
- */
 export const loaderCriticalCss = `html:not([data-intro="done"]) [data-loader]{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;display:block;background-color:#0B1B2E;color:#fff;pointer-events:none}html[data-intro="done"] [data-loader]{display:none}`;
