@@ -23,9 +23,18 @@ export default function NotFound() {
             <RevealText as="p" variant="words" className="t-lead text-paper/80">
               This page drifted out of orbit.
             </RevealText>
-            <div className="mt-10">
-              <Button href="/" variant="solid-blue" size="lg" arrow>
+            <div className="mt-10 flex flex-wrap items-center gap-5">
+              <Button href="/" variant="accent" size="lg" arrow>
                 Back to home
+              </Button>
+              <Button href="/kids-in-tech" variant="secondary" size="md" arrow>
+                Kids in Tech
+              </Button>
+              <Button href="/products" variant="secondary" size="md" arrow>
+                Products
+              </Button>
+              <Button href="/contact" variant="secondary" size="md" arrow>
+                Contact
               </Button>
             </div>
           </div>

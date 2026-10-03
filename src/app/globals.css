@@ -663,3 +663,49 @@ html[data-motion='reduced'] *::after {
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   PRINT
+   Legal pages are the ones people print. Strip the furniture and the motion,
+   and let the prose run black on white.
+   ────────────────────────────────────────────────────────────────────────── */
+@media print {
+  [data-site-header],
+  [data-loader],
+  footer,
+  #site-menu,
+  [data-sticker],
+  nav[aria-label='On this page'] {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  [data-chapter] {
+    background: #fff !important;
+    color: #000 !important;
+    padding-block: 0 !important;
+  }
+
+  .container-page {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  /* Anything scroll-driven must be shown in full on paper. */
+  [data-panel],
+  [data-track] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+}
