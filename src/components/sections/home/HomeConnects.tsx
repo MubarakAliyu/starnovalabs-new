@@ -24,11 +24,13 @@ function PanelMedia({ index }: { index: number }) {
 
   if (index === 1) {
     return (
+      // A dashboard cropped into a portrait frame is unreadable, so this one
+      // is contained on paper rather than covered.
       <Photo
         image={img('/images/kitos/kitos-2.png')}
         sizes="(min-width: 1024px) 38vw, 100vw"
-        className="aspect-4/5"
-        fit="cover"
+        className="aspect-4/5 bg-paper-2 p-4"
+        fit="contain"
         position="top"
         reveal={false}
       />
@@ -77,7 +79,7 @@ export function HomeConnects() {
             </ol>
 
             {/* One text slot and one media slot; the panels swap through them. */}
-            <div className="relative lg:col-span-7 lg:min-h-[58vh]">
+            <div className="relative lg:col-span-7 lg:min-h-[46vh]">
               {connects.panels.map((panel, index) => (
                 <article
                   key={panel.index}
@@ -102,7 +104,7 @@ export function HomeConnects() {
           {/* Fills as the sequence advances. */}
           <div
             aria-hidden="true"
-            className="mt-12 hidden h-px w-full bg-line lg:block"
+            className="mt-8 hidden h-px w-full bg-line lg:block"
             data-sequence-track
           >
             <span data-sequence-progress className="block h-px w-0 bg-blue" />

@@ -31,7 +31,7 @@ const PROJECTS = [
   },
   {
     track: 'Web Development',
-    file: '/images/projects/profile-website-1.jpg',
+    file: '/images/coding/code-editor.jpg',
     body: 'A personal site a student can publish and show.',
     video: null,
   },

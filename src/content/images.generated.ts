@@ -316,16 +316,6 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "blurDataURL": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JQBWABDWBpKXwrmgaPNAKgAD+7UODC1KfgVr7PYX/LSvb7oH4CtA2ZNrrSUmE1hp3exndQIVkFGDwDTO+/1hgeYwGy5hLQYFJD9+Tk4jLBx7E6XI2hxXP9/l9vCnLt1yx06VEDoLdR2weRhFtMFtyARGddcZUzTBH9gXx5T2cAA=="
   },
   {
-    "file": "/images/coding/thinkpad-code.jpg",
-    "width": 1355,
-    "height": 1800,
-    "alt": "HTML on screen during a coding session",
-    "people": "none",
-    "tag": "coding",
-    "kb": 250,
-    "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACwAwCdASoQABUAPu1kqU2ppaOiMAgBMB2JQAALxDYsHxZZ2sh7OAD+CdyTuyfUGiovZLXEykBnfS2mvK5AReAOUSX6WTaJD/k9a3aXcNW42+QLpPpIoSvTIQC73AAA"
-  },
-  {
     "file": "/images/projects/scratch-game.jpg",
     "width": 1355,
     "height": 1800,
@@ -354,26 +344,6 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "tag": "project-scratch",
     "kb": 280,
     "blurDataURL": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JbACdACal4AcuiTxJ0pndWn9SAAD81XhQrKAnb+SYKbVDD2U7o4BEKLeqHb/fZzYH398T0f68ZF5M2yyVk7t/9QOCX1764cq9jzjm4w4lRS9YRY/U7TLamlL9X2gGr9Baf/HuNKjZ5LYL0dWueOtGcVIlav43uTNAAA=="
-  },
-  {
-    "file": "/images/projects/profile-website-1.jpg",
-    "width": 1355,
-    "height": 1800,
-    "alt": "A student's profile website built with HTML and CSS",
-    "people": "none",
-    "tag": "project-web",
-    "kb": 293,
-    "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQAwCdASoQABUAPu1iqU2ppaQiMAgBMB2JYwC06CILBIZIR15s+1AA/s8rlCrz+ET2SzdUxcgksVv61hoRZg9lY+oH3S0W+sZ26r1seMDN7+WTYSY9EXh9E1yIj+SDtvcog4FZoNxkAAAA"
-  },
-  {
-    "file": "/images/projects/profile-website-2.jpg",
-    "width": 1355,
-    "height": 1800,
-    "alt": "A student's profile website with a timetable section",
-    "people": "none",
-    "tag": "project-web",
-    "kb": 297,
-    "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACwAwCdASoQABUAPu1kqU4ppaOiMAgBMB2JYwCsACKeTWnMaiobcAD+2rsALtsDuiXQaAs1aoPnONzhN6WeT7OFvtgwjq+GJFEhKN16TYTmo1wEfIEfkaayB3PAE0l9N+iWFRildHAAAA=="
   },
   {
     "file": "/images/projects/student-presenting.jpg",

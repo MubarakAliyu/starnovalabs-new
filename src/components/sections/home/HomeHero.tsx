@@ -19,7 +19,7 @@ export function HomeHero() {
   return (
     <Chapter
       theme="paper"
-      className="relative pt-[calc(var(--header-h)+clamp(48px,8vw,120px))] pb-0"
+      className="relative pt-[calc(var(--header-h)+clamp(48px,8vw,120px))] pb-16 lg:pb-24"
     >
       <Container className="relative">
         <Parallax speed={0.1} className="relative z-10">
@@ -92,7 +92,7 @@ export function HomeHero() {
         <Parallax
           speed={-0.15}
           disabledBelow={1024}
-          className="mt-14 lg:absolute lg:top-[18%] lg:right-0 lg:z-0 lg:mt-0 lg:w-[42%]"
+          className="mt-14 lg:absolute lg:top-[14%] lg:right-[var(--page-margin)] lg:z-0 lg:mt-0 lg:w-[40%]"
         >
           <Photo
             image={img('/images/groups/cohort-handbooks-wide.jpg')}

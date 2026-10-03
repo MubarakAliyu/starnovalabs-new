@@ -104,9 +104,10 @@ export function useMotion() {
  * Runs in <head> before the first paint. It resolves the motion mode and
  * decides, there and then, whether the intro should play — so a returning
  * visitor never sees a flash of the loader, and a first-time visitor never
- * sees a flash of the page. ?intro=1 forces it either way, for testing.
+ * sees a flash of the page. ?intro=1 forces it and ?intro=0 skips it, which is
+ * what the QA capture script uses.
  */
-export const motionBootstrapScript = `(function(){var d=document.documentElement;var m='full';try{var s=localStorage.getItem('${MOTION_STORAGE_KEY}');m=(s==='full'||s==='reduced')?s:(window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'full');}catch(e){}d.dataset.motion=m;try{var force=/[?&]intro=1(&|$)/.test(location.search);if(force){sessionStorage.removeItem('${INTRO_STORAGE_KEY}');d.dataset.introForce='1';}else if(m==='reduced'||sessionStorage.getItem('${INTRO_STORAGE_KEY}')==='done'){d.dataset.intro='done';}}catch(e){if(m==='reduced'){d.dataset.intro='done';}}})();`;
+export const motionBootstrapScript = `(function(){var d=document.documentElement;var m='full';try{var s=localStorage.getItem('${MOTION_STORAGE_KEY}');m=(s==='full'||s==='reduced')?s:(window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'full');}catch(e){}d.dataset.motion=m;try{var q=location.search;var force=/[?&]intro=1(&|$)/.test(q);var skip=/[?&]intro=0(&|$)/.test(q);if(skip){d.dataset.intro='done';sessionStorage.setItem('${INTRO_STORAGE_KEY}','done');}else if(force){sessionStorage.removeItem('${INTRO_STORAGE_KEY}');d.dataset.introForce='1';}else if(m==='reduced'||sessionStorage.getItem('${INTRO_STORAGE_KEY}')==='done'){d.dataset.intro='done';}}catch(e){if(m==='reduced'){d.dataset.intro='done';}}})();`;
 
 /**
  * Critical CSS, inlined in <head> so the overlay is styled at the very first

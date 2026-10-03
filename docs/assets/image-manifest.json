@@ -310,16 +310,6 @@
     "kb": 317
   },
   {
-    "src": "Kids In Tech/Little Coders!/image 90.jpg",
-    "file": "/images/coding/thinkpad-code.jpg",
-    "width": 1355,
-    "height": 1800,
-    "alt": "HTML on screen during a coding session",
-    "people": "none",
-    "tag": "coding",
-    "kb": 250
-  },
-  {
     "src": "PXL_20260507_105528424.jpg",
     "file": "/images/projects/scratch-game.jpg",
     "width": 1355,
@@ -348,26 +338,6 @@
     "people": "none",
     "tag": "project-scratch",
     "kb": 280
-  },
-  {
-    "src": "Kids In Tech/Little Coders!/image 87.jpg",
-    "file": "/images/projects/profile-website-1.jpg",
-    "width": 1355,
-    "height": 1800,
-    "alt": "A student's profile website built with HTML and CSS",
-    "people": "none",
-    "tag": "project-web",
-    "kb": 293
-  },
-  {
-    "src": "Kids In Tech/Little Coders!/image 88.jpg",
-    "file": "/images/projects/profile-website-2.jpg",
-    "width": 1355,
-    "height": 1800,
-    "alt": "A student's profile website with a timetable section",
-    "people": "none",
-    "tag": "project-web",
-    "kb": 297
   },
   {
     "src": "Kids In Tech/Little Coders!/image 92.jpg",
