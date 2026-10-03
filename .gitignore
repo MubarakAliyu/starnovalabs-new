@@ -73,4 +73,5 @@ scaffold-tmp
 # QA screenshots are a working artefact, not part of the project.
 /docs/qa/*
 !/docs/qa/README.md
-/.chrome-qa/
+# Throwaway Chrome profiles used by the QA scripts.
+/.chrome-*/
