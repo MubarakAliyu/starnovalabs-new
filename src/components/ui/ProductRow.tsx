@@ -98,7 +98,9 @@ export function ProductRow({ product, index, preview }: ProductRowProps) {
       >
         <span className="t-label opacity-60">{String(index + 1).padStart(2, '0')}</span>
 
-        <span className="t-h3 transition-transform duration-[400ms] ease-out md:group-hover:translate-x-6">
+        {/* Mango, but on a tighter clamp than t-display-l's 3rem floor:
+            NURALA LEARNING does not fit a 360px row at that size. */}
+        <span className="t-display-l text-[clamp(1.75rem,5.5vw,4rem)] break-words uppercase transition-transform duration-[400ms] ease-out md:group-hover:translate-x-6">
           {product.name}
           <PendingBadge item={product} />
         </span>

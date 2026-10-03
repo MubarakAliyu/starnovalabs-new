@@ -3,7 +3,7 @@ import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
 import { PendingBadge } from '@/components/ui/PendingBadge';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { TeamCard } from '@/components/ui/TeamCard';
+import { TeamCard, TeamPortrait } from '@/components/ui/TeamCard';
 import { about } from '@/content/about';
 import { leadership, programmeTeam } from '@/content/team';
 import { publishable } from '@/lib/content';
@@ -29,14 +29,21 @@ export function AboutTeam() {
         {programme.length > 0 ? (
           <div className="mt-24">
             <h3 className="t-label mb-8 text-body">{about.leadershipSection.programmeHeading}</h3>
-            <ul className="grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
               {programme.map((member) => (
-                <li key={member.name} className="border-t border-line pt-4">
-                  <p className="t-h3 text-[1.25rem]">
-                    {member.name}
-                    <PendingBadge item={member} />
-                  </p>
-                  <p className="t-small text-body">{member.role}</p>
+                <li key={member.name} className="flex flex-col gap-4">
+                  {/* Same portrait treatment as leadership: a photograph where
+                      one exists, an initials tile where one does not. */}
+                  <div className="max-w-[12rem]">
+                    <TeamPortrait member={member} />
+                  </div>
+                  <div>
+                    <p className="t-h3 text-[1.25rem]">
+                      {member.name}
+                      <PendingBadge item={member} />
+                    </p>
+                    <p className="t-small text-body">{member.role}</p>
+                  </div>
                 </li>
               ))}
             </ul>
