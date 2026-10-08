@@ -77,7 +77,7 @@ export default function PartnerPage() {
                                 : 'text-blue'
                           }`}
                         />
-                        <span className={`t-body ${dark ? 'opacity-90' : 'text-body'}`}>
+                        <span className={`t-body ${dark ? '' : 'text-body'}`}>
                           {point}
                         </span>
                       </li>

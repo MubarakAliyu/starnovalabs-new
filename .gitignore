@@ -75,3 +75,4 @@ scaffold-tmp
 !/docs/qa/README.md
 # Throwaway Chrome profiles used by the QA scripts.
 /.chrome-*/
+.a11y-report.json

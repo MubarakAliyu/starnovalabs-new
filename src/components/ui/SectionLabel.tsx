@@ -15,7 +15,9 @@ export function SectionLabel({ index, label, theme = 'light', className }: Secti
       <span
         className={cn(
           't-label whitespace-nowrap',
-          theme === 'dark' ? 'text-white/70' : 'text-body',
+          // white/70 is only 3.33:1 on the blue chapter; /95 clears AA there
+          // and is still clearly a label against navy and ink.
+          theme === 'dark' ? 'text-white/95' : 'text-body',
         )}
       >
         {index ? `${index} — ` : null}

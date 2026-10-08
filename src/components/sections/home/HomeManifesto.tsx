@@ -15,6 +15,9 @@ function StripRow({ words, row }: { words: readonly string[]; row: 'a' | 'b' }) 
   return (
     <div
       data-strip-row={row}
+      // The strip scrubs through ink/10 and the sentence is already on the
+      // ScrubbedStrip root, so these words are decoration.
+      aria-hidden="true"
       className="t-display-l flex w-max shrink-0 items-center gap-8 whitespace-nowrap uppercase"
     >
       {words.map((word, index) => (

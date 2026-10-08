@@ -76,7 +76,7 @@ function ProductHero({ product }: { product: Product }) {
               </StickerPop>
             </div>
 
-            <RevealText as="p" variant="words" className="t-lead mt-10 max-w-[46ch] opacity-90">
+            <RevealText as="p" variant="words" className="t-lead mt-10 max-w-[46ch]">
               {product.oneLiner}
             </RevealText>
 
