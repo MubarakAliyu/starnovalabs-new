@@ -63,7 +63,7 @@ export function MaturityStrip({ products }: { products: Product[] }) {
     <div ref={ref} className="flex flex-col gap-10 md:grid md:gap-6" style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))` }}>
       {columns.map((column) => (
         <div key={column.stage} className="flex flex-col gap-5">
-          <h3 className="t-label border-t border-line pt-4 text-body">{column.label}</h3>
+          <h2 className="t-label border-t border-line pt-4 text-body">{column.label}</h2>
           <ul className="flex flex-col gap-3">
             {column.items.map((product) => (
               <li key={product.slug} data-chip>

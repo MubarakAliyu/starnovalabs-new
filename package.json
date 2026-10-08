@@ -10,7 +10,9 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "measure:js": "node scripts/measure-bundles.cjs",
-    "build:images": "node scripts/build-images.cjs"
+    "build:images": "node scripts/build-images.cjs",
+    "analyze": "node scripts/analyze-bundles.cjs",
+    "audit:a11y": "node scripts/a11y-audit.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

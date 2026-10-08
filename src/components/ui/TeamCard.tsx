@@ -42,7 +42,7 @@ function PortraitTile({ name }: { name: string }) {
  * together: desaturated with a blue cast at rest, full colour on hover or
  * keyboard focus.
  */
-function Portrait({ member }: { member: TeamMember }) {
+export function TeamPortrait({ member }: { member: TeamMember }) {
   if (!member.photo) return <PortraitTile name={member.name} />;
   const image = img(member.photo);
 
@@ -75,7 +75,7 @@ function Portrait({ member }: { member: TeamMember }) {
 export function TeamCard({ member, className }: { member: TeamMember; className?: string }) {
   return (
     <article className={cn('flex flex-col gap-5', className)}>
-      <Portrait member={member} />
+      <TeamPortrait member={member} />
       <div className="flex flex-col gap-2">
         <h3 className="t-h3">
           {member.name}

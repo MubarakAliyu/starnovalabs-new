@@ -70,7 +70,11 @@ export function HomeConnects() {
                   key={panel.index}
                   data-step
                   data-active={index === 0}
-                  className="group flex items-center gap-5 border-l-2 border-transparent py-4 pl-5 transition-[opacity,border-color] duration-300 data-[active=false]:opacity-30 data-[active=true]:border-blue data-[active=true]:opacity-100"
+                  // The inactive steps are still content, so they have to meet
+                  // AA: 75% is the lowest that keeps the ink label at 4.5:1 and
+                  // the large blue numeral at 3:1 on paper. The blue left
+                  // border is what carries the active state.
+                  className="group flex items-center gap-5 border-l-2 border-transparent py-4 pl-5 transition-[opacity,border-color] duration-300 data-[active=false]:opacity-75 data-[active=true]:border-blue data-[active=true]:opacity-100"
                 >
                   <span className="t-display-l text-blue">{panel.index}</span>
                   <span className="t-h3">{panel.title}</span>

@@ -74,7 +74,12 @@ export function RevealText({
         type: variant === 'words' ? 'words' : 'lines',
         mask: variant === 'words' ? 'words' : 'lines',
         autoSplit: true,
-        aria: 'hidden',
+        // 'hidden' would hide the element itself, which silently took every
+        // page's h1 out of the accessibility tree. 'none' leaves the split
+        // lines readable, so the text is announced from the element's own
+        // content — and no aria-label is needed on a <p>, where it is
+        // prohibited. We split lines and words, never characters.
+        aria: srHidden ? 'hidden' : 'none',
         linesClass: 'line-mask-pad',
         onSplit(self) {
           const targets = variant === 'words' ? self.words : self.lines;
@@ -135,7 +140,6 @@ export function RevealText({
       // A single ref type covers every tag this renders.
       ref={ref as React.Ref<never>}
       aria-hidden={srHidden ? 'true' : undefined}
-      aria-label={srHidden ? undefined : children}
       className={cn(isHero || variant === 'lines' ? 'line-mask-pad' : undefined, className)}
     >
       {children}

@@ -1,9 +1,15 @@
 import type { Metadata } from 'next';
 
+import { buildMetadata } from '@/lib/seo';
+
 import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
 import { StickerPop } from '@/components/motion/StickerPop';
+import {
+  BreadcrumbJsonLd,
+  EducationalOrganizationJsonLd,
+} from '@/components/seo/JsonLd';
 import { CTASection } from '@/components/sections/CTASection';
 import { CohortTrack } from '@/components/sections/kit/CohortTrack';
 import { PathwayDiagram } from '@/components/sections/kit/PathwayDiagram';
@@ -23,10 +29,12 @@ import { stats } from '@/content/stats';
 import { testimonials } from '@/content/testimonials';
 import { publishable } from '@/lib/content';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Kids in Tech',
-  description: kit.hero.lead,
-};
+  description:
+    'Project-based STEM bootcamps where children build games, websites and working robots, delivered with partner schools.',
+  path: '/kids-in-tech',
+});
 
 export default function KidsInTechPage() {
   const visibleStats = publishable(stats);
@@ -36,6 +44,19 @@ export default function KidsInTechPage() {
 
   return (
     <>
+      <EducationalOrganizationJsonLd
+        courses={kit.tracks.items.map((track) => ({
+          name: track.name,
+          description: track.body,
+        }))}
+      />
+      <BreadcrumbJsonLd
+        trail={[
+          { name: 'Home', path: '/' },
+          { name: 'Kids in Tech', path: '/kids-in-tech' },
+        ]}
+      />
+
       {/* 01 — Hero */}
       <Chapter theme="paper" className="pt-[calc(var(--header-h)+clamp(48px,8vw,120px))]">
         <Container>
@@ -107,29 +128,31 @@ export default function KidsInTechPage() {
       </Chapter>
 
       {/* 03 — How a cohort works */}
-      <Chapter theme="paper" flush className="section-pad">
+      <Chapter theme="paper" flush className="section-pad lg:py-0">
         <Container>
-          <SectionLabel index="03" label={kit.cohort.label} className="mb-12" />
-          <RevealText as="h2" variant="lines" className="t-display-m mb-16 max-w-[16ch]">
-            {kit.cohort.heading}
-          </RevealText>
-        </Container>
-
-        <Container>
-          <CohortTrack skipHref="#tracks">
+          <CohortTrack
+            skipHref="#tracks"
+            heading={
+              <>
+                <SectionLabel index="03" label={kit.cohort.label} className="mb-10" />
+                <RevealText as="h2" variant="lines" className="t-display-m max-w-[16ch]">
+                  {kit.cohort.heading}
+                </RevealText>
+              </>
+            }
+          >
             {kit.cohort.steps.map((step) => (
-              <article
-                key={step.index}
-                className="flex shrink-0 flex-col gap-5 lg:w-[30rem]"
-              >
+              <article key={step.index} className="flex shrink-0 flex-col gap-4 lg:w-[24rem]">
                 <Photo
                   image={img(step.image)}
-                  sizes="(min-width: 1024px) 30rem, 100vw"
+                  sizes="(min-width: 1024px) 24rem, 100vw"
                   className="aspect-4/3"
                 />
-                <span className="t-display-l text-blue">{step.index}</span>
+                <span className="t-display-l text-[clamp(2.5rem,4vw,3.5rem)] text-blue">
+                  {step.index}
+                </span>
                 <h3 className="t-h3">{step.title}</h3>
-                <p className="t-body max-w-[34ch] text-body">{step.body}</p>
+                <p className="t-body max-w-[32ch] text-body">{step.body}</p>
               </article>
             ))}
           </CohortTrack>

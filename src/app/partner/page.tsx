@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { buildMetadata } from '@/lib/seo';
+
 import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
@@ -10,10 +12,12 @@ import { StarGlyph } from '@/components/ui/StarGlyph';
 import { img } from '@/content/images';
 import { partnerPage } from '@/content/partner';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Partner with us',
-  description: partnerPage.hero.lead,
-};
+  description:
+    'For schools, sponsors, investors and product collaborators who believe children should create with technology, not only consume it.',
+  path: '/partner',
+});
 
 export default function PartnerPage() {
   return (
@@ -73,7 +77,7 @@ export default function PartnerPage() {
                                 : 'text-blue'
                           }`}
                         />
-                        <span className={`t-body ${dark ? 'opacity-90' : 'text-body'}`}>
+                        <span className={`t-body ${dark ? '' : 'text-body'}`}>
                           {point}
                         </span>
                       </li>

@@ -1,18 +1,19 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-import { PageStub } from '@/components/sections/PageStub';
+import { LegalPageLayout } from '@/components/sections/legal/LegalPageLayout';
+import { legalPageBySlug } from '@/content/legal';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Terms',
-};
+const page = legalPageBySlug('terms')!;
+
+export const metadata: Metadata = buildMetadata({
+  title: page.title,
+  description: page.description,
+  path: `/${page.slug}`,
+});
 
 export default function TermsPage() {
-  return (
-    <PageStub
-      index="10"
-      label="Legal"
-      title="TERMS"
-      lead="The terms that apply to this website and to the services we provide through it."
-    />
-  );
+  if (!page) notFound();
+  return <LegalPageLayout page={page} />;
 }

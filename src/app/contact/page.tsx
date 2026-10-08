@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { buildMetadata } from '@/lib/seo';
+
 import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
@@ -15,10 +17,12 @@ import { site, telHref } from '@/content/site';
 import { requestTimeMs } from '@/lib/clock';
 import { isPublishable } from '@/lib/content';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Contact',
-  description: contact.hero.lead,
-};
+  description:
+    'Tell us about your school, your idea or your project. We reply within two working days.',
+  path: '/contact',
+});
 
 /**
  * This route reads searchParams on the server, which makes it the one dynamic

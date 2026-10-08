@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { buildMetadata } from '@/lib/seo';
+
 import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
@@ -11,10 +13,12 @@ import { img } from '@/content/images';
 import { productsIndex, products } from '@/content/products';
 import { publishable } from '@/lib/content';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Products',
-  description: productsIndex.lead,
-};
+  description:
+    'Programmes that prove it and platforms that scale it: Kids in Tech, KITOS, EduStack, NurAla Learning and SkillStack.',
+  path: '/products',
+});
 
 /**
  * Row previews are resolved here, in a server component. Looking them up inside

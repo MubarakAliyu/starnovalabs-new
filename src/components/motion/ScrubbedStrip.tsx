@@ -46,6 +46,8 @@ export function ScrubbedStrip({ children, className, ariaLabel }: ScrubbedStripP
       aria-label={ariaLabel}
       className={cn('full-bleed flex flex-col gap-2 overflow-hidden', className)}
     >
+      {/* role="img" above names the strip once; each row is marked
+          aria-hidden by its caller, since the words are decoration. */}
       {children}
     </div>
   );

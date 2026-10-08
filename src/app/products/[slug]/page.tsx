@@ -5,6 +5,10 @@ import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
 import { StickerPop } from '@/components/motion/StickerPop';
+import {
+  BreadcrumbJsonLd,
+  SoftwareApplicationJsonLd,
+} from '@/components/seo/JsonLd';
 import { CTASection } from '@/components/sections/CTASection';
 import { StageTimeline } from '@/components/sections/products/StageTimeline';
 import { Button } from '@/components/ui/Button';
@@ -21,6 +25,7 @@ import {
   type Product,
 } from '@/content/products';
 import { isPublishable } from '@/lib/content';
+import { buildMetadata } from '@/lib/seo';
 
 export function generateStaticParams() {
   return productSlugs.map((slug) => ({ slug }));
@@ -33,11 +38,12 @@ export async function generateMetadata({
   const product = productBySlug(slug);
   if (!product) return { title: 'Product' };
 
-  return {
+  return buildMetadata({
     title: product.fullName ? `${product.name} — ${product.fullName}` : product.name,
     description: product.oneLiner,
-    robots: product.indexable ? undefined : { index: false, follow: false },
-  };
+    path: product.href,
+    noindex: !product.indexable,
+  });
 }
 
 /** Each chapter alternates so no two adjacent bands share a colour. */
@@ -70,7 +76,7 @@ function ProductHero({ product }: { product: Product }) {
               </StickerPop>
             </div>
 
-            <RevealText as="p" variant="words" className="t-lead mt-10 max-w-[46ch] opacity-90">
+            <RevealText as="p" variant="words" className="t-lead mt-10 max-w-[46ch]">
               {product.oneLiner}
             </RevealText>
 
@@ -122,6 +128,21 @@ export default async function ProductPage({ params }: PageProps<'/products/[slug
 
   return (
     <>
+      {product.kind !== 'programme' ? (
+        <SoftwareApplicationJsonLd
+          name={product.fullName ?? product.name}
+          description={product.oneLiner}
+          url={product.href}
+        />
+      ) : null}
+      <BreadcrumbJsonLd
+        trail={[
+          { name: 'Home', path: '/' },
+          { name: 'Products', path: '/products' },
+          { name: product.name, path: product.href },
+        ]}
+      />
+
       <ProductHero product={product} />
 
       {product.problem || product.intro ? (
