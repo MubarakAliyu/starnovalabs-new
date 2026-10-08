@@ -14,9 +14,14 @@ const routes = [
   ['/studio', 'studio.html'],
   ['/work', 'work.html'],
   ['/privacy', 'privacy.html'],
+  ['/terms', 'terms.html'],
+  ['/safeguarding', 'safeguarding.html'],
 ];
 
-const BUDGET = { '/': 215, default: 205 };
+// Batch 4 §4: home <= 180 KB gzip, every other route <= 170 KB. We do not meet
+// these — see docs/QA.md for the arithmetic. The numbers stay as specified so
+// the gap is visible in the report rather than hidden behind a looser budget.
+const BUDGET = { '/': 180, default: 170 };
 const rows = [];
 
 for (const [route, file] of routes) {
