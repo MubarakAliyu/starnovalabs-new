@@ -1,9 +1,8 @@
 import { Chapter } from '@/components/layout/Chapter';
 import { Container } from '@/components/layout/Container';
 import { RevealText } from '@/components/motion/RevealText';
-import { PendingBadge } from '@/components/ui/PendingBadge';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { TeamCard, TeamPortrait } from '@/components/ui/TeamCard';
+import { TeamCard } from '@/components/ui/TeamCard';
 import { about } from '@/content/about';
 import { leadership, programmeTeam } from '@/content/team';
 import { publishable } from '@/lib/content';
@@ -20,30 +19,32 @@ export function AboutTeam() {
           {about.leadershipSection.heading}
         </RevealText>
 
-        <div className="grid gap-12 md:grid-cols-3 md:gap-8">
+        {/* Three across from md. The programme grid below uses the same gaps
+            and the same container, so the two line up edge to edge. */}
+        <div className="grid gap-x-8 gap-y-12 md:grid-cols-3">
           {leads.map((member) => (
-            <TeamCard key={member.name} member={member} />
+            <TeamCard
+              key={member.name}
+              member={member}
+              sizes="(min-width: 768px) 33vw, 100vw"
+            />
           ))}
         </div>
 
         {programme.length > 0 ? (
           <div className="mt-24">
             <h3 className="t-label mb-8 text-body">{about.leadershipSection.programmeHeading}</h3>
-            <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
+            {/* The same card as the leadership, at the same width: one per row
+                on mobile, two across on tablet, four on desktop. Nothing caps
+                the portrait, so a card here is exactly as wide as a card above. */}
+            <ul className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
               {programme.map((member) => (
-                <li key={member.name} className="flex flex-col gap-4">
-                  {/* Same portrait treatment as leadership: a photograph where
-                      one exists, an initials tile where one does not. */}
-                  <div className="max-w-[12rem]">
-                    <TeamPortrait member={member} />
-                  </div>
-                  <div>
-                    <p className="t-h3 text-[1.25rem]">
-                      {member.name}
-                      <PendingBadge item={member} />
-                    </p>
-                    <p className="t-small text-body">{member.role}</p>
-                  </div>
+                <li key={member.name}>
+                  <TeamCard
+                    member={member}
+                    as="h4"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                  />
                 </li>
               ))}
             </ul>

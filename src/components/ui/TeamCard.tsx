@@ -43,7 +43,7 @@ function PortraitTile({ name }: { name: string }) {
  * together: desaturated with a blue cast at rest, full colour on hover or
  * keyboard focus.
  */
-export function TeamPortrait({ member }: { member: TeamMember }) {
+export function TeamPortrait({ member, sizes }: { member: TeamMember; sizes: string }) {
   if (!member.photo) return <PortraitTile name={member.name} />;
   const image = img(member.photo);
 
@@ -54,7 +54,7 @@ export function TeamPortrait({ member }: { member: TeamMember }) {
         alt={image.alt}
         width={image.width}
         height={image.height}
-        sizes="(min-width: 768px) 30vw, 100vw"
+        sizes={sizes}
         loading="lazy"
         placeholder={image.blurDataURL ? 'blur' : 'empty'}
         blurDataURL={image.blurDataURL ?? undefined}
@@ -73,31 +73,46 @@ export function TeamPortrait({ member }: { member: TeamMember }) {
   );
 }
 
-export function TeamCard({ member, className }: { member: TeamMember; className?: string }) {
+export function TeamCard({
+  member,
+  sizes,
+  /** Programme members sit under their own label, so their names are h4s. */
+  as: NameTag = 'h3',
+  className,
+}: {
+  member: TeamMember;
+  sizes: string;
+  as?: 'h3' | 'h4';
+  className?: string;
+}) {
   return (
     <article className={cn('flex flex-col gap-5', className)}>
-      <TeamPortrait member={member} />
+      <TeamPortrait member={member} sizes={sizes} />
       <div className="flex flex-col gap-2">
         {/*
-          Name and marks share one line: the name sits left, the row is pushed
-          right with ml-auto. flex-wrap is the collision rule — if a long name
-          leaves no room, the marks drop to their own line and ml-auto keeps
-          them right-aligned. They never overlap.
+          The row sits under the name, left-aligned, until there is genuinely
+          room for it beside one. At lg the leadership grid is three across and
+          a card is about 295px, which a name plus four marks (roughly 330px)
+          does not fit — Aliyu's row wrapped while the other two stayed inline,
+          so the roles fell out of line with each other. xl is the first width
+          where all three fit, so they all switch together. No flex-wrap here:
+          the breakpoint decides, which is what stops a row half-wrapping.
         */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-          <h3 className="t-h3">
+        <div className="flex flex-col items-start gap-1 xl:flex-row xl:items-center xl:gap-x-4">
+          <NameTag className="t-h3">
             {member.name}
             <PendingBadge item={member} />
-          </h3>
+          </NameTag>
           {/*
-            items-center centres on the line box, which sits a little below the
-            centre of the caps because of the descender space. This lifts the
-            row back onto the cap height; it scales with the heading's clamp.
-            */}
+            The 10px pull puts the end glyph flush with the portrait's edge —
+            left edge when stacked, right edge when inline. Inline, the row is
+            also lifted onto the cap height, since items-center would otherwise
+            centre it on a line box that includes the descender space.
+          */}
           <TeamSocials
             name={member.name}
             socials={member.socials}
-            className="ml-auto -translate-y-[0.06em]"
+            className="-ml-[10px] xl:-mr-[10px] xl:ml-auto xl:-translate-y-[0.06em]"
           />
         </div>
         <p className="t-label text-body">{member.role}</p>

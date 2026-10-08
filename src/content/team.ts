@@ -83,7 +83,7 @@ export const team: TeamMember[] = [
     name: 'Faruk Yusuf',
     role: 'Educator, Web Development',
     group: 'programme',
-    photo: '/images/team/faruk.jpg',
+    photo: '/images/team/faruk-yusuf.jpg',
     status: 'confirmed',
   },
   {
@@ -104,7 +104,7 @@ export const team: TeamMember[] = [
     name: 'Aisha Zakari',
     role: 'Media & Content',
     group: 'programme',
-    photo: '/images/team/aisha.jpg',
+    photo: '/images/team/aisha-zakari.jpg',
     status: 'confirmed',
   },
 ];
