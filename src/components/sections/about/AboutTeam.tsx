@@ -29,7 +29,7 @@ export function AboutTeam() {
         {programme.length > 0 ? (
           <div className="mt-24">
             <h3 className="t-label mb-8 text-body">{about.leadershipSection.programmeHeading}</h3>
-            <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
               {programme.map((member) => (
                 <li key={member.name} className="flex flex-col gap-4">
                   {/* Same portrait treatment as leadership: a photograph where

@@ -346,6 +346,16 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoQAAwAA4BaJYwC7AEfbpxr/YF/zgAA/u6tnulcmQdgJjBMbKsLI+tvkObLVZjMBxEfFq5ds0hVyRESaAZqiugm+KRD8XfDH/mU9qZ4n74HcmzfDjmkKsAA"
   },
   {
+    "file": "/images/team/aliyu-mubarak.jpg",
+    "width": 1352,
+    "height": 1800,
+    "alt": "Aliyu Mubarak, Founder & CEO",
+    "people": "adults",
+    "tag": "team",
+    "kb": 133,
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JbACdMoAC/J7s7wTAoN7vqSQA/silqZaB1QnxEte6CjCH5vWv/pwuJYVavdGF4esZVyGiVl2CmFjG7zyVAxB5RlwCw0yuU5S/yONM7I7WemEydXL/XdpPEMFfnTgTbEjcd1AA"
+  },
+  {
     "file": "/images/team/founder-handbook.jpg",
     "width": 1355,
     "height": 1800,

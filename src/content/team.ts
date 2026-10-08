@@ -2,6 +2,24 @@ import type { Status } from '@/lib/content';
 
 export type TeamGroup = 'leadership' | 'programme';
 
+/** Personal accounts. A member shows only the ones they have. */
+export type TeamSocialType = 'linkedin' | 'instagram' | 'x' | 'website';
+
+export interface TeamSocial {
+  type: TeamSocialType;
+  url: string;
+}
+
+/** The order the marks are always drawn in, whichever ones a member has. */
+export const TEAM_SOCIAL_ORDER: TeamSocialType[] = ['linkedin', 'instagram', 'x', 'website'];
+
+export const TEAM_SOCIAL_LABEL: Record<TeamSocialType, string> = {
+  linkedin: 'LinkedIn',
+  instagram: 'Instagram',
+  x: 'X',
+  website: 'Website',
+};
+
 export interface TeamMember {
   name: string;
   role: string;
@@ -9,12 +27,17 @@ export interface TeamMember {
   group: TeamGroup;
   /** Real photography only; null until a consented photo exists. */
   photo: string | null;
+  /** Owner-supplied personal accounts. Omitted where there are none. */
+  socials?: TeamSocial[];
   status: Status;
 }
 
 /**
  * Photographs are mapped from the owner's confirmed list. Murtala Ishaq, Amina
  * Hassan and Abdulmalik M. Yahaya have none yet and keep their initials tile.
+ *
+ * Social accounts are the people's own, supplied by the owner. Anyone without
+ * them simply renders no icon row.
  */
 export const team: TeamMember[] = [
   {
@@ -22,7 +45,13 @@ export const team: TeamMember[] = [
     role: 'Founder & CEO',
     bio: 'Company direction, strategy, product and curriculum design. Leads the weekly company review and owns the roadmap.',
     group: 'leadership',
-    photo: '/images/team/founder-handbook.jpg',
+    photo: '/images/team/aliyu-mubarak.jpg',
+    socials: [
+      { type: 'linkedin', url: 'https://www.linkedin.com/in/aliyu-mubarak-a080b0196/' },
+      { type: 'instagram', url: 'https://www.instagram.com/aliyumubarak.ui' },
+      { type: 'x', url: 'https://x.com/aliyumubarak_ui' },
+      { type: 'website', url: 'https://www.aliyumubarak.me/' },
+    ],
     status: 'confirmed',
   },
   {
@@ -31,6 +60,11 @@ export const team: TeamMember[] = [
     bio: 'Operations, partnerships, logistics and programme coordination. Leads external business development and bootcamp delivery.',
     group: 'leadership',
     photo: null,
+    socials: [
+      { type: 'linkedin', url: 'https://www.linkedin.com/in/murtala-ishaq-24a550246/' },
+      { type: 'instagram', url: 'https://www.instagram.com/murtala_legitcoolcat/' },
+      { type: 'x', url: 'https://x.com/Thelegitcoolcat' },
+    ],
     status: 'confirmed',
   },
   {
@@ -39,6 +73,10 @@ export const team: TeamMember[] = [
     bio: 'Technology direction, product development and technical education. Leads KITOS and the robotics programme.',
     group: 'leadership',
     photo: '/images/team/mustapher.jpg',
+    socials: [
+      { type: 'linkedin', url: 'https://www.linkedin.com/in/mustapha-muhammad-lawal-a229312a4/' },
+      { type: 'instagram', url: 'https://www.instagram.com/themustaphalawal/' },
+    ],
     status: 'confirmed',
   },
   {

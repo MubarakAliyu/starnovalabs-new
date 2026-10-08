@@ -1,6 +1,7 @@
 import NextImage from 'next/image';
 
 import { PendingBadge } from '@/components/ui/PendingBadge';
+import { TeamSocials } from '@/components/ui/TeamSocials';
 import { img } from '@/content/images';
 import { initialsOf, type TeamMember } from '@/content/team';
 import { STAR_BLADES, STAR_VIEWBOX } from '@/lib/star';
@@ -77,10 +78,28 @@ export function TeamCard({ member, className }: { member: TeamMember; className?
     <article className={cn('flex flex-col gap-5', className)}>
       <TeamPortrait member={member} />
       <div className="flex flex-col gap-2">
-        <h3 className="t-h3">
-          {member.name}
-          <PendingBadge item={member} />
-        </h3>
+        {/*
+          Name and marks share one line: the name sits left, the row is pushed
+          right with ml-auto. flex-wrap is the collision rule — if a long name
+          leaves no room, the marks drop to their own line and ml-auto keeps
+          them right-aligned. They never overlap.
+        */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          <h3 className="t-h3">
+            {member.name}
+            <PendingBadge item={member} />
+          </h3>
+          {/*
+            items-center centres on the line box, which sits a little below the
+            centre of the caps because of the descender space. This lifts the
+            row back onto the cap height; it scales with the heading's clamp.
+            */}
+          <TeamSocials
+            name={member.name}
+            socials={member.socials}
+            className="ml-auto -translate-y-[0.06em]"
+          />
+        </div>
         <p className="t-label text-body">{member.role}</p>
         {member.bio ? <p className="t-body mt-2 text-body">{member.bio}</p> : null}
       </div>
