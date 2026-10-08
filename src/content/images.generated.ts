@@ -346,6 +346,16 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoQAAwAA4BaJYwC7AEfbpxr/YF/zgAA/u6tnulcmQdgJjBMbKsLI+tvkObLVZjMBxEfFq5ds0hVyRESaAZqiugm+KRD8XfDH/mU9qZ4n74HcmzfDjmkKsAA"
   },
   {
+    "file": "/images/team/aliyu-mubarak.jpg",
+    "width": 1352,
+    "height": 1800,
+    "alt": "Aliyu Mubarak, Founder & CEO",
+    "people": "adults",
+    "tag": "team",
+    "kb": 133,
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JbACdMoAC/J7s7wTAoN7vqSQA/silqZaB1QnxEte6CjCH5vWv/pwuJYVavdGF4esZVyGiVl2CmFjG7zyVAxB5RlwCw0yuU5S/yONM7I7WemEydXL/XdpPEMFfnTgTbEjcd1AA"
+  },
+  {
     "file": "/images/team/founder-handbook.jpg",
     "width": 1355,
     "height": 1800,
@@ -426,24 +436,24 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "blurDataURL": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZACdMoR3AdCVD7Pjla1lI4sXlqCYrQAA/udWENPhL8Faf87bliv/PGhwJlhil7+HxVIFWmKTK4qn5Bmt6wBSTIgHOQM9496uGB7mjIPKaGITe7vOjcNfjHxiWJpn3yOjczAeWwSVxf/duR15SgQAauBbL7t9qW+fndXFaQspzn5A/zOCJHjwuL/hLgUoaAAAAA=="
   },
   {
-    "file": "/images/team/aisha.jpg",
-    "width": 996,
-    "height": 1216,
-    "alt": "Aisha Zakari, Media & Content",
+    "file": "/images/team/aisha-zakari.jpg",
+    "width": 1108,
+    "height": 1385,
+    "alt": "Portrait of Aisha Zakari",
     "people": "adults",
     "tag": "team",
-    "kb": 68,
-    "blurDataURL": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBACdASoQABQAPu1iqU2ppaOiMAgBMB2JYwC7ABjuJFVvooU5m/eAAAD+8W6y/ngExpD0XqhYXdiD+zrctJFU9hNn2YHB4GFCEuX8LlOedEi+bJEAHJpompHU+NsAih6gJCXrOYn7O+J+6aKJjRJfrUQ/7y7WBpJl66Z/6SeCSAAA"
+    "kb": 130,
+    "blurDataURL": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAwBACdASoQABQAPu1iqU2ppaOiMAgBMB2JQBadMY2UB8+Na95L8RhiogAA/vNJ52vMMPJHIqEc7QIQoELayIVDFp7i0SpaByx9oUFV1KyFFidVD033E6UR/8+/5CNA+ibWCm5ot/kjuef7BpX9o+kCZb2nHQUisRATht+Ko4cytEpaQiC/3uEv87X/QhLaALAAAA=="
   },
   {
-    "file": "/images/team/faruk.jpg",
-    "width": 1280,
-    "height": 853,
-    "alt": "Faruk Yusuf, Educator, Web Development",
+    "file": "/images/team/faruk-yusuf.jpg",
+    "width": 688,
+    "height": 860,
+    "alt": "Portrait of Faruk Yusuf",
     "people": "adults",
     "tag": "team",
-    "kb": 90,
-    "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwAgCdASoQAAsAA4BaJbACdAYvrnVRNuR1QAD+53zVZjX1WYjiMrAcQMHK30l4Mow+RUxmdIHLiMUYrgLg5yBdZ/QyzNq4fxh94X1ss+1nsnaf5DA7AtNsGkvxahL84TOpOZN0LDrij4GB71LFiZZrgk+4AAAA"
+    "kb": 53,
+    "blurDataURL": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACQBACdASoQABQAPu1iqU2ppaOiMAgBMB2JbACdMoMYOEAAglEKv6NSUg4ENgAA/sOhJw1LvnhHWDjXTr92RpNCgjQCPab6rLmDJ1WqvZ3NRmNVW5GGRdCR4X5CxDFtFul8+dd9qT5P3mfUsJAFh9tXua3h76iXcCjkCxIyowaDgE1dD9H9NyPSXYe1LGgciE9AAA=="
   },
   {
     "file": "/images/team/mustapher.jpg",

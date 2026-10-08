@@ -340,6 +340,16 @@
     "kb": 346
   },
   {
+    "src": "CEO.jpg (owner-supplied, Pixel 6 — re-encoded and EXIF/GPS stripped on import)",
+    "file": "/images/team/aliyu-mubarak.jpg",
+    "width": 1352,
+    "height": 1800,
+    "alt": "Aliyu Mubarak, Founder & CEO",
+    "people": "adults",
+    "tag": "team",
+    "kb": 133
+  },
+  {
     "src": "Kids In Tech/Little Coders!/image 71.jpg",
     "file": "/images/team/founder-handbook.jpg",
     "width": 1355,
@@ -420,24 +430,24 @@
     "kb": 367
   },
   {
-    "src": "Kids In Tech/web/kids-in-tech/public/assets/images/Aisha.jpeg",
-    "file": "/images/team/aisha.jpg",
-    "width": 996,
-    "height": 1216,
-    "alt": "Aisha Zakari, Media & Content",
+    "src": "aisha_zakari.png (owner-supplied; cropped to 4:5, metadata stripped)",
+    "file": "/images/team/aisha-zakari.jpg",
+    "width": 1108,
+    "height": 1385,
+    "alt": "Portrait of Aisha Zakari",
     "people": "adults",
     "tag": "team",
-    "kb": 68
+    "kb": 130
   },
   {
-    "src": "Kids In Tech/web/kids-in-tech/public/assets/images/faruk.jpeg",
-    "file": "/images/team/faruk.jpg",
-    "width": 1280,
-    "height": 853,
-    "alt": "Faruk Yusuf, Educator, Web Development",
+    "src": "faruk_yusuf.png (owner-supplied; 4:5 crop on face and shoulders, metadata stripped)",
+    "file": "/images/team/faruk-yusuf.jpg",
+    "width": 688,
+    "height": 860,
+    "alt": "Portrait of Faruk Yusuf",
     "people": "adults",
     "tag": "team",
-    "kb": 90
+    "kb": 53
   },
   {
     "src": "Kids In Tech/web/kids-in-tech/public/assets/images/musty.jpeg",
