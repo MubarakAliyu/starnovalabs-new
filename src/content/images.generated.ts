@@ -436,6 +436,26 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "blurDataURL": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZACdMoR3AdCVD7Pjla1lI4sXlqCYrQAA/udWENPhL8Faf87bliv/PGhwJlhil7+HxVIFWmKTK4qn5Bmt6wBSTIgHOQM9496uGB7mjIPKaGITe7vOjcNfjHxiWJpn3yOjczAeWwSVxf/duR15SgQAauBbL7t9qW+fndXFaQspzn5A/zOCJHjwuL/hLgUoaAAAAA=="
   },
   {
+    "file": "/images/team/amina-hassan.jpg",
+    "width": 1054,
+    "height": 1400,
+    "alt": "Amina Hassan, Coordinator, Scratch programme",
+    "people": "adults",
+    "tag": "team",
+    "kb": 110,
+    "blurDataURL": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JagCdMoRwJoAC/z0RcpcoytJgkxAA/o0ovDS5F1rKk2OKLsfY9qY1jHjUX336uixO7slE+lsY17ojod2JSKfOuSBG3Cf4L1LkZJar9pdUYp529l0wAneNBW0Kex7cYPIpGtODnQQvvKzEmPbVhLJ1SwAAAA=="
+  },
+  {
+    "file": "/images/team/murtala-ishaq.jpg",
+    "width": 1054,
+    "height": 1400,
+    "alt": "Murtala Ishaq, Co-Founder & COO",
+    "people": "adults",
+    "tag": "team",
+    "kb": 183,
+    "blurDataURL": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JQBOmUABd1uFghqfrz3/wAAD+zGn9x9jpNOl6Kw2qQvKQH3w29xHjTRwR6nhN5Hwc5SOMaWTEQnr+I9sTyb7f7esGbqSjv2MWfFBCDDnJIwYiAf5AWu/wrAdLoCNGcMOYjIkMefxk/PecysZSN8rvXyDbTUB0+LVsov1PAAA="
+  },
+  {
     "file": "/images/team/aisha-zakari.jpg",
     "width": 1108,
     "height": 1385,
@@ -459,7 +479,7 @@ export const GENERATED_IMAGES: ImageAsset[] = [
     "file": "/images/team/mustapher.jpg",
     "width": 577,
     "height": 607,
-    "alt": "Mustapher M. Lawal, Co-Founder & CTO",
+    "alt": "Mustapha M. Lawal, Co-Founder & CTO",
     "people": "adults",
     "tag": "team",
     "kb": 46,
