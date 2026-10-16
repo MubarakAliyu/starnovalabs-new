@@ -430,14 +430,14 @@
     "kb": 367
   },
   {
-    "src": "amina.jpg (owner-supplied camera original; resized to a 1400px long edge, EXIF/GPS stripped)",
+    "src": "amina.png (owner-supplied; 4:5 crop on face and shoulders, metadata stripped)",
     "file": "/images/team/amina-hassan.jpg",
-    "width": 1054,
-    "height": 1400,
+    "width": 941,
+    "height": 1176,
     "alt": "Amina Hassan, Coordinator, Scratch programme",
     "people": "adults",
     "tag": "team",
-    "kb": 110
+    "kb": 158
   },
   {
     "src": "Murtala.png (owner-supplied; resized to a 1400px long edge, metadata stripped)",
