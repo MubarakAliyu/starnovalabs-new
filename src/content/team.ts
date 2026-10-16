@@ -33,8 +33,8 @@ export interface TeamMember {
 }
 
 /**
- * Photographs are mapped from the owner's confirmed list. Murtala Ishaq, Amina
- * Hassan and Abdulmalik M. Yahaya have none yet and keep their initials tile.
+ * Photographs are mapped from the owner's confirmed list. Abdulmalik M. Yahaya
+ * is the only member without one, and keeps his initials tile.
  *
  * Social accounts are the people's own, supplied by the owner. Anyone without
  * them simply renders no icon row.
@@ -59,7 +59,7 @@ export const team: TeamMember[] = [
     role: 'Co-Founder & COO',
     bio: 'Operations, partnerships, logistics and programme coordination. Leads external business development and bootcamp delivery.',
     group: 'leadership',
-    photo: null,
+    photo: '/images/team/murtala-ishaq.jpg',
     socials: [
       { type: 'linkedin', url: 'https://www.linkedin.com/in/murtala-ishaq-24a550246/' },
       { type: 'instagram', url: 'https://www.instagram.com/murtala_legitcoolcat/' },
@@ -68,7 +68,7 @@ export const team: TeamMember[] = [
     status: 'confirmed',
   },
   {
-    name: 'Mustapher M. Lawal',
+    name: 'Mustapha M. Lawal',
     role: 'Co-Founder & CTO',
     bio: 'Technology direction, product development and technical education. Leads KITOS and the robotics programme.',
     group: 'leadership',
@@ -90,7 +90,7 @@ export const team: TeamMember[] = [
     name: 'Amina Hassan',
     role: 'Coordinator, Scratch programme',
     group: 'programme',
-    photo: null,
+    photo: '/images/team/amina-hassan.jpg',
     status: 'confirmed',
   },
   {
