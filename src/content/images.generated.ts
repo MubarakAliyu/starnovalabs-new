@@ -437,13 +437,13 @@ export const GENERATED_IMAGES: ImageAsset[] = [
   },
   {
     "file": "/images/team/amina-hassan.jpg",
-    "width": 1054,
-    "height": 1400,
+    "width": 941,
+    "height": 1176,
     "alt": "Amina Hassan, Coordinator, Scratch programme",
     "people": "adults",
     "tag": "team",
-    "kb": 110,
-    "blurDataURL": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JagCdMoRwJoAC/z0RcpcoytJgkxAA/o0ovDS5F1rKk2OKLsfY9qY1jHjUX336uixO7slE+lsY17ojod2JSKfOuSBG3Cf4L1LkZJar9pdUYp529l0wAneNBW0Kex7cYPIpGtODnQQvvKzEmPbVhLJ1SwAAAA=="
+    "kb": 158,
+    "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAAAwBACdASoQABQAPu1iqU2ppaOiMAgBMB2JYgCdMoADaOZDnultKLYEfQAA9r4zb4wFWuoOz29GoHttZ0JeujfLFVSfFLo3Fz8p7MIuViiVpkH3YcSEp/FHS72wmI2vLaRB2fUu7argI9um8idAdgXED7wlIq7gpqusXfuvKVKuX/Nx1on3gAAA"
   },
   {
     "file": "/images/team/murtala-ishaq.jpg",
